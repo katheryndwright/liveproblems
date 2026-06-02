@@ -1,12 +1,533 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Live Problems — Katheryn Wright</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Live Problems — Katheryn Wright</title>
+  <meta name="description" content="Live Problems is the practice of Katheryn Wright — a situated making practice in digital humanities, posthumanist pedagogy, place-based learning, and analog-digital inquiry." />
+  <meta name="keywords" content="digital humanities, digital pedagogy, posthumanism, posthumanist pedagogy, speculative education, media studies, media infrastructure, media architecture, television studies, place-based learning, analog-digital, curriculum design, Katheryn Wright" />
+  <meta name="author" content="Katheryn Wright" />
+  <meta property="og:title" content="Live Problems — Katheryn Wright" />
+  <meta property="og:description" content="A situated making practice — place-based, analog-digital, community-engaged work that keeps inquiry alive rather than resolving it prematurely." />
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://katheryndwright.github.io/liveproblems/" />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Caveat:wght@400;600;700&family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet" />
+
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --ink: #141414;
+      --ink-light: #444444;
+      --ink-faint: #888888;
+      --paper: #f2f0eb;
+      --paper-card: #fafaf7;
+      --accent: #5c3d8f;
+      --accent-light: #8b6ab5;
+      --accent-pale: #f0eaf8;
+      --rule: #cccccc;
+      --font-hand: 'Caveat', cursive;
+      --font-body: 'Libre Baskerville', Georgia, serif;
+      --font-mono: 'DM Mono', monospace;
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      background-color: var(--paper);
+      color: var(--ink);
+      font-family: var(--font-body);
+      font-size: 16px;
+      line-height: 1.75;
+      min-height: 100vh;
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='300' height='300'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.75' numOctaves='4' stitchTiles='stitch'/%3E%3CfeColorMatrix type='saturate' values='0'/%3E%3C/filter%3E%3Crect width='300' height='300' filter='url(%23n)' opacity='0.03'/%3E%3C/svg%3E");
+    }
+
+    /* ── NAV ── */
+    nav {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      background: var(--paper);
+      border-bottom: 1.5px solid var(--ink);
+      padding: 0 2rem;
+    }
+
+    .nav-inner {
+      max-width: 960px;
+      margin: 0 auto;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      height: 52px;
+    }
+
+    .nav-wordmark {
+      font-family: var(--font-hand);
+      font-size: 1.5rem;
+      font-weight: 600;
+      color: var(--ink);
+      text-decoration: none;
+      transform: rotate(-1deg);
+      display: inline-block;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 1.75rem;
+      list-style: none;
+    }
+
+    .nav-links a {
+      font-family: var(--font-mono);
+      font-size: 0.7rem;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--ink-light);
+      text-decoration: none;
+      transition: color 0.15s ease;
+    }
+
+    .nav-links a:hover { color: var(--accent); }
+
+    /* ── HERO ── */
+    .hero {
+      max-width: 960px;
+      margin: 0 auto;
+      padding: 5rem 2rem 3rem;
+    }
+
+    .hero-grid {
+      display: grid;
+      grid-template-columns: 1.1fr 1fr;
+      gap: 4rem;
+      align-items: start;
+    }
+
+    .hero-left { position: relative; }
+
+    .hero-tag {
+      font-family: var(--font-mono);
+      font-size: 0.65rem;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--ink-faint);
+      display: block;
+      margin-bottom: 0.75rem;
+    }
+
+    h1 {
+      font-family: var(--font-hand);
+      font-size: clamp(4.5rem, 10vw, 7.5rem);
+      font-weight: 700;
+      line-height: 0.92;
+      color: var(--ink);
+      transform: rotate(-0.8deg);
+      display: inline-block;
+    }
+
+    .h1-problems {
+      font-family: var(--font-hand);
+      font-size: clamp(2.5rem, 5vw, 3.8rem);
+      font-weight: 400;
+      color: var(--accent);
+      display: block;
+      margin-top: 0.1rem;
+      margin-left: 0.75rem;
+      transform: rotate(0.4deg);
+    }
+
+    .hero-byline {
+      font-family: var(--font-mono);
+      font-size: 0.7rem;
+      letter-spacing: 0.06em;
+      color: var(--ink-faint);
+      margin-top: 2rem;
+      padding-top: 1rem;
+      border-top: 1px solid var(--rule);
+      line-height: 1.9;
+    }
+
+    .hero-right { padding-top: 2rem; }
+
+    .hero-statement {
+      font-size: 1rem;
+      line-height: 1.9;
+      color: var(--ink);
+    }
+
+    .hero-statement p + p { margin-top: 1rem; }
+    .hero-statement strong { font-weight: 700; }
+
+    .bracket-note {
+      font-family: var(--font-hand);
+      font-size: 1.05rem;
+      color: var(--accent);
+      margin-top: 1.5rem;
+      padding-left: 1rem;
+      border-left: 2.5px solid var(--accent);
+      font-style: italic;
+      transform: rotate(-0.3deg);
+      display: block;
+      line-height: 1.5;
+    }
+
+    .hero-cta {
+      margin-top: 2rem;
+      display: flex;
+      gap: 0.75rem;
+      flex-wrap: wrap;
+    }
+
+    .btn {
+      font-family: var(--font-mono);
+      font-size: 0.68rem;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      text-decoration: none;
+      padding: 0.55rem 1.1rem;
+      border: 1.5px solid var(--ink);
+      color: var(--ink);
+      background: transparent;
+      transition: background 0.2s ease, color 0.2s ease;
+      display: inline-block;
+    }
+
+    .btn:hover { background: var(--ink); color: var(--paper); }
+
+    .btn-accent {
+      border-color: var(--accent);
+      color: var(--accent);
+    }
+    .btn-accent:hover { background: var(--accent); color: var(--paper); }
+
+    /* ── DIVIDER ── */
+    .divider {
+      max-width: 960px;
+      margin: 0 auto;
+      padding: 0 2rem;
+      border: none;
+      border-top: 1px solid var(--rule);
+    }
+
+    /* ── SECTION ── */
+    section {
+      max-width: 960px;
+      margin: 0 auto;
+      padding: 3rem 2rem;
+    }
+
+    .section-label {
+      font-family: var(--font-hand);
+      font-size: 1.4rem;
+      font-weight: 600;
+      color: var(--ink);
+      margin-bottom: 1.5rem;
+      display: block;
+      transform: rotate(-0.4deg);
+    }
+
+    /* ── LIVE PROBLEMS GRID ── */
+    .lp-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+
+      gap: 1rem;
+    }
+
+    .lp-card {
+      background: var(--paper-card);
+      border: 1.5px solid var(--ink);
+      padding: 1.1rem;
+      transition: transform 0.15s ease;
+    }
+
+    /* book card spans full left column */
+    .lp-card--book {
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+    }
+
+    .lp-card:nth-child(2) { transform: rotate(-0.4deg); }
+    .lp-card:nth-child(3) { transform: rotate(0.3deg); }
+    .lp-card:nth-child(4) { transform: rotate(-0.3deg); }
+    .lp-card:nth-child(5) { transform: rotate(0.4deg); }
+    .lp-card:hover { transform: rotate(0deg) translateY(-2px); }
+    .lp-card--book:hover { transform: translateY(-2px); }
+
+    .lp-card-category {
+      font-family: var(--font-mono);
+      font-size: 0.6rem;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--accent-light);
+      margin-bottom: 0.4rem;
+      display: block;
+    }
+
+    .lp-card--book .lp-card-category {
+      color: var(--accent-light);
+    }
+
+    .lp-card h3 {
+      font-family: var(--font-hand);
+      font-size: 1.15rem;
+      font-weight: 600;
+      line-height: 1.25;
+      color: var(--ink);
+    }
+
+
+
+    .lp-card--book p {
+      font-size: 0.85rem;
+      color: var(--ink-light);
+      line-height: 1.7;
+      margin-top: auto;
+    }
+
+    /* ── IN THE WORK ── */
+    .in-the-work {
+      margin-top: 3rem;
+      border-top: 1px solid var(--rule);
+      padding-top: 2.5rem;
+    }
+
+    .itw-label {
+      font-family: var(--font-hand);
+      font-size: 1.4rem;
+      font-weight: 600;
+      color: var(--ink);
+      display: block;
+      margin-bottom: 1.5rem;
+      transform: rotate(-0.4deg);
+    }
+
+    .itw-placeholder {
+      border: 1.5px dashed var(--rule);
+      padding: 3rem 2rem;
+      text-align: center;
+      background: var(--paper-card);
+    }
+
+    .itw-placeholder p {
+      font-family: var(--font-hand);
+      font-size: 1.1rem;
+      color: var(--ink-faint);
+      font-style: italic;
+    }
+
+    .itw-placeholder span {
+      font-family: var(--font-mono);
+      font-size: 0.6rem;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--rule);
+      display: block;
+      margin-top: 0.5rem;
+    }
+
+    /* ── ITW QUOTE ── */
+    .itw-quote {
+      display: flex;
+      align-items: stretch;
+      background: var(--paper-card);
+      border: 1.5px solid var(--ink);
+      overflow: hidden;
+    }
+
+    .itw-spine {
+      flex-shrink: 0;
+      width: 48px;
+      background: var(--ink);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .itw-spine span {
+      font-family: var(--font-hand);
+      font-size: 0.8rem;
+      color: var(--paper);
+      writing-mode: vertical-rl;
+      text-orientation: mixed;
+      transform: rotate(180deg);
+      letter-spacing: 0.06em;
+      text-align: center;
+    }
+
+    .itw-quote-text {
+      flex: 1;
+      padding: 2rem 1.75rem;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+    }
+
+    .itw-quote blockquote {
+      font-family: var(--font-hand);
+      font-size: 1.75rem;
+      font-weight: 400;
+      line-height: 1.35;
+      color: var(--ink);
+      margin-bottom: 1rem;
+    }
+
+    .itw-quote cite {
+      font-family: var(--font-mono);
+      font-size: 0.65rem;
+      letter-spacing: 0.08em;
+      color: var(--ink-faint);
+      font-style: normal;
+      display: block;
+    }
+
+    /* ── FOOTER ── */
+    footer {
+      border-top: 1.5px solid var(--ink);
+      padding: 1.5rem 2rem;
+      text-align: center;
+      margin-top: 2rem;
+    }
+
+    footer p {
+      font-family: var(--font-mono);
+      font-size: 0.63rem;
+      letter-spacing: 0.1em;
+      color: var(--ink-faint);
+    }
+
+    /* ── ANIMATION ── */
+    .fade-in {
+      opacity: 0;
+      transform: translateY(12px);
+      animation: fadeUp 0.6s ease forwards;
+    }
+    .fade-in:nth-child(2) { animation-delay: 0.12s; }
+
+    @keyframes fadeUp {
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    /* ── RESPONSIVE ── */
+    @media (max-width: 700px) {
+      .hero-grid { grid-template-columns: 1fr; gap: 2rem; }
+      .lp-grid { grid-template-columns: 1fr 1fr; }
+
+      .nav-links { gap: 1rem; }
+      .nav-links a { font-size: 0.62rem; }
+    }
+
+    @media (max-width: 480px) {
+      .lp-grid { grid-template-columns: 1fr; }
+      .lp-card--book { grid-column: 1; }
+    }
+  </style>
 </head>
 <body>
-    <h1>Live Problems</h1>
-    <p>Site coming soon.</p>
+
+  <nav>
+    <div class="nav-inner">
+      <a href="/" class="nav-wordmark">Live Problems</a>
+      <ul class="nav-links">
+        <li><a href="making.html">Making</a></li>
+        <li><a href="designing.html">Designing</a></li>
+        <li><a href="teaching.html">Teaching</a></li>
+        <li><a href="writing.html">Writing</a></li>
+        <li><a href="cv.html">CV</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <main>
+
+    <div class="hero">
+      <div class="hero-grid">
+
+        <div class="hero-left fade-in">
+          <span class="hero-tag">Katheryn Wright</span>
+          <div>
+            <h1>Live</h1>
+            <span class="h1-problems">Problems</span>
+          </div>
+          <div class="hero-byline">
+            Full Professor, Digital Humanities<br />
+            Roger H. Perry Endowed Chair for Innovation<br />
+            Champlain College — Burlington, VT
+          </div>
+        </div>
+
+        <div class="hero-right fade-in">
+          <div class="hero-statement">
+            <p>
+              <strong>Live Problems</strong> is a situated making practice. Place-based, analog-digital, community-engaged work that refuses resolution.
+            </p>
+            <p>
+              A live problem surfaces from inside relations, through a material's resistance, an unexpected question, a friction that doesn't neatly resolve. This practice doesn't require an answer. It requires staying inside the encounter long enough for something to be made from it.
+            </p>
+            <p>
+              These are not solutions. They are renderings.
+            </p>
+            <span class="bracket-note">from <em>Speculative Education: Making Knowledge from the Ruins</em></span>
+          </div>
+          <div class="hero-cta">
+            <a href="making.html" class="btn">See the work</a>
+            <a href="cv.html" class="btn btn-accent">Download CV</a>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+    <hr class="divider" />
+
+    <section>
+      <span class="section-label">live problems</span>
+
+      <div class="lp-grid">
+
+        <div class="lp-card lp-card--book">
+          <span class="lp-card-category">writing · ongoing</span>
+          <h3>Speculative Education: Making Knowledge from the Ruins</h3>
+        </div>
+
+        <div class="lp-card">
+          <span class="lp-card-category">making · ongoing</span>
+          <h3>Algorithmic Sidewalk</h3>
+        </div>
+
+        <div class="lp-card">
+          <span class="lp-card-category">making · ongoing</span>
+          <h3>Soundscape Classifier</h3>
+          <!-- add GitHub link here: <a href="YOUR_GITHUB_URL">GitHub</a> -->
+        </div>
+
+      </div>
+
+      <div class="in-the-work">
+        <span class="itw-label">in the work</span>
+        <div class="itw-quote">
+          <div class="itw-spine">
+            <span>Speculative Education</span>
+          </div>
+          <div class="itw-quote-text">
+            <blockquote>"The trail is the edge that makes learning possible."</blockquote>
+            <cite>— "Learning at the Edge," <em>Speculative Education: Making Knowledge from the Ruins</em></cite>
+          </div>
+        </div>
+      </div>
+
+    </section>
+
+  </main>
+
+  <footer>
+    <p>Katheryn Wright &nbsp;·&nbsp; Digital Humanities &nbsp;·&nbsp; Posthumanist Pedagogy &nbsp;·&nbsp; Champlain College</p>
+  </footer>
+
 </body>
 </html>
