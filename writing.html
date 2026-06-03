@@ -1,0 +1,663 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Writing — Katheryn Wright</title>
+  <meta name="description" content="Writing by Katheryn Wright — digital humanities, posthumanist pedagogy, media studies, popular culture, and curriculum design." />
+  <meta name="keywords" content="digital humanities, posthumanism, media studies, popular culture, curriculum design, Katheryn Wright, Speculative Education, The New Heroines" />
+  <meta name="author" content="Katheryn Wright" />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Caveat:wght@400;600;700&family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet" />
+
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --ink: #141414;
+      --ink-light: #444444;
+      --ink-faint: #888888;
+      --paper: #f2f0eb;
+      --paper-card: #fafaf7;
+      --accent: #5c3d8f;
+      --accent-light: #8b6ab5;
+      --accent-pale: #f0eaf8;
+      --rule: #cccccc;
+      --font-hand: 'Caveat', cursive;
+      --font-body: 'Libre Baskerville', Georgia, serif;
+      --font-mono: 'DM Mono', monospace;
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      background-color: var(--paper);
+      color: var(--ink);
+      font-family: var(--font-body);
+      font-size: 16px;
+      line-height: 1.75;
+      min-height: 100vh;
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='300' height='300'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.75' numOctaves='4' stitchTiles='stitch'/%3E%3CfeColorMatrix type='saturate' values='0'/%3E%3C/filter%3E%3Crect width='300' height='300' filter='url(%23n)' opacity='0.03'/%3E%3C/svg%3E");
+    }
+
+    /* ── NAV ── */
+    nav {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      background: var(--paper);
+      border-bottom: 1.5px solid var(--ink);
+      padding: 0 2rem;
+    }
+
+    .nav-inner {
+      max-width: 960px;
+      margin: 0 auto;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      height: 52px;
+    }
+
+    .nav-wordmark {
+      font-family: var(--font-hand);
+      font-size: 1.5rem;
+      font-weight: 600;
+      color: var(--ink);
+      text-decoration: none;
+      transform: rotate(-1deg);
+      display: inline-block;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 1.75rem;
+      list-style: none;
+    }
+
+    .nav-links a {
+      font-family: var(--font-mono);
+      font-size: 0.7rem;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--ink-light);
+      text-decoration: none;
+      transition: color 0.15s ease;
+    }
+
+    .nav-links a:hover,
+    .nav-links a.active { color: var(--accent); }
+
+    /* ── PAGE HEADER ── */
+    .page-header {
+      max-width: 960px;
+      margin: 0 auto;
+      padding: 4rem 2rem 2rem;
+      border-bottom: 1px solid var(--rule);
+    }
+
+    .page-header h1 {
+      font-family: var(--font-hand);
+      font-size: clamp(3rem, 7vw, 5rem);
+      font-weight: 700;
+      line-height: 0.95;
+      color: var(--ink);
+      transform: rotate(-0.5deg);
+      display: inline-block;
+    }
+
+    .page-header p {
+      font-family: var(--font-body);
+      font-size: 0.95rem;
+      color: var(--ink-light);
+      max-width: 540px;
+      margin-top: 1rem;
+      line-height: 1.8;
+    }
+
+    /* ── MAIN ── */
+    .writing-main {
+      max-width: 960px;
+      margin: 0 auto;
+      padding: 3rem 2rem;
+    }
+
+    /* ── FEATURED BOOKS ── */
+    .section-label {
+      font-family: var(--font-hand);
+      font-size: 1.4rem;
+      font-weight: 600;
+      color: var(--ink);
+      display: block;
+      transform: rotate(-0.4deg);
+      margin-bottom: 1.5rem;
+    }
+
+    .books-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 2rem;
+      margin-bottom: 3.5rem;
+    }
+
+    .book-card {
+      background: var(--paper-card);
+      border: 1.5px solid var(--ink);
+      overflow: hidden;
+    }
+
+    .book-card:nth-child(odd) { transform: rotate(-0.3deg); }
+    .book-card:nth-child(even) { transform: rotate(0.3deg); }
+    .book-card:hover { transform: rotate(0deg) translateY(-2px); transition: transform 0.15s ease; }
+
+    .book-cover {
+      width: 100%;
+      height: 280px;
+      overflow: hidden;
+    }
+
+    .book-cover img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+    }
+
+    .book-cover-placeholder {
+      width: 100%;
+      height: 280px;
+      background: var(--ink);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .book-cover-placeholder span {
+      font-family: var(--font-hand);
+      font-size: 1.1rem;
+      color: var(--paper);
+      text-align: center;
+      padding: 1rem;
+      line-height: 1.3;
+    }
+
+    .book-info {
+      padding: 1.25rem;
+    }
+
+    .book-status {
+      font-family: var(--font-mono);
+      font-size: 0.6rem;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--accent-light);
+      display: block;
+      margin-bottom: 0.4rem;
+    }
+
+    .book-info h2 {
+      font-family: var(--font-hand);
+      font-size: 1.3rem;
+      font-weight: 700;
+      line-height: 1.2;
+      color: var(--ink);
+      margin-bottom: 0.5rem;
+    }
+
+    .book-info h2 a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    .book-info h2 a:hover { color: var(--accent); }
+
+    .book-publisher {
+      font-family: var(--font-mono);
+      font-size: 0.65rem;
+      letter-spacing: 0.06em;
+      color: var(--ink-faint);
+      display: block;
+      margin-bottom: 0.75rem;
+    }
+
+    .book-info p {
+      font-size: 0.88rem;
+      color: var(--ink-light);
+      line-height: 1.75;
+    }
+
+    /* ── CLUSTER ── */
+    .cluster {
+      margin-bottom: 3rem;
+    }
+
+    .cluster-label {
+      font-family: var(--font-hand);
+      font-size: 1.2rem;
+      font-weight: 600;
+      color: var(--ink);
+      display: block;
+      transform: rotate(-0.3deg);
+      margin-bottom: 1.25rem;
+      padding-bottom: 0.5rem;
+      border-bottom: 1px solid var(--rule);
+    }
+
+    .cluster-format {
+      font-family: var(--font-mono);
+      font-size: 0.6rem;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--ink-faint);
+      font-weight: 400;
+      margin-left: 0.5rem;
+    }
+
+    /* highlighted entry */
+    .entry-highlighted {
+      display: flex;
+      gap: 1.25rem;
+      align-items: start;
+      padding: 1rem 0;
+      border-bottom: 1px solid var(--rule);
+    }
+
+    .entry-highlighted:last-child { border-bottom: none; }
+
+    .entry-thumb {
+      flex-shrink: 0;
+      width: 56px;
+      height: 72px;
+      overflow: hidden;
+      border: 1px solid var(--rule);
+      background: var(--paper-card);
+    }
+
+    .entry-thumb img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+    }
+
+    .entry-thumb-placeholder {
+      width: 100%;
+      height: 100%;
+      background: var(--ink);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .entry-thumb-placeholder span {
+      font-family: var(--font-hand);
+      font-size: 0.6rem;
+      color: var(--paper);
+      writing-mode: vertical-rl;
+      transform: rotate(180deg);
+      text-align: center;
+      letter-spacing: 0.04em;
+    }
+
+    .entry-content { flex: 1; }
+
+    .entry-title {
+      font-family: var(--font-body);
+      font-size: 0.95rem;
+      font-weight: 700;
+      color: var(--ink);
+      line-height: 1.4;
+      margin-bottom: 0.2rem;
+    }
+
+    .entry-title a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    .entry-title a:hover { color: var(--accent); }
+
+    .entry-meta {
+      font-family: var(--font-mono);
+      font-size: 0.62rem;
+      letter-spacing: 0.06em;
+      color: var(--ink-faint);
+      display: block;
+      margin-bottom: 0.5rem;
+    }
+
+    .entry-desc {
+      font-size: 0.85rem;
+      color: var(--ink-light);
+      line-height: 1.75;
+    }
+
+    /* plain entry */
+    .entry-plain {
+      display: flex;
+      gap: 1.25rem;
+      align-items: center;
+      padding: 0.65rem 0;
+      border-bottom: 1px solid var(--rule);
+    }
+
+    .entry-plain:last-child { border-bottom: none; }
+
+    .entry-plain-thumb {
+      flex-shrink: 0;
+      width: 36px;
+      height: 46px;
+      overflow: hidden;
+      border: 1px solid var(--rule);
+      background: var(--paper-card);
+    }
+
+    .entry-plain-thumb img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+    }
+
+    .entry-plain-thumb-placeholder {
+      width: 100%;
+      height: 100%;
+      background: var(--rule);
+    }
+
+    .entry-plain-content { flex: 1; }
+
+    .entry-plain-title {
+      font-family: var(--font-body);
+      font-size: 0.88rem;
+      font-weight: 700;
+      color: var(--ink);
+      line-height: 1.4;
+    }
+
+    .entry-plain-title a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    .entry-plain-title a:hover { color: var(--accent); }
+
+    .entry-plain-meta {
+      font-family: var(--font-mono);
+      font-size: 0.6rem;
+      letter-spacing: 0.06em;
+      color: var(--ink-faint);
+      display: block;
+      margin-top: 0.2rem;
+    }
+
+    .entry-plain-desc {
+      font-size: 0.83rem;
+      color: var(--ink-light);
+      line-height: 1.75;
+      margin-top: 0.4rem;
+    }
+
+    /* ── FOOTER ── */
+    footer {
+      border-top: 1.5px solid var(--ink);
+      padding: 1.5rem 2rem;
+      text-align: center;
+      margin-top: 2rem;
+    }
+
+    footer p {
+      font-family: var(--font-mono);
+      font-size: 0.63rem;
+      letter-spacing: 0.1em;
+      color: var(--ink-faint);
+    }
+
+    /* ── RESPONSIVE ── */
+    @media (max-width: 640px) {
+      .books-grid { grid-template-columns: 1fr; }
+      .nav-links { gap: 1rem; }
+      .nav-links a { font-size: 0.62rem; }
+      .nav-wordmark { font-size: 1.1rem; }
+    }
+  </style>
+</head>
+<body>
+
+  <nav>
+    <div class="nav-inner">
+      <a href="index.html" class="nav-wordmark">Live Problems</a>
+      <ul class="nav-links">
+        <li><a href="making.html">Making</a></li>
+        <li><a href="designing.html">Designing</a></li>
+        <li><a href="teaching.html">Teaching</a></li>
+        <li><a href="writing.html" class="active">Writing</a></li>
+        <li><a href="cv.html">CV</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <main>
+
+    <div class="page-header">
+      <h1>Writing</h1>
+      <p>Scholarship across digital humanities, posthumanist pedagogy, media studies, and popular culture. Full publication list available in the CV.</p>
+    </div>
+
+    <div class="writing-main">
+
+      <!-- FEATURED BOOKS -->
+      <div class="books-grid">
+
+        <div class="book-card">
+          <div class="book-cover">
+            <img src="images/speculative-education-trail.jpg" alt="Ella on the Awasiwi Trail" />
+          </div>
+          <div class="book-info">
+            <span class="book-status">ongoing</span>
+            <h2>Speculative Education: Making Knowledge from the Ruins</h2>
+            <span class="book-publisher">in preparation</span>
+            <p>Develops a theory of knowledge-making under conditions of uncertainty, introducing rendering as the practice of making new knowledge alongside relational practice and modular thinking as critical posthuman frameworks for reimagining teaching and learning.</p>
+          </div>
+        </div>
+
+        <div class="book-card">
+          <div class="book-cover">
+            <img src="images/new-heroines-cover.jpg" alt="The New Heroines book cover" />
+          </div>
+          <div class="book-info">
+            <span class="book-status">Praeger, 2016</span>
+            <h2><a href="https://www.bloomsbury.com/uk/new-heroines-9781440832796/" target="_blank">The New Heroines: Female Embodiment and Technology in 21st Century Popular Culture</a></h2>
+            <p>Examines teen and young adult female heroines across popular culture genres and media, tracing a new feminist ideal emerging at the intersection of embodiment, technology, and posthuman subjectivity.</p>
+          </div>
+        </div>
+
+      </div>
+
+      <!-- CLUSTER 1: DH AND PEDAGOGY -->
+      <div class="cluster">
+        <span class="cluster-label">digital humanities and pedagogy</span>
+
+        <!-- highlighted -->
+        <div class="entry-highlighted">
+
+          <div class="entry-content">
+            <p class="entry-title">"A Modular Curriculum for Uncertain Times"</p>
+            <span class="entry-meta">under review</span>
+            <p class="entry-desc">Curriculum design is a structure for making knowledge, not just delivering it. This article argues for a modular approach organized around skills and knowledge domains rather than disciplines, drawing on institutional redesign as a case study for building flexible, future-oriented liberal education.</p>
+          </div>
+        </div>
+
+        <div class="entry-highlighted">
+
+          <div class="entry-content">
+            <p class="entry-title">"Making an Alternate Reality Game"</p>
+            <span class="entry-meta">Critical Digital Humanities Cookbook. ACRL — forthcoming</span>
+            <p class="entry-desc">ARGs mix digital platforms with physical objects and locations to build worlds players inhabit in real time. This chapter offers a practical and theoretical guide to ARG design as a digital humanities pedagogy, drawn from years of teaching students to make place-based interactive narratives that blur the line between fiction and lived experience.</p>
+          </div>
+        </div>
+
+        <!-- plain entries -->
+        <div class="entry-plain">
+          <div class="entry-plain-content">
+            <p class="entry-plain-title"><a href="https://scholarworks.iu.edu/journals/index.php/digest/article/view/38231" target="_blank">"Teaching Fake Meat as New Media"</a></p>
+            <span class="entry-plain-meta">Digest: A Journal of Foodways and Culture, 2023</span>
+            <p class="entry-plain-desc">Food as a medium for interdisciplinary inquiry. This article outlines how posthuman theory, cultural studies, and experiential learning combine in a course examining alternative protein and food culture, using cooking and place-based activities as sites of collective knowledge-making.</p>
+          </div>
+        </div>
+
+        <div class="entry-plain">
+          <div class="entry-plain-content">
+            <p class="entry-plain-title"><a href="http://sites.bu.edu/impact/previous-issues/impact-summer-2020/" target="_blank">"Re-Making General Education: Envisioning Gen Ed as a Digital Humanities Makerspace"</a></p>
+            <span class="entry-plain-meta">Co-authored with Kristin Novotny. Impact, 2020</span>
+            <p class="entry-plain-desc">What would it look like to redesign general education through the lens of the digital humanities? This article argues for a makerspace model of gen ed, proposing a framework where interdisciplinary inquiry and digital methods replace disciplinary silos.</p>
+          </div>
+        </div>
+
+        <div class="entry-plain">
+          <div class="entry-plain-content">
+            <p class="entry-plain-title"><a href="https://www.utep.edu/liberalarts/humanities/_Files/docs/pdfs/HERA-Journal-FALL-2017-3.5.19.pdf" target="_blank">"The Body Project"</a></p>
+            <span class="entry-plain-meta">Interdisciplinary Humanities, 2017</span>
+            <p class="entry-plain-desc">Describes the development and teaching of a shared general education course that uses the body as an interdisciplinary site of inquiry, integrating student-centered pedagogy with posthumanist frameworks across multiple sections.</p>
+          </div>
+        </div>
+
+        <div class="entry-plain">
+          <div class="entry-plain-content">
+            <p class="entry-plain-title"><a href="http://www.digitalpedagogylab.com/hybridped/the-safety-paradox/" target="_blank">"The Safety Paradox"</a></p>
+            <span class="entry-plain-meta">Hybrid Pedagogy, 2017</span>
+            <p class="entry-plain-desc">Two competing visions of campus safety — rhetorical and bodily — collide in this essay, arguing that the ability to access the unsafe spaces of critical inquiry is contingent on the physical safety of the bodies in the room. Who gets to be unsafe, and for whom, is a political question.</p>
+          </div>
+        </div>
+
+        <div class="entry-plain">
+          <div class="entry-plain-content">
+            <p class="entry-plain-title">"The Problems and Possibilities of Integrating Professionalism and Education"</p>
+            <span class="entry-plain-meta">Co-authored with Michael Kelly and Michael Lange. Perspectives in Interdisciplinarity and Integrative Studies. Texas Tech UP, 2015</span>
+            <p class="entry-plain-desc">A case study of the senior capstone experience at Champlain College, examining how integrative learning and professional preparation can coexist without collapsing one into the other.</p>
+          </div>
+        </div>
+
+      </div>
+
+      <!-- CLUSTER 2: MEDIA, CULTURE, AND POPULAR CULTURE -->
+      <div class="cluster">
+        <span class="cluster-label">media and popular culture</span>
+
+        <div class="entry-highlighted">
+          <div class="entry-content">
+            <p class="entry-title">"Be Kind, Please Rewind: Video Stores, Algorithmic Recommendation Systems, and the Ethical Commitments of Media Curation"</p>
+            <span class="entry-meta">Co-authored with Clinton Bryant. Media in Transition. Media Studies Press — ongoing</span>
+            <p class="entry-desc">The video store was a community before algorithms made curation invisible. This chapter traces the shift from the ethics of the video store — browsing, asking, belonging — to the ethics of the algorithm, examining what is lost when AI recommendation systems replace the relational practice of human curation. Drawing on personal experience and films like <em>Clerks</em>, <em>Scream</em>, and <em>Be Kind Rewind</em>, it asks what kind of audiences we became when the shelves disappeared.</p>
+          </div>
+        </div>
+
+        <div class="entry-highlighted">
+          <div class="entry-content">
+            <p class="entry-title">"Wayfinding through Media: The Pop Flâneuse in Gilmore Girls"</p>
+            <span class="entry-meta">The Flâneuse in Literature and Culture. Routledge — forthcoming</span>
+            <p class="entry-desc">This chapter develops the concept of the pop flâneuse, a feminist figure who moves purposefully through transmedia worlds, seeking embodied connection with the stories that have shaped her life. Drawing on a visit to the Stars Hollow set during the 2016 revival, it traces four practices: affective engagement, wayfinding across platforms, navigating stasis through active waiting, and recognition through reflection.</p>
+          </div>
+        </div>
+
+        <div class="entry-plain">
+          <div class="entry-plain-content">
+            <p class="entry-plain-title">"Trauma, Technology and the Affective Body in Firefly and Dollhouse"</p>
+            <span class="entry-plain-meta">Co-authored with Emily Hansen. Blood, Body, and Soul. McFarland, 2022</span>
+            <p class="entry-plain-desc">River and Echo are made to feel everything — an openness that is both their trauma and their power. This chapter uses Spinoza's theory of affect to examine how the Alliance and Rossum Corporation transform bodies through technology, and how the chosen family becomes the site of recovery from that transformation.</p>
+          </div>
+        </div>
+
+        <div class="entry-highlighted">
+          <div class="entry-content">
+            <p class="entry-title">"Pop Culture Pilgrimage and the Politics of Place"</p>
+            <span class="entry-meta">Dark Tourism and Pilgrimage. CABI, 2020</span>
+            <p class="entry-desc">An autoethnography of a visit to Kunta Kinteh Island in The Gambia. This chapter considers the site through dark tourism and pop culture pilgrimage, examining how place, memory, and media representation layer into each other at sites of historical trauma.</p>
+          </div>
+        </div>
+
+        <div class="entry-plain">
+          <div class="entry-plain-content">
+            <p class="entry-plain-title">"Gilmore Girls: 'Bon Voyage'"</p>
+            <span class="entry-plain-meta">Television Finales: From Howdy Doody to Girls. Syracuse UP, 2018</span>
+            <p class="entry-plain-desc">A close reading of the Gilmore Girls series finale, examining how the episode resolves the series' central tensions around class, mother-daughter relationships, and the meaning of home.</p>
+          </div>
+        </div>
+
+        <div class="entry-plain">
+          <div class="entry-plain-content">
+            <p class="entry-plain-title">"How I Met Your Mother: 'Last Forever'"</p>
+            <span class="entry-plain-meta">Co-authored with Clinton Bryant. Television Finales: From Howdy Doody to Girls. Syracuse UP, 2018</span>
+            <p class="entry-plain-desc">Examines the controversial finale through the lens of narrative closure, arguing that the episode's reception reveals how invested audiences become in the relational logic of long-form television.</p>
+          </div>
+        </div>
+
+        <div class="entry-plain">
+          <div class="entry-plain-content">
+            <p class="entry-plain-title"><a href="http://rupkatha.com/v9n302/" target="_blank">"Haptic Perception Meets Interface Aesthetics"</a></p>
+            <span class="entry-plain-meta">Rupkatha Journal on Interdisciplinary Studies in Humanities, 2017</span>
+            <p class="entry-plain-desc">The iPhone changed how bodies relate to screens. This article examines cultural representations of touchscreen technology in its aftermath, arguing that haptic interfaces reshape not just interaction but perception itself.</p>
+          </div>
+        </div>
+
+        <div class="entry-highlighted">
+          <div class="entry-content">
+            <p class="entry-title">"Revolutionary Art in the Age of Reality TV"</p>
+            <span class="entry-meta">Of Bread, Blood, and The Hunger Games. McFarland, 2012</span>
+            <p class="entry-desc">The Hunger Games uses live television as a technology for managing collective feeling and controlling populations. This chapter applies affect theory to examine how the trilogy stages the struggle between aestheticizing politics and politicizing art through the televisual apparatus, and what Katniss's celebrity makes possible within that struggle.</p>
+          </div>
+        </div>
+
+        <div class="entry-plain">
+          <div class="entry-plain-content">
+            <p class="entry-plain-title"><a href="https://refractory-journal.com/wright/" target="_blank">"Reaching for the Screen in Nine Inch Nails' Lights in the Sky"</a></p>
+            <span class="entry-plain-meta">Refractory: A Journal of Entertainment Media, 2012</span>
+            <p class="entry-plain-desc">During NIN's 2008 tour, Trent Reznor used semi-transparent stealth screens as physical objects to play hide-and-seek with his audience. This article reads that performance as a map of emerging bodily habituations forming through everyday screen interactions.</p>
+          </div>
+        </div>
+
+        <div class="entry-plain">
+          <div class="entry-plain-content">
+            <p class="entry-plain-title">"Violent Entertainment, Popular Culture, and Technological Change"</p>
+            <span class="entry-plain-meta">Pop Culture Universe: Icons, Idols, and Ideas. ABC-CLIO, 2012</span>
+            <p class="entry-plain-desc">Traces the relationship between violent spectacle and media technology from the Roman arena to YouTube, examining how each era's technology shapes the cultural meaning of violence as entertainment.</p>
+          </div>
+        </div>
+
+        <div class="entry-highlighted">
+          <div class="entry-content">
+            <p class="entry-title">"Nine Inch Nails' Year Zero and the Biopolitics of Media Convergence"</p>
+            <span class="entry-meta">The Politics of Post-9/11 Music. Ashgate, 2011</span>
+            <p class="entry-desc">Year Zero is a concept album and an alternate reality game at the same time. This chapter reads that convergence through a biopolitical framework, asking what it means when popular music builds a world players can inhabit and resist from inside.</p>
+          </div>
+        </div>
+
+        <div class="entry-highlighted">
+          <div class="entry-content">
+            <p class="entry-title">"Total Immersion and the Total Screen"</p>
+            <span class="entry-meta">Simulation in Media and Culture. Lexington, 2011</span>
+            <p class="entry-desc">Video games layer screens within screens to build simulated realities players navigate with their bodies. This chapter reads games like Dead Space and Mass Effect 2 through Baudrillard's theory of simulation, arguing that the screen never fully disappears into hyperreality — its materiality keeps the encounter real, and resistant.</p>
+          </div>
+        </div>
+
+        <div class="entry-plain">
+          <div class="entry-plain-content">
+            <p class="entry-plain-title"><a href="http://www.rhizomes.net/issue17/wright/index.html" target="_blank">"Urban Screen as Virtual Counterpoint"</a></p>
+            <span class="entry-plain-meta">Rhizomes: Cultural Studies in Emerging Knowledge, 2008</span>
+            <p class="entry-plain-desc">Three public artworks using urban projection raise questions about the linked materialities of participants, spectators, and urban space. This article uses Deleuze's concept of the virtual to consider what the urban screen makes possible as a site of encounter.</p>
+          </div>
+        </div>
+
+      </div>
+
+    </div>
+  </main>
+
+  <footer>
+    <p>Katheryn Wright &nbsp;·&nbsp; Digital Humanities and Pedagogy &nbsp;·&nbsp; Posthumanist Philosophy &nbsp;·&nbsp; Experiential Learning</p>
+  </footer>
+
+</body>
+</html>
