@@ -1,0 +1,316 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Designing — Katheryn Wright</title>
+  <meta name="description" content="Curriculum design, program development, and institutional transformation by Katheryn Wright." />
+  <meta name="keywords" content="curriculum design, digital humanities, modular curriculum, general education, study abroad, institutional transformation, Katheryn Wright" />
+  <meta name="author" content="Katheryn Wright" />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Caveat:wght@400;600;700&family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet" />
+
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --ink: #141414;
+      --ink-light: #444444;
+      --ink-faint: #888888;
+      --paper: #f2f0eb;
+      --paper-card: #fafaf7;
+      --accent: #5c3d8f;
+      --accent-light: #8b6ab5;
+      --accent-pale: #f0eaf8;
+      --rule: #cccccc;
+      --font-hand: 'Caveat', cursive;
+      --font-body: 'Libre Baskerville', Georgia, serif;
+      --font-mono: 'DM Mono', monospace;
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      background-color: var(--paper);
+      color: var(--ink);
+      font-family: var(--font-body);
+      font-size: 16px;
+      line-height: 1.75;
+      min-height: 100vh;
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='300' height='300'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.75' numOctaves='4' stitchTiles='stitch'/%3E%3CfeColorMatrix type='saturate' values='0'/%3E%3C/filter%3E%3Crect width='300' height='300' filter='url(%23n)' opacity='0.03'/%3E%3C/svg%3E");
+    }
+
+    /* ── NAV ── */
+    nav {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      background: var(--paper);
+      border-bottom: 1.5px solid var(--ink);
+      padding: 0 2rem;
+    }
+
+    .nav-inner {
+      max-width: 960px;
+      margin: 0 auto;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      height: 52px;
+    }
+
+    .nav-wordmark {
+      font-family: var(--font-hand);
+      font-size: 1.5rem;
+      font-weight: 600;
+      color: var(--ink);
+      text-decoration: none;
+      transform: rotate(-1deg);
+      display: inline-block;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 1.75rem;
+      list-style: none;
+    }
+
+    .nav-links a {
+      font-family: var(--font-mono);
+      font-size: 0.7rem;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--ink-light);
+      text-decoration: none;
+      transition: color 0.15s ease;
+    }
+
+    .nav-links a:hover { color: var(--accent); }
+    .nav-links a.active { color: var(--accent); }
+
+    /* ── PAGE HEADER ── */
+    .page-header {
+      max-width: 960px;
+      margin: 0 auto;
+      padding: 4rem 2rem 2rem;
+      border-bottom: 1px solid var(--rule);
+    }
+
+    .page-header h1 {
+      font-family: var(--font-hand);
+      font-size: clamp(3rem, 7vw, 5rem);
+      font-weight: 700;
+      line-height: 0.95;
+      color: var(--ink);
+      transform: rotate(-0.5deg);
+      display: inline-block;
+    }
+
+    .page-header p {
+      font-family: var(--font-body);
+      font-size: 0.95rem;
+      color: var(--ink-light);
+      max-width: 560px;
+      margin-top: 1rem;
+      line-height: 1.8;
+    }
+
+    /* ── CARD GRID ── */
+    .card-grid {
+      max-width: 960px;
+      margin: 0 auto;
+      padding: 3rem 2rem;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1.5rem;
+      align-items: start;
+    }
+
+    /* ── EXPAND CARD ── */
+    .expand-card {
+      border: 1.5px solid var(--ink);
+      background: var(--paper-card);
+      cursor: pointer;
+      transition: border-color 0.2s ease;
+    }
+
+    .expand-card:nth-child(odd)  { transform: rotate(-0.4deg); }
+    .expand-card:nth-child(even) { transform: rotate(0.3deg); }
+    .expand-card.open { transform: rotate(0deg); border-color: var(--accent); }
+
+    .card-front {
+      padding: 1.5rem;
+      display: flex;
+      flex-direction: column;
+      gap: 0.75rem;
+      min-height: 200px;
+      position: relative;
+    }
+
+    .card-front::after {
+      content: "→";
+      font-family: var(--font-body);
+      font-size: 1rem;
+      color: var(--rule);
+      position: absolute;
+      bottom: 1.5rem;
+      right: 1.5rem;
+      transition: color 0.2s ease;
+    }
+
+    .expand-card:hover .card-front::after { color: var(--accent-light); }
+    .expand-card.open .card-front::after { display: none; }
+
+    .card-label {
+      font-family: var(--font-mono);
+      font-size: 0.62rem;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--accent-light);
+      display: block;
+    }
+
+    .card-quote {
+      font-family: var(--font-hand);
+      font-size: 1.35rem;
+      font-weight: 400;
+      line-height: 1.35;
+      color: var(--ink);
+    }
+
+
+
+    /* ── EXPAND BODY ── */
+    .card-body {
+      max-height: 0;
+      overflow: hidden;
+      transition: max-height 0.4s ease, opacity 0.3s ease;
+      opacity: 0;
+    }
+
+    .expand-card.open .card-body {
+      max-height: 1200px;
+      opacity: 1;
+    }
+
+    .card-body-inner {
+      padding: 0 1.5rem 1.5rem;
+      border-top: 1px solid var(--rule);
+      padding-top: 1.25rem;
+      margin-top: 0;
+    }
+
+    .card-body-inner p {
+      font-size: 0.88rem;
+      line-height: 1.85;
+      color: var(--ink-light);
+    }
+
+    /* ── FOOTER ── */
+    footer {
+      border-top: 1.5px solid var(--ink);
+      padding: 1.5rem 2rem;
+      text-align: center;
+      margin-top: 2rem;
+    }
+
+    footer p {
+      font-family: var(--font-mono);
+      font-size: 0.63rem;
+      letter-spacing: 0.1em;
+      color: var(--ink-faint);
+    }
+
+    /* ── RESPONSIVE ── */
+    @media (max-width: 640px) {
+      .card-grid { grid-template-columns: 1fr; }
+      .nav-links { gap: 1rem; }
+      .nav-links a { font-size: 0.62rem; }
+      .nav-wordmark { font-size: 1.1rem; }
+    }
+  </style>
+</head>
+<body>
+
+  <nav>
+    <div class="nav-inner">
+      <a href="index.html" class="nav-wordmark">Live Problems</a>
+      <ul class="nav-links">
+        <li><a href="making.html">Making</a></li>
+        <li><a href="designing.html" class="active">Designing</a></li>
+        <li><a href="teaching.html">Teaching</a></li>
+        <li><a href="writing.html">Writing</a></li>
+        <li><a href="cv.html">CV</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <main>
+
+    <div class="page-header">
+      <h1>Designing</h1>
+      <p>Curriculum design, program development, and institutional transformation across fifteen years of academic leadership.</p>
+    </div>
+
+    <div class="card-grid">
+
+      <div class="expand-card" onclick="this.classList.toggle('open')">
+        <div class="card-front">
+          <span class="card-label">Modular Curriculum</span>
+          <p class="card-quote">Modularity is not just an organizational feature. It is an argument about how knowledge works and who gets to make it.</p>
+        </div>
+        <div class="card-body">
+          <div class="card-body-inner">
+            <p>Facing the need for institutional transformation, I developed a concept of modular curriculum using design principles from digital learning and interdisciplinary pedagogy. Working on a committee charged with reimagining the college's academic structure, I led a faculty team to build a modular curricular framework organized around skills and knowledge domains rather than disciplines. The committee adopted that proposal as the foundation for a college-wide academic redesign now rolling out in Fall 2026. Curricular modules stack together to form certificates, minors, and degree programs, but the more interesting possibility is what it changes for students. A modular structure lets students move across fields without sacrificing depth. They don't have to give up what they care about to gain technical skills, or trade disciplinary rigor for breadth. The structure makes that false choice disappear. I connected with faculty across the college to facilitate understanding of the new model and build support for its implementation. Many institutions are grappling with the same question about how to remain coherent and distinctive while adapting to rapid change. Modularity is one answer worth considering.</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="expand-card" onclick="this.classList.toggle('open')">
+        <div class="card-front">
+          <span class="card-label">General Education</span>
+          <p class="card-quote">General education is where an institution declares what it believes learning is for. That question matters everywhere.</p>
+        </div>
+        <div class="card-body">
+          <div class="card-body-inner">
+            <p>Twice in my career at Champlain College I have been part of redesigning the general education curriculum. The first time, I directed the collaborative development of twelve new interdisciplinary courses that every student at the college takes, built alongside over forty faculty across disciplines. Supporting faculty through that process, course design, peer mentoring, cross-disciplinary collaboration, was as much the work as the curriculum itself. The second time, the question was part of a broader redesign of the college's entire academic model. Both models pushed against the standard gen ed template. They incorporate interdisciplinary and project-based learning. The newest iteration goes further, centering community connections and immersive learning as the core of what undergraduate education can be.</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="expand-card" onclick="this.classList.toggle('open')">
+        <div class="card-front">
+          <span class="card-label">Digital Humanities Program</span>
+          <p class="card-quote">The question is not just how to use digital tools, but when, why, and for whom.</p>
+        </div>
+        <div class="card-body">
+          <div class="card-body-inner">
+            <p>The development of Vermont's first Digital Humanities major was a provocation to integrate the humanities into professional education. Working with a colleague in Data Science, I built the program from the ground up, developing curriculum, advising practices, a research network, and community connections with local organizations and the University of Vermont. A Digital Futures minor is currently in development, designed for students across the college who want to examine the ethical integration of AI across different industries and professions.</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="expand-card" onclick="this.classList.toggle('open')">
+        <div class="card-front">
+          <span class="card-label">Global Campuses</span>
+          <p class="card-quote">Place-based learning abroad isn't just travel. It is a pedagogy that changes what students think is possible to know.</p>
+        </div>
+        <div class="card-body">
+          <div class="card-body-inner">
+            <p>As Director of Study Abroad, I oversaw global learning across three campuses, Burlington, Dublin, and Montreal, managing two campus directors, twenty-five staff, and a two million dollar budget. I led post-COVID recovery that grew participation to meet and exceed pre-COVID levels within two years, surpassing them at the Montreal campus. Working with the Director of the Dublin Campus, I approved and supported the launch of a new summer program. My team also developed project-based courses at both international sites that connected students directly to local communities, business partners, and physical environments.</p>
+          </div>
+        </div>
+      </div>
+
+    </div>
+
+  </main>
+
+  <footer>
+    <p>Katheryn Wright &nbsp;·&nbsp; Digital Humanities and Pedagogy &nbsp;·&nbsp; Posthumanist Philosophy &nbsp;·&nbsp; Experiential Learning</p>
+  </footer>
+
+</body>
+</html>
