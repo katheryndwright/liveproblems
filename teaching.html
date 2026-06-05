@@ -1,0 +1,637 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Teaching — Katheryn Wright</title>
+  <meta name="description" content="Teaching by Katheryn Wright — digital humanities, posthumanist pedagogy, place-based learning, and interdisciplinary education." />
+  <meta name="author" content="Katheryn Wright" />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Caveat:wght@400;600;700&family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet" />
+
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --ink: #141414;
+      --ink-light: #444444;
+      --ink-faint: #888888;
+      --paper: #f2f0eb;
+      --paper-card: #fafaf7;
+      --accent: #5c3d8f;
+      --accent-light: #8b6ab5;
+      --accent-pale: #f0eaf8;
+      --rule: #cccccc;
+      --font-hand: 'Caveat', cursive;
+      --font-body: 'Libre Baskerville', Georgia, serif;
+      --font-mono: 'DM Mono', monospace;
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      background-color: var(--paper);
+      color: var(--ink);
+      font-family: var(--font-body);
+      font-size: 16px;
+      line-height: 1.75;
+      min-height: 100vh;
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='300' height='300'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.75' numOctaves='4' stitchTiles='stitch'/%3E%3CfeColorMatrix type='saturate' values='0'/%3E%3C/filter%3E%3Crect width='300' height='300' filter='url(%23n)' opacity='0.03'/%3E%3C/svg%3E");
+    }
+
+    nav {
+      position: sticky; top: 0; z-index: 100;
+      background: var(--paper);
+      border-bottom: 1.5px solid var(--ink);
+      padding: 0 2rem;
+    }
+    .nav-inner {
+      max-width: 960px; margin: 0 auto;
+      display: flex; align-items: center; justify-content: space-between;
+      height: 52px;
+    }
+    .nav-wordmark {
+      font-family: var(--font-hand); font-size: 1.5rem; font-weight: 600;
+      color: var(--ink); text-decoration: none;
+      transform: rotate(-1deg); display: inline-block;
+    }
+    .nav-links { display: flex; gap: 1.75rem; list-style: none; }
+    .nav-links a {
+      font-family: var(--font-mono); font-size: 0.7rem;
+      letter-spacing: 0.1em; text-transform: uppercase;
+      color: var(--ink-light); text-decoration: none;
+      transition: color 0.15s ease;
+    }
+    .nav-links a:hover { color: var(--accent); }
+    .nav-links a.active { color: var(--accent); }
+
+    /* ── PAGE HEADER ── */
+    .page-header {
+      max-width: 960px; margin: 0 auto;
+      padding: 4rem 2rem 2rem;
+      border-bottom: 1px solid var(--rule);
+    }
+    .page-header h1 {
+      font-family: var(--font-hand);
+      font-size: clamp(3rem, 7vw, 5rem);
+      font-weight: 700; line-height: 0.95;
+      color: var(--ink); transform: rotate(-0.5deg); display: inline-block;
+    }
+    .page-header p {
+      font-size: 0.95rem; color: var(--ink-light);
+      max-width: 560px; margin-top: 1rem; line-height: 1.8;
+    }
+
+    /* ── IMAGE STRIP ── */
+    .image-strip {
+      overflow: hidden;
+      border-bottom: 1.5px solid var(--ink);
+      position: relative;
+    }
+
+    .strip-track {
+      display: flex;
+      gap: 0;
+      animation: scroll-strip 40s linear infinite;
+      width: max-content;
+    }
+
+    .strip-track:hover { animation-play-state: paused; }
+
+    @keyframes scroll-strip {
+      0%   { transform: translateX(0); }
+      100% { transform: translateX(-50%); }
+    }
+
+    .strip-image {
+      height: 220px;
+      width: auto;
+      flex-shrink: 0;
+      border-right: 1.5px solid var(--ink);
+      overflow: hidden;
+    }
+
+    .strip-image img {
+      height: 220px;
+      width: auto;
+      display: block;
+      object-fit: cover;
+      filter: grayscale(20%);
+      transition: filter 0.3s ease;
+    }
+
+    .strip-track:hover .strip-image img { filter: grayscale(0%); }
+
+    /* ── MAIN CONTENT ── */
+    .teaching-main {
+      max-width: 960px; margin: 0 auto; padding: 3rem 2rem;
+    }
+
+    /* ── CLUSTER ── */
+    .cluster { margin-bottom: 2.5rem; }
+
+    .cluster-label {
+      font-family: var(--font-hand); font-size: 1.2rem; font-weight: 600;
+      color: var(--ink); display: block;
+      transform: rotate(-0.3deg);
+      margin-bottom: 1rem;
+    }
+
+    .course-list { list-style: none; }
+
+    .course-item {
+      padding: 0.6rem 0;
+      border-bottom: 1px solid var(--rule);
+      display: flex; align-items: baseline; gap: 0.75rem;
+      cursor: pointer;
+      transition: background 0.15s ease;
+    }
+    .course-item:last-child { border-bottom: none; }
+    .course-item:hover .course-item-title { color: var(--accent); }
+
+    .course-item-label {
+      font-family: var(--font-mono); font-size: 0.58rem;
+      letter-spacing: 0.08em; text-transform: uppercase;
+      color: var(--ink-faint); flex-shrink: 0; white-space: nowrap;
+    }
+
+    .course-item-title {
+      font-family: var(--font-body); font-size: 0.88rem;
+      color: var(--ink-light); line-height: 1.5;
+      transition: color 0.15s ease;
+    }
+
+    .course-tag {
+      font-family: var(--font-mono);
+      font-size: 0.58rem;
+      letter-spacing: 0.08em;
+      color: var(--accent);
+      margin-left: 0.5rem;
+    }
+
+    .course-item-focus {
+      font-family: var(--font-mono); font-size: 0.58rem;
+      letter-spacing: 0.04em; color: var(--ink-faint);
+      margin-left: 0.25rem;
+    }
+
+    /* ── COURSE DETAIL PANEL ── */
+    .detail-panel {
+      display: none;
+      position: fixed;
+      bottom: 0; left: 0; right: 0;
+      z-index: 200;
+      background: var(--paper-card);
+      border-top: 1.5px solid var(--ink);
+      max-height: 50vh;
+      overflow-y: auto;
+      animation: slide-up 0.3s ease;
+    }
+
+    .detail-panel.visible { display: block; }
+
+    @keyframes slide-up {
+      from { transform: translateY(100%); opacity: 0; }
+      to   { transform: translateY(0);    opacity: 1; }
+    }
+
+    .detail-inner {
+      max-width: 960px; margin: 0 auto;
+      padding: 1.5rem 2rem;
+      display: flex; gap: 2rem; align-items: start;
+    }
+
+    .detail-image {
+      flex-shrink: 0; width: 180px; height: 135px; overflow: hidden;
+      border: 1px solid var(--rule);
+    }
+    .detail-image img {
+      width: 100%; height: 100%; object-fit: cover; display: block;
+    }
+    .detail-image-placeholder {
+      width: 180px; height: 135px;
+      background: var(--ink);
+      display: flex; align-items: center; justify-content: center;
+      flex-shrink: 0;
+    }
+    .detail-image-placeholder span {
+      font-family: var(--font-hand); font-size: 1rem;
+      color: var(--paper); text-align: center; padding: 1rem;
+      line-height: 1.3;
+    }
+
+    .detail-content { flex: 1; }
+
+    .detail-label {
+      font-family: var(--font-mono); font-size: 0.6rem;
+      letter-spacing: 0.1em; text-transform: uppercase;
+      color: var(--accent-light); display: block; margin-bottom: 0.25rem;
+    }
+    .detail-title {
+      font-family: var(--font-hand); font-size: 1.4rem; font-weight: 600;
+      color: var(--ink); line-height: 1.2; margin-bottom: 0.75rem;
+    }
+    .detail-desc {
+      font-size: 0.88rem; line-height: 1.85; color: var(--ink-light);
+    }
+    .detail-focus {
+      font-family: var(--font-mono); font-size: 0.6rem;
+      letter-spacing: 0.06em; color: var(--ink-faint);
+      display: block; margin-top: 0.5rem;
+    }
+
+    .detail-close {
+      position: absolute; top: 1rem; right: 1.5rem;
+      font-family: var(--font-body); font-size: 1.2rem;
+      color: var(--ink-faint); cursor: pointer;
+      background: none; border: none;
+      transition: color 0.15s ease;
+    }
+    .detail-close:hover { color: var(--accent); }
+
+    /* spacer so content isn't hidden behind panel */
+    .panel-spacer { height: 0; transition: height 0.3s ease; }
+    .panel-spacer.active { height: 50vh; }
+
+    footer {
+      border-top: 1.5px solid var(--ink);
+      padding: 1.5rem 2rem; text-align: center;
+    }
+    footer p {
+      font-family: var(--font-mono); font-size: 0.63rem;
+      letter-spacing: 0.1em; color: var(--ink-faint);
+    }
+
+    @media (max-width: 640px) {
+      .detail-inner { flex-direction: column; }
+      .detail-image, .detail-image-placeholder { width: 100%; }
+      .nav-links { gap: 1rem; }
+      .nav-links a { font-size: 0.62rem; }
+      .nav-wordmark { font-size: 1.1rem; }
+    }
+  </style>
+</head>
+<body>
+
+  <nav>
+    <div class="nav-inner">
+      <a href="index.html" class="nav-wordmark">Live Problems</a>
+      <ul class="nav-links">
+        <li><a href="making.html">Making</a></li>
+        <li><a href="designing.html">Designing</a></li>
+        <li><a href="teaching.html" class="active">Teaching</a></li>
+        <li><a href="writing.html">Writing</a></li>
+        <li><a href="cv.pdf" download>CV</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <main>
+    <div class="page-header">
+      <h1>Teaching</h1>
+      <p>Twenty-three years of teaching across disciplines, institutions, and contexts.</p>
+    </div>
+
+    <!-- IMAGE STRIP -->
+    <div class="image-strip">
+      <div class="strip-track">
+        <!-- First set -->
+        <div class="strip-image"><img src="images/campus-print-technique.jpg" alt="Printmaking in Public" /></div>
+        <div class="strip-image"><img src="images/garden-forking-paths.jpg" alt="Making ARGs" /></div>
+        <div class="strip-image"><img src="images/speculative-charcuterie.jpg" alt="Fake Meat" /></div>
+        <div class="strip-image"><img src="images/sonic-data-campus.jpg" alt="Sonic Data Worlds" /></div>
+        <div class="strip-image"><img src="images/bodies-project.JPG" alt="Bodies" /></div>
+        <div class="strip-image"><img src="images/global-citizenship-pledge.JPG" alt="Global Studies" /></div>
+        <div class="strip-image"><img src="images/dark-tourism-mobile-app.jpg" alt="Place and Identity" /></div>
+        <div class="strip-image"><img src="images/sand-painting-global-seminar.JPG" alt="Afrofuturism" /></div>
+        <div class="strip-image"><img src="images/heroines-whiteboard-notes.jpg" alt="Heroines and Heroes" /></div>
+        <div class="strip-image"><img src="images/harry-potter-letters.JPG" alt="Travel Courses" /></div>
+        <!-- Duplicate for seamless loop -->
+        <div class="strip-image"><img src="images/campus-print-technique.jpg" alt="Printmaking in Public" /></div>
+        <div class="strip-image"><img src="images/garden-forking-paths.jpg" alt="Making ARGs" /></div>
+        <div class="strip-image"><img src="images/speculative-charcuterie.jpg" alt="Fake Meat" /></div>
+        <div class="strip-image"><img src="images/sonic-data-campus.jpg" alt="Sonic Data Worlds" /></div>
+        <div class="strip-image"><img src="images/bodies-project.JPG" alt="Bodies" /></div>
+        <div class="strip-image"><img src="images/global-citizenship-pledge.JPG" alt="Global Studies" /></div>
+        <div class="strip-image"><img src="images/dark-tourism-mobile-app.jpg" alt="Place and Identity" /></div>
+        <div class="strip-image"><img src="images/sand-painting-global-seminar.JPG" alt="Afrofuturism" /></div>
+        <div class="strip-image"><img src="images/heroines-whiteboard-notes.jpg" alt="Heroines and Heroes" /></div>
+        <div class="strip-image"><img src="images/harry-potter-letters.JPG" alt="Travel Courses" /></div>
+      </div>
+    </div>
+
+    <div class="teaching-main">
+
+      <!-- MAKING AND INQUIRY -->
+      <div class="cluster">
+        <span class="cluster-label">making and inquiry</span>
+        <ul class="course-list">
+          <li class="course-item" onclick="showCourse('printmaking')">
+            <span class="course-item-label"></span>
+            <span class="course-item-title">Field Methods: Printmaking in Public</span>
+          </li>
+          <li class="course-item" onclick="showCourse('args')">
+            <span class="course-item-label"></span>
+            <span class="course-item-title">First Year Inquiry: Making Alternate Reality Games</span>
+          </li>
+          <li class="course-item" onclick="showCourse('fakemeat')">
+            <span class="course-item-label"></span>
+            <span class="course-item-title">Interdisciplinary Perspectives: Fake Meat and the Future of Food</span>
+          </li>
+          <li class="course-item" onclick="showCourse('sonic')">
+            <span class="course-item-label">new</span>
+            <span class="course-item-title">Field Methods: Sonic Data Worlds</span>
+          </li>
+          <li class="course-item" onclick="showCourse('escaperooms')">
+            <span class="course-item-label">new</span>
+            <span class="course-item-title">Interdisciplinary Perspectives: Escape Rooms and Collaborative Design</span>
+          </li>
+          <li class="course-item" onclick="showCourse('sandbox')">
+            <span class="course-item-label">co-taught</span>
+            <span class="course-item-title">Interdisciplinary Sandbox</span>
+          </li>
+          <li class="course-item" onclick="showCourse('concepts')">
+            <span class="course-item-label"></span>
+            <span class="course-item-title">Concepts of the Self</span>
+          </li>
+          <li class="course-item" onclick="showCourse('capstones')">
+            <span class="course-item-label">co-taught</span>
+            <span class="course-item-title">Senior Capstone</span>
+          </li>
+        </ul>
+      </div>
+
+      <!-- PLACE, IDENTITY, WORLD -->
+      <div class="cluster">
+        <span class="cluster-label">place, identity, world</span>
+        <ul class="course-list">
+          <li class="course-item" onclick="showCourse('globalsenior')">
+            <span class="course-item-label"></span>
+            <span class="course-item-title">Global Studies Senior Seminar</span>
+          </li>
+          <li class="course-item" onclick="showCourse('placeidentity')">
+            <span class="course-item-label"></span>
+            <span class="course-item-title">Connecting Place and Identity</span>
+          </li>
+          <li class="course-item" onclick="showCourse('afrofuturism')">
+            <span class="course-item-label"></span>
+            <span class="course-item-title">Local Contexts, Global Connections: Afrofuturism</span>
+          </li>
+          <li class="course-item" onclick="showCourse('globalcondition')">
+            <span class="course-item-label"></span>
+            <span class="course-item-title">The Global Condition <span class="course-tag">formerly Global Studies I: Technology and Development</span></span>
+          </li>
+          <li class="course-item" onclick="showCourse('travel')">
+            <span class="course-item-label">faculty-led travel courses</span>
+            <span class="course-item-title">England/Scotland · The Gambia</span>
+          </li>
+        </ul>
+      </div>
+
+      <!-- BODIES, TECHNOLOGY, CULTURE -->
+      <div class="cluster">
+        <span class="cluster-label">bodies, technology, culture</span>
+        <ul class="course-list">
+          <li class="course-item" onclick="showCourse('bodies')">
+            <span class="course-item-label"></span>
+            <span class="course-item-title">Bodies: The Posthuman</span>
+          </li>
+          <li class="course-item" onclick="showCourse('bodieswalking')">
+            <span class="course-item-label"></span>
+            <span class="course-item-title">Bodies: Walking</span>
+          </li>
+          <li class="course-item" onclick="showCourse('heroines')">
+            <span class="course-item-label"></span>
+            <span class="course-item-title">Heroines and Heroes: The F-Word</span>
+          </li>
+          <li class="course-item" onclick="showCourse('posthumanism')">
+            <span class="course-item-label"></span>
+            <span class="course-item-title">Theoretical Perspectives: Posthumanism Goes to the Movies</span>
+          </li>
+          <li class="course-item" onclick="showCourse('scifi')">
+            <span class="course-item-label"></span>
+            <span class="course-item-title">Scientific Revolutions: SyFy</span>
+          </li>
+          <li class="course-item" onclick="showCourse('mediapsych')">
+            <span class="course-item-label"></span>
+            <span class="course-item-title">Media Psychology <span class="course-tag">developed for the Psychology Program</span></span>
+          <li class="course-item" onclick="showCourse('introdh')">
+            <span class="course-item-label"></span>
+            <span class="course-item-title">Introduction to Digital Humanities <span class="course-tag">developed for the Digital Humanities Program</span></span>
+          <li class="course-item" onclick="showCourse('aesthetic')">
+            <span class="course-item-label"></span>
+            <span class="course-item-title">Aesthetic Expressions</span>
+          </li>
+        </ul>
+      </div>
+
+    </div>
+
+    <div class="panel-spacer" id="panel-spacer"></div>
+  </main>
+
+  <!-- DETAIL PANEL -->
+  <div class="detail-panel" id="detail-panel">
+    <button class="detail-close" onclick="closePanel()">✕</button>
+    <div class="detail-inner">
+      <div id="detail-image-slot"></div>
+      <div class="detail-content">
+        <span class="detail-label" id="detail-label"></span>
+        <p class="detail-title" id="detail-title"></p>
+        <p class="detail-desc" id="detail-desc"></p>
+        <span class="detail-focus" id="detail-focus"></span>
+      </div>
+    </div>
+  </div>
+
+  <footer>
+    <p>Katheryn Wright &nbsp;·&nbsp; Digital Humanities and Pedagogy &nbsp;·&nbsp; Posthumanist Philosophy &nbsp;·&nbsp; Experiential Learning</p>
+  </footer>
+
+  <script>
+    const courses = {
+      printmaking: {
+        label: 'field methods',
+        title: 'Field Methods: Printmaking in Public',
+        image: 'images/campus-print-technique.jpg',
+        desc: 'Burlington becomes the canvas. Students learn monoprinting, urban screen printing, and eco-art as field methods for analyzing local places, power, and access. Working in situ across the city, they carry mobile print kits to different sites, collect images from surfaces, and bring what they encounter back into the classroom for collaborative digital mapping and analysis. Printmaking is positioned not just as art practice but as a posthuman research methodology. Students have printed on t-shirts, rocks, streets, and coffee sleeves.',
+        focus: ''
+      },
+      args: {
+        label: 'first year inquiry',
+        title: 'First Year Inquiry: Making Alternate Reality Games',
+        image: 'images/garden-forking-paths.jpg',
+        desc: 'ARGs are interactive narratives that mix digital platforms, physical objects, and real locations into worlds players inhabit together. Students analyze existing ARGs, develop proposals, and build and launch one on campus. The game is not the assignment. It is the course. Students have produced plant simulators with handmade clay characters, campus-wide mystery narratives, and games that hundreds of people played without knowing they were part of a class.',
+        focus: ''
+      },
+      fakemeat: {
+        label: 'interdisciplinary perspectives',
+        title: 'Interdisciplinary Perspectives: Fake Meat and the Future of Food',
+        image: 'images/speculative-charcuterie.jpg',
+        desc: 'How will climate change and global food insecurity shape what humans eat? This course takes fake meat seriously as a site of cultural, scientific, economic, and ethical inquiry. Students cook in class, visit City Market, watch Okja, try an Impossible Whopper, and build infographics synthesizing research across disciplines. The semester culminates in a Speculative Charcuterie Board, a collectively designed installation that makes arguments about the future of food through objects rather than essays.',
+        focus: ''
+      },
+      sonic: {
+        label: 'field methods · ongoing',
+        title: 'Field Methods: Sonic Data Worlds',
+        image: 'images/sonic-data-campus.jpg',
+        desc: 'We live in a world of sonic datafication. AI models are trained on millions of audio samples, smart cities are monitored acoustically, and biodiversity is tracked through sound recognition. This course connects students to ongoing NSF EPSCoR grant-funded research, taking them into the field to record Vermont\'s soundscapes, then back to analyze that data using machine learning classifiers. The course asks students to account for what the machine hears and what it misses, treating the gap as a site of inquiry rather than a technical problem.',
+        focus: ''
+      },
+      escaperooms: {
+        label: 'interdisciplinary perspectives · new',
+        title: 'Interdisciplinary Perspectives: Escape Rooms and Collaborative Design',
+        image: null,
+        desc: 'A new course examining escape rooms as a site of collaborative problem-solving, game design, and interdisciplinary inquiry.',
+        focus: ''
+      },
+      sandbox: {
+        label: 'general education',
+        title: 'Interdisciplinary Sandbox',
+        image: null,
+        desc: 'A small seminar capped at eight students, co-taught with colleagues in creative writing and political science, where students carry out independent research or creative projects of their own design. Students from across the college bring their work into the same room and move through a shared interdisciplinary research process together. Projects are displayed at the undergraduate research colloquium.',
+        focus: ''
+      },
+      concepts: {
+        label: 'first year',
+        title: 'Concepts of the Self',
+        image: null,
+        desc: 'A first-year general education course that introduces students to interdisciplinary inquiry through the question of what it means to be human. Drawing on neuroscience, psychology, literary criticism, and the visual arts, students build a Character Profile of a fictional figure from a short story, create a self-portrait in any medium, and analyze Shakespeare\'s Othello through the Stanislavski Method.',
+        focus: ''
+      },
+      capstones: {
+        label: 'senior capstone',
+        title: 'Senior Capstones',
+        image: null,
+        desc: 'Developed the Psychology capstone from scratch and taught senior capstone courses across four programs: Psychology, Game Development, Creative Media, and Information Technology and Sciences. Each capstone asks students to integrate their entire Champlain education into a single professional-quality project, culminating in a community showcase.',
+        focus: 'Psychology · Game Development · Creative Media · ITS'
+      },
+      globalsenior: {
+        label: 'global studies · senior capstone',
+        title: 'Global Studies Senior Seminar',
+        image: 'images/global-citizenship-pledge.JPG',
+        desc: 'This capstone course for the Global Studies minor takes global citizenship apart. Rather than assuming the concept, students interrogate it through Freire, hooks, and Suzy Hansen alongside their own accumulated intercultural experiences. Weekly roundtable discussions are student-led, and the semester centers on a collaboratively designed project. The course concludes with an all-campus family-style dinner where students cook dishes representing their travels and share the stories behind them.',
+        focus: ''
+      },
+      placeidentity: {
+        label: 'general education',
+        title: 'Connecting Place and Identity',
+        image: 'images/dark-tourism-mobile-app.jpg',
+        desc: 'Where we are shapes how we understand ourselves. This course teaches students to think spatially, examining how identity is constructed through movement across natural and built environments, urban and rural spaces, and actual and virtual worlds. The signature project asks students to research a dark tourism site using interdisciplinary methods and build an ArcGIS StoryMap that tells its story. Students have researched St. Joseph\'s Orphanage in Burlington, Kunta Kinteh Island in The Gambia, and sites connected to their own family histories and pop culture interests.',
+        focus: ''
+      },
+      afrofuturism: {
+        label: 'general education · global',
+        title: 'Local Contexts, Global Connections: Afrofuturism',
+        image: 'images/sand-painting-global-seminar.JPG',
+        desc: 'Afrofuturism is a global cultural phenomenon combining speculative fiction, technoculture, and the arts with Black history and philosophy. This course examines it as both an aesthetic movement and a critical framework that challenges the historical legacies of European colonialism and American slavery. Students read Octavia Butler, Nnedi Okorafor, and Ta-Nehisi Coates alongside films including Get Out and Black Panther, and listen to Sun Ra, Janelle Monáe, and P-Funk.',
+        focus: ''
+      },
+      globalcondition: {
+        label: 'general education · global',
+        title: 'The Global Condition',
+        image: null,
+        desc: 'Is the world getting better? This course examines the idea of progress from theoretical, cultural, and marginalized perspectives, asking how progress has been defined, by whom, and by which standards. Students apply frameworks including hybridity, neoliberalism, and power geometry to contemporary global phenomena, including economic globalization, environmental change, violent conflict, and emerging technologies, while reading Chimamanda Ngozi Adichie\'s Americanah as a sustained case study in what global movement actually feels like from the inside.',
+        focus: ''
+      },
+      travel: {
+        label: 'faculty-led travel · co-chaperone',
+        title: 'Travel Courses',
+        image: 'images/harry-potter-letters.JPG',
+        desc: 'Two faculty-led travel courses, co-chaperoned alongside colleagues. The England and Scotland course followed students studying Heroines and Heroes through pop culture tourism, visiting Warner Bros. Studios. The Gambia course connected students with local community leaders, including a visit to Kunta Kinteh Island. Both courses asked students to layer media representation against lived encounter.',
+        focus: 'England/Scotland · The Gambia'
+      },
+      bodies: {
+        label: 'general education · course coordinator',
+        title: 'Bodies',
+        image: 'images/bodies-project.JPG',
+        desc: 'Are you into cyborgs, animal-human hybrids, and biotechnology? All of these figures fall under the umbrella of posthumanism. This section of Bodies explores the significance of posthuman bodies in popular culture, moving through philosophy and film from Ex Machina and Ghost in the Shell to Black Panther and Okja. Students research an embodied experience related to posthumanism and build toward a manifesto presented at the undergraduate research colloquium.',
+        focus: ''
+      },
+      bodieswalking: {
+        label: '',
+        title: 'Bodies: Walking',
+        image: null,
+        desc: 'A baby\'s first steps, a protest march, and Neil Armstrong\'s giant leap all have in common the act of walking. This section of Bodies takes embodiment outdoors, examining the cultural significance of walking through Solnit, Thoreau, Debord, and Cheryl Strayed\'s Wild. Field trips to Red Rocks Park, Church Street, and the U-Mall become sites of inquiry. Students research an embodied experience and build toward a manifesto presented at the undergraduate research colloquium.',
+        focus: ''
+      },
+      heroines: {
+        label: 'general education',
+        title: 'Heroines and Heroes',
+        image: 'images/heroines-whiteboard-notes.jpg',
+        desc: 'I co-developed this general education course with colleagues. My focus sections included: The F-Word/Feminist Theory, moving through structuralism, Jungian archetypes, and feminist theory alongside The Handmaid\'s Tale, Black Mirror, and Kindred; and The New Heroines, tracing a new feminist ideal emerging at the intersection of embodiment, technology, and posthuman subjectivity.',
+        focus: 'Focus sections: The F-Word/Feminist Theory · The New Heroines'
+      },
+      posthumanism: {
+        label: 'theoretical perspectives',
+        title: 'Theoretical Perspectives: Posthumanism Goes to the Movies',
+        image: null,
+        desc: 'One film per week, one posthuman concept to bring to it. Moving from Metropolis to Gattaca to Okja to Raw, the course asks what happens when you take posthuman theory seriously as a tool for reading film. Students create their own posthuman characters, present them for critique, and during the final exam collaborate on a film treatment putting all their characters into the same world.',
+        focus: ''
+      },
+      scifi: {
+        label: 'general education',
+        title: 'Scientific Revolutions: SyFy',
+        image: null,
+        desc: 'This section of Scientific Revolutions uses television as its primary lens, examining how popular culture represents the philosophical, cultural, and ethical implications of modern science. Students move from Aristotle to Darwin while analyzing Sherlock, Cosmos, Stranger Things, and The Twilight Zone, then pitch an original television pilot at the undergraduate research colloquium.',
+        focus: ''
+      },
+      mediapsych: {
+        label: 'psychology program',
+        title: 'Media Psychology',
+        image: null,
+        desc: 'How does media influence human behavior, cognition, and identity? Students read McLuhan alongside research on social media, AI, haptic technology, and screen culture, and design a semester-long self study researching an aspect of their own media psychology. The course eventually migrated to Champlain\'s Dublin campus.',
+        focus: ''
+      },
+      introdh: {
+        label: 'digital humanities',
+        title: 'Introduction to Digital Humanities',
+        image: null,
+        desc: 'This course introduces students to interdisciplinary inquiry through the lens of digital humanities, asking what it means to think like a digital humanist. Students examine the ethics of algorithms, digitization as a social and cultural process, and speculative futures through hands-on workshops in augmented reality, story mapping, text analysis, and sonic data. Co-listed as a First Year Inquiry course and as the foundational course for the Digital Humanities major.',
+        focus: ''
+      },
+      aesthetic: {
+        label: 'general education',
+        title: 'Aesthetic Expressions',
+        image: null,
+        desc: 'A general education course in the arts and humanities exploring how Western literature, art, and music express both traditional cultural ideals and forces of challenge and transformation. Students move from Michelangelo and Beethoven to The Hunger Games, examining aesthetic expression as both a product of its historical moment and a site of critique. The course is structured around collaborative projects and close analysis across disciplines.',
+        focus: ''
+      }
+    };
+
+    function showCourse(id) {
+      const course = courses[id];
+      if (!course) return;
+
+      document.getElementById('detail-label').textContent = course.label;
+      document.getElementById('detail-title').textContent = course.title;
+      document.getElementById('detail-desc').textContent = course.desc;
+      document.getElementById('detail-focus').textContent = course.focus;
+
+      const imageSlot = document.getElementById('detail-image-slot');
+      if (course.image) {
+        imageSlot.innerHTML = `<div class="detail-image"><img src="${course.image}" alt="${course.title}" /></div>`;
+      } else {
+        imageSlot.innerHTML = `<div class="detail-image-placeholder"><span>${course.title}</span></div>`;
+      }
+
+      const panel = document.getElementById('detail-panel');
+      panel.classList.add('visible');
+      document.getElementById('panel-spacer').classList.add('active');
+    }
+
+    function closePanel() {
+      document.getElementById('detail-panel').classList.remove('visible');
+      document.getElementById('panel-spacer').classList.remove('active');
+    }
+
+    // Close on escape
+    document.addEventListener('keydown', e => {
+      if (e.key === 'Escape') closePanel();
+    });
+  </script>
+
+</body>
+</html>
