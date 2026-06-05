@@ -77,7 +77,7 @@
       font-family: var(--font-hand);
       font-size: clamp(3rem, 7vw, 5rem);
       font-weight: 700; line-height: 0.95;
-      color: var(--ink); transform: rotate(-0.5deg); display: inline-block;
+      color: var(--ink); transform: rotate(-1.1deg); display: inline-block;
     }
     .page-header p {
       font-size: 0.95rem; color: var(--ink-light);
@@ -87,8 +87,8 @@
     /* ── IMAGE STRIP ── */
     .image-strip {
       overflow: hidden;
-      border-bottom: 1.5px solid var(--ink);
       position: relative;
+      height: 240px;
     }
 
     .strip-track {
@@ -109,8 +109,9 @@
       height: 220px;
       width: auto;
       flex-shrink: 0;
-      border-right: 1.5px solid var(--ink);
       overflow: hidden;
+      margin: 0;
+      position: relative;
     }
 
     .strip-image img {
@@ -124,6 +125,27 @@
 
     .strip-track:hover .strip-image img { filter: grayscale(0%); }
 
+    .strip-image:nth-child( 1) { transform: rotate(-1.4deg); }
+    .strip-image:nth-child( 2) { transform: rotate(-0.9deg); }
+    .strip-image:nth-child( 3) { transform: rotate(1.5deg); }
+    .strip-image:nth-child( 4) { transform: rotate(-1.7deg); }
+    .strip-image:nth-child( 5) { transform: rotate(-1.1deg); }
+    .strip-image:nth-child( 6) { transform: rotate(0.9deg); }
+    .strip-image:nth-child( 7) { transform: rotate(-0.6deg); }
+    .strip-image:nth-child( 8) { transform: rotate(1.4deg); }
+    .strip-image:nth-child( 9) { transform: rotate(0.9deg); }
+    .strip-image:nth-child(10) { transform: rotate(-1.6deg); }
+    .strip-image:nth-child(11) { transform: rotate(1.6deg); }
+    .strip-image:nth-child(12) { transform: rotate(-1.0deg); }
+    .strip-image:nth-child(13) { transform: rotate(-1.7deg); }
+    .strip-image:nth-child(14) { transform: rotate(-0.7deg); }
+    .strip-image:nth-child(15) { transform: rotate(1.6deg); }
+    .strip-image:nth-child(16) { transform: rotate(1.6deg); }
+    .strip-image:nth-child(17) { transform: rotate(1.2deg); }
+    .strip-image:nth-child(18) { transform: rotate(1.1deg); }
+    .strip-image:nth-child(19) { transform: rotate(1.6deg); }
+    .strip-image:nth-child(20) { transform: rotate(1.6deg); }
+
     /* ── MAIN CONTENT ── */
     .teaching-main {
       max-width: 960px; margin: 0 auto; padding: 3rem 2rem;
@@ -135,7 +157,7 @@
     .cluster-label {
       font-family: var(--font-hand); font-size: 1.2rem; font-weight: 600;
       color: var(--ink); display: block;
-      transform: rotate(-0.3deg);
+      transform: rotate(-0.8deg);
       margin-bottom: 1rem;
     }
 
