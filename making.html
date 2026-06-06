@@ -121,22 +121,22 @@
     /* ── IMAGE STRIP ── */
     .card-image-strip {
       overflow: hidden;
-      height: 260px;
       background: var(--paper);
       border-bottom: 1px solid var(--rule);
-      display: flex;
+      display: inline-flex;
       align-items: center;
       padding: 0.75rem 0;
+      width: 100%;
     }
 
     .strip-img {
       flex-shrink: 0;
-      height: 230px;
+      height: 220px;
       overflow: hidden;
     }
 
     .strip-img img {
-      height: 230px;
+      height: 220px;
       width: auto;
       display: block;
       object-fit: cover;
@@ -228,7 +228,8 @@
     .project-dots {
       max-width: 960px; margin: 0 auto;
       padding: 0.25rem 2rem 3rem;
-      display: flex; gap: 0.5rem; flex-wrap: wrap;
+      display: flex; gap: 0.4rem; flex-wrap: wrap;
+      justify-content: center;
     }
     .project-dot {
       font-family: var(--font-mono); font-size: 0.58rem;
@@ -288,7 +289,7 @@
       <div class="project-card" data-real="0">
         <div class="card-image-strip">
           <div class="strip-img"><img src="images/mic-soundscape-KW.jpg" alt="Field recording" /></div>
-          <div class="strip-img"><img src="images/soundscape-classifier-github.png" alt="GitHub" /></div>
+          <div class="strip-img"><img src="images/sound-classifier-crop.png" alt="GitHub" /></div>
           <div class="strip-img"><img src="images/sonic-data-campus.jpg" alt="Boom mic" /></div>
         </div>
         <div class="card-content">
@@ -296,7 +297,6 @@
           <p class="card-title">Soundscape Classifier</p>
           <p class="card-desc">A machine learning tool that listens. Developed as part of the NSF EPSCoR SOCKS grant in collaboration with undergraduate students in Computer Science, Cybersecurity, Data Science, and Digital Humanities, the classifier analyzes field recordings from Vermont's acoustic ecology survey and identifies what sounds are present — birds, wind, traffic, human activity, silence. The work asks not just what a place sounds like but what the machine hears, what it misses, and what those gaps reveal. The repository is in active development.</p>
           <a href="https://socks.w3.uvm.edu/socks/#about" target="_blank" class="card-link">SOCKS Project →</a>
-          <div class="card-tags"><span class="card-tag">data</span><span class="card-tag">place-based</span><span class="card-tag new">new</span></div>
         </div>
       </div>
 
@@ -315,7 +315,6 @@
           <span class="card-label">locative · place-based · data</span>
           <p class="card-title">The Algorithmic Sidewalk</p>
           <p class="card-desc">A locative game for civic AI literacy, currently in development. The Algorithmic Sidewalk invites participants to walk a stretch of Market Street in South Burlington and document what the city's algorithmic infrastructure (sensors, cameras, routing systems, counting devices) cannot capture about the people moving through it. At six marked locations, hanging tags will explain what each algorithm does, prompt a physical action that makes the participant temporarily legible as data, and ask a question about what the data misses. There will be an analog version of the walk with printed maps, notecards, and sticker dots for documenting observations; and a digital version accessed by scanning QR codes at each site. Both tracks will feed a community soundscape portrait built from participant testimony rather than sensor data.</p>
-          <div class="card-tags"><span class="card-tag">locative</span><span class="card-tag">place-based</span><span class="card-tag">data</span><span class="card-tag new">new</span></div>
         </div>
       </div>
 
@@ -334,7 +333,6 @@
           <span class="card-label">analog-digital · instructional-artifact · community</span>
           <p class="card-title">Mobile Street Printing Kits</p>
           <p class="card-desc">A set of portable printmaking kits designed for making in public. Developed through hands-on research into low-cost, accessible techniques and eco-friendly materials and tested on site before assembly, the kits support three approaches: urban relief printing, which uses surfaces from the built and natural environment to pull images; gel plate monoprinting; and a no-emulsion screen printing process using Drawing Fluid and Screen Filler. In one variation, fine clay replaces ink entirely, pressed through the screen to print directly onto surfaces. Funded through Experiential Learning grants and professional development funds, the kits were used in street printing and monoprinting workshops for students and faculty and made available for checkout through the library.</p>
-          <div class="card-tags"><span class="card-tag">analog-digital</span><span class="card-tag">instructional-artifact</span><span class="card-tag">community</span></div>
         </div>
       </div>
 
@@ -349,7 +347,6 @@
           <span class="card-label">instructional-artifact · food · embodied</span>
           <p class="card-title">CH3F: Champlain College's Mobile Kitchen</p>
           <p class="card-desc">A mobile kitchen cart built to bring making into rooms not designed for it. CH3F approximates a mobile makerspace, giving faculty across disciplines access to cooking equipment wherever they teach. The name was chosen collaboratively by faculty. Funded through Experiential Learning grants and faculty Professional Development contributions, the project involved one-on-one conversations with every faculty member using food in their courses, a needs survey, approval from the dean, coordination with risk management, and the development of a full checkout, storage, and cleaning workflow. The cart carries four single burners, a griddle, pots, pans, knives, spice grinders, and everything needed to cook in a classroom.</p>
-          <div class="card-tags"><span class="card-tag">instructional-artifact</span><span class="card-tag">food</span><span class="card-tag">embodied</span></div>
         </div>
       </div>
 
@@ -364,7 +361,6 @@
           <span class="card-label">game · place-based</span>
           <p class="card-title">Working with the Ruins of Liberal Education</p>
           <p class="card-desc">A file folder game for working with what remains. Eighty cards (with blank cards to add more) name the ruins of liberal education — the view from nowhere, peer review, the grade, the career path, belonging, tenure, artificial intelligence, and the loneliness epidemic — organized into the Ruins of Knowledge, Ruins of Progress, Ruins of the Human Condition. Players move through six movements: Reveal, Locate, Render, Speculate, Reconfigure, and Question. There are no winners. There is no correct configuration. Players write on the cards, cut into them so they interlock, and leave their traces for the next person to find. The file folder is the game's living archive. The game emerged through writing the first chapter of Speculative Education: Making Knowledge from the Ruins and from a memory of my mom. She was a kindergarten teacher and made a ton of file folder games by hand, coloring each piece, and gluing envelopes to store them. The form speaks to the debt I owe her for who I am as a teacher.</p>
-          <div class="card-tags"><span class="card-tag">game</span><span class="card-tag">place-based</span></div>
         </div>
       </div>
 
@@ -380,7 +376,6 @@
           <p class="card-title">Bodies: A Digital Companion</p>
           <p class="card-desc">A collaborative digital textbook built on the Scalar platform for the general education course Bodies, co-authored with colleague Kristin Novotny. The Companion replaces a traditional course reader with a free, interactive, multimedia resource organized around key concepts shared across all sections of the course. The development process was as much about building a faculty community of practice as it was about building a textbook. Over three months, ten to fifteen faculty volunteered their summers to learn Scalar, author chapters, and workshop each other's writing. Several sessions included Digital Humanities colleagues from Middlebury College. Once in use, the Companion continued to evolve, revised each semester based on faculty feedback. Bodies is no longer taught, but the Companion remains live as a record of the collaboration.</p>
           <a href="https://scalar.usc.edu/works/bodies/index" target="_blank" class="card-link">View the Companion →</a>
-          <div class="card-tags"><span class="card-tag">analog-digital</span><span class="card-tag">instructional-artifact</span><span class="card-tag">community</span></div>
         </div>
       </div>
 
@@ -396,7 +391,6 @@
           <p class="card-title">Flight Routes, Spring 2023</p>
           <p class="card-desc">A personal analog map documenting the flight routes taken between Vermont, Baltimore, and Florida from late April through June 2023, during the final weeks of my mother's life, and also my dog's life. The map was made from materials gathered during an evening walk through my backyard (sticks, feathers, and rocks) laid out under the tree where my dog Ella used to rest. Sticks trace flight paths I took. Feathers indicate direction. Rocks represent places. The map itself is probably unrecognizable as a map to anyone but me. What I hold onto is the process of making it. I walked through my yard considering how to reconfigure a time where I couldn't even stop to think as I searched for feathers, finding rocks, following the paths where Ella used to run. Walking and thinking are fused, and this map is a material outcome of that walk.</p>
           <iframe src="https://drive.google.com/file/d/1c34W7ivC-RW8l9plmmJ-kCfAu_Np8YmH/preview" style="width:100%; height:360px; margin-top:1rem; border:1px solid var(--rule);" allow="autoplay" allowfullscreen></iframe>
-          <div class="card-tags"><span class="card-tag">place-based</span><span class="card-tag">analog-digital</span><span class="card-tag">embodied</span><span class="card-tag">locative</span></div>
         </div>
       </div>
 
