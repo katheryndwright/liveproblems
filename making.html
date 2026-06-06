@@ -4,9 +4,6 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Making — Katheryn Wright</title>
-  <meta name="description" content="Making projects by Katheryn Wright — place-based, analog-digital, community-engaged work." />
-  <meta name="author" content="Katheryn Wright" />
-
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Caveat:wght@400;600;700&family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet" />
@@ -22,11 +19,12 @@
       --paper-card: #fafaf7;
       --accent: #5c3d8f;
       --accent-light: #8b6ab5;
-      --accent-pale: #f0eaf8;
       --rule: #cccccc;
       --font-hand: 'Caveat', cursive;
       --font-body: 'Libre Baskerville', Georgia, serif;
       --font-mono: 'DM Mono', monospace;
+      --card-w: 72%;
+      --card-gap: 3%;
     }
 
     html { scroll-behavior: smooth; }
@@ -41,7 +39,6 @@
       background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='300' height='300'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.75' numOctaves='4' stitchTiles='stitch'/%3E%3CfeColorMatrix type='saturate' values='0'/%3E%3C/filter%3E%3Crect width='300' height='300' filter='url(%23n)' opacity='0.03'/%3E%3C/svg%3E");
     }
 
-    /* ── NAV ── */
     nav {
       position: sticky; top: 0; z-index: 100;
       background: var(--paper);
@@ -65,10 +62,8 @@
       color: var(--ink-light); text-decoration: none;
       transition: color 0.15s ease;
     }
-    .nav-links a:hover { color: var(--accent); }
-    .nav-links a.active { color: var(--accent); }
+    .nav-links a:hover, .nav-links a.active { color: var(--accent); }
 
-    /* ── PAGE HEADER ── */
     .page-header {
       max-width: 960px; margin: 0 auto;
       padding: 4rem 2rem 2rem;
@@ -86,140 +81,155 @@
     }
 
     /* ── CAROUSEL ── */
-    .carousel-section {
+    .carousel-wrap {
       position: relative;
+      padding: 3rem 0 1rem;
       overflow: hidden;
-      padding: 3rem 0;
-      border-bottom: 1px solid var(--rule);
-    }
-
-    .carousel-track-wrapper {
-      overflow: hidden;
-      position: relative;
     }
 
     .carousel-track {
       display: flex;
+      align-items: flex-start;
+      will-change: transform;
+    }
+
+    .carousel-track.no-transition {
+      transition: none !important;
+    }
+
+    .carousel-track.animating {
       transition: transform 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94);
-      align-items: stretch;
     }
 
-    /* ── SLIDE ── */
-    .slide {
-      flex: 0 0 70%;
-      padding: 0 1rem;
-      transition: opacity 0.5s ease, transform 0.5s ease;
-      opacity: 0.35;
-      transform: scale(0.96);
+    /* ── CARD ── */
+    .project-card {
+      flex-shrink: 0;
+      width: var(--card-w);
+      margin: 0 calc(var(--card-gap) / 2);
+      border: 1.5px solid var(--ink);
+      background: var(--paper-card);
+      opacity: 0.38;
+      transform: scale(0.97);
+      transition: opacity 0.4s ease, transform 0.4s ease;
     }
 
-    .slide.active {
+    .project-card.active {
       opacity: 1;
       transform: scale(1);
     }
 
-    .slide-inner {
-      border: 1.5px solid var(--ink);
-      background: var(--paper-card);
+    /* ── IMAGE STRIP ── */
+    .card-image-strip {
+      overflow: hidden;
+      height: 260px;
+      background: var(--paper);
+      border-bottom: 1px solid var(--rule);
       display: flex;
-      flex-direction: column;
-      min-height: 500px;
+      align-items: center;
+      padding: 0.75rem 0;
     }
 
-    .slide-image {
-      width: 100%; height: 300px; overflow: hidden;
+    .strip-img {
       flex-shrink: 0;
+      height: 230px;
+      overflow: hidden;
     }
 
-    .slide-image img {
-      width: 100%; height: 100%; object-fit: cover; display: block;
+    .strip-img img {
+      height: 230px;
+      width: auto;
+      display: block;
+      object-fit: cover;
+      filter: grayscale(15%);
     }
 
-    .slide-image-text {
-      width: 100%; height: 300px;
+    .strip-img:nth-child(1) { transform: rotate(-1.1deg); }
+    .strip-img:nth-child(2) { transform: rotate(0.8deg); }
+    .strip-img:nth-child(3) { transform: rotate(-1.4deg); }
+    .strip-img:nth-child(4) { transform: rotate(0.6deg); }
+    .strip-img:nth-child(5) { transform: rotate(-0.9deg); }
+    .strip-img:nth-child(6) { transform: rotate(1.3deg); }
+    .strip-img:nth-child(7) { transform: rotate(-0.7deg); }
+
+    .strip-placeholder {
+      flex-shrink: 0;
+      height: 230px;
+      width: 320px;
       background: var(--ink);
       display: flex; align-items: center; justify-content: center;
     }
-    .slide-image-text span {
-      font-family: var(--font-hand); font-size: 1.4rem; font-weight: 600;
-      color: var(--paper); text-align: center; padding: 2rem; line-height: 1.3;
+    .strip-placeholder span {
+      font-family: var(--font-hand); font-size: 1.2rem;
+      color: var(--paper); text-align: center; padding: 1.5rem;
     }
 
-    .slide-content {
-      padding: 1.5rem;
-      flex: 1;
-      display: flex;
-      flex-direction: column;
-    }
+    /* ── CONTENT ── */
+    .card-content { padding: 1.75rem; }
 
-    .slide-label {
+    .card-label {
       font-family: var(--font-mono); font-size: 0.6rem;
       letter-spacing: 0.12em; text-transform: uppercase;
       color: var(--accent-light); display: block; margin-bottom: 0.4rem;
     }
 
-    .slide-title {
-      font-family: var(--font-hand); font-size: 1.5rem; font-weight: 600;
+    .card-title {
+      font-family: var(--font-hand); font-size: 1.6rem; font-weight: 600;
       line-height: 1.2; color: var(--ink); margin-bottom: 0.75rem;
     }
 
-    .slide-desc {
-      font-size: 0.88rem; line-height: 1.85; color: var(--ink-light);
-      flex: 1;
+    .card-desc {
+      font-size: 0.88rem; line-height: 1.9; color: var(--ink-light);
     }
 
-    .slide-tags {
+    .card-link {
+      font-family: var(--font-mono); font-size: 0.62rem;
+      letter-spacing: 0.08em; text-transform: uppercase;
+      color: var(--accent); text-decoration: none;
+      margin-top: 0.75rem; display: inline-block;
+    }
+    .card-link:hover { color: var(--accent-light); }
+
+    .card-tags {
       display: flex; flex-wrap: wrap; gap: 0.4rem; margin-top: 1rem;
     }
-
-    .slide-tag {
+    .card-tag {
       font-family: var(--font-mono); font-size: 0.58rem;
       letter-spacing: 0.08em; text-transform: uppercase;
       color: var(--ink-faint); border: 1px solid var(--rule);
       padding: 0.15rem 0.4rem;
     }
+    .card-tag.new { color: var(--accent); border-color: var(--accent); }
 
-    .slide-link {
-      font-family: var(--font-mono); font-size: 0.62rem;
-      letter-spacing: 0.08em; text-transform: uppercase;
-      color: var(--accent); text-decoration: none;
-      margin-top: 0.75rem; display: inline-block;
+    /* ── ARROWS — no box, just glyph ── */
+    .arrow {
+      position: absolute;
+      top: 50%; transform: translateY(-50%);
+      z-index: 10;
+      background: none; border: none;
+      font-size: 1.6rem;
+      color: var(--ink-faint);
+      cursor: pointer;
+      padding: 0.5rem;
+      line-height: 1;
       transition: color 0.15s ease;
     }
-    .slide-link:hover { color: var(--accent-light); }
+    .arrow:hover { color: var(--accent); }
+    .arrow-left  { left: 0.25rem; }
+    .arrow-right { right: 0.25rem; }
 
-    /* ── ARROWS ── */
-    .carousel-controls {
-      max-width: 960px; margin: 0 auto;
-      padding: 1.5rem 2rem 0;
-      display: flex; align-items: center; justify-content: space-between;
-    }
-
+    /* ── DOTS + COUNTER ── */
     .carousel-counter {
+      text-align: center;
       font-family: var(--font-mono); font-size: 0.65rem;
       letter-spacing: 0.1em; color: var(--ink-faint);
+      padding: 0.5rem 0;
     }
 
-    .carousel-arrows { display: flex; gap: 0.75rem; }
-
-    .carousel-arrow {
-      font-family: var(--font-body); font-size: 1.2rem;
-      color: var(--ink-light); background: none; border: 1.5px solid var(--rule);
-      width: 40px; height: 40px;
-      display: flex; align-items: center; justify-content: center;
-      cursor: pointer;
-      transition: border-color 0.15s ease, color 0.15s ease;
-    }
-    .carousel-arrow:hover { border-color: var(--accent); color: var(--accent); }
-    .carousel-arrow:disabled { opacity: 0.3; cursor: default; }
-
-    /* ── PROJECT LIST ── */
-    .projects-nav {
+    .project-dots {
       max-width: 960px; margin: 0 auto;
-      padding: 1.5rem 2rem 0;
-      display: flex; flex-wrap: wrap; gap: 0.5rem;
+      padding: 0.25rem 2rem 3rem;
+      display: flex; gap: 0.5rem; flex-wrap: wrap;
     }
-
     .project-dot {
       font-family: var(--font-mono); font-size: 0.58rem;
       letter-spacing: 0.06em; text-transform: uppercase;
@@ -231,14 +241,9 @@
     .project-dot.active { color: var(--accent); border-color: var(--accent); }
     .project-dot:hover { color: var(--accent-light); }
 
-    /* ── MAIN CONTENT ── */
-    .making-main {
-      max-width: 960px; margin: 0 auto; padding: 3rem 2rem;
-    }
-
     footer {
       border-top: 1.5px solid var(--ink);
-      padding: 1.5rem 2rem; text-align: center; margin-top: 2rem;
+      padding: 1.5rem 2rem; text-align: center;
     }
     footer p {
       font-family: var(--font-mono); font-size: 0.63rem;
@@ -246,269 +251,296 @@
     }
 
     @media (max-width: 640px) {
-      .slide { flex: 0 0 88%; }
+      :root { --card-w: 84%; --card-gap: 4%; }
       .nav-links { gap: 1rem; }
       .nav-links a { font-size: 0.62rem; }
-      .nav-wordmark { font-size: 1.1rem; }
     }
   </style>
 </head>
 <body>
 
-  <nav>
-    <div class="nav-inner">
-      <a href="index.html" class="nav-wordmark">Live Problems</a>
-      <ul class="nav-links">
-        <li><a href="making.html" class="active">Making</a></li>
-        <li><a href="writing.html">Writing</a></li>
-        <li><a href="teaching.html">Teaching</a></li>
-        <li><a href="designing.html">Designing</a></li>
-        <li><a href="cv.pdf" download>CV</a></li>
-      </ul>
-    </div>
-  </nav>
+<nav>
+  <div class="nav-inner">
+    <a href="index.html" class="nav-wordmark">Live Problems</a>
+    <ul class="nav-links">
+      <li><a href="making.html" class="active">Making</a></li>
+      <li><a href="writing.html">Writing</a></li>
+      <li><a href="teaching.html">Teaching</a></li>
+      <li><a href="designing.html">Designing</a></li>
+      <li><a href="cv.pdf" download>CV</a></li>
+    </ul>
+  </div>
+</nav>
 
-  <main>
-    <div class="page-header">
-      <h1>Making</h1>
-      <p>Place-based, analog-digital, and community-engaged projects. Some are ongoing. Some are done. All of them changed the practice.</p>
-    </div>
+<main>
+  <div class="page-header">
+    <h1>Making</h1>
+    <p>Place-based, analog-digital, and community-engaged projects. Some are ongoing. Some are done. All of them changed the practice.</p>
+  </div>
 
-    <div class="carousel-section">
-      <div class="carousel-track-wrapper">
-        <div class="carousel-track" id="carousel-track">
+  <div class="carousel-wrap">
+    <button class="arrow arrow-left" id="arrow-left">&#8592;</button>
+    <button class="arrow arrow-right" id="arrow-right">&#8594;</button>
 
-          <!-- 1. Soundscape Classifier -->
-          <div class="slide active" data-index="0">
-            <div class="slide-inner">
-              <div class="slide-image">
-                <img src="images/mic-soundscape-KW.jpg" alt="Soundscape Classifier" />
-              </div>
-              <div class="slide-content">
-                <span class="slide-label">data · place-based · ongoing · new</span>
-                <p class="slide-title">Soundscape Classifier</p>
-                <p class="slide-desc">A machine learning tool that listens. Developed as part of the NSF EPSCoR SOCKS grant in collaboration with undergraduate students in Computer Science, Cybersecurity, Data Science, and Digital Humanities, the classifier analyzes field recordings from Vermont's acoustic ecology survey and identifies what sounds are present — birds, wind, traffic, human activity, silence. The work asks not just what a place sounds like but what the machine hears, what it misses, and what those gaps reveal. The repository is in active development.</p>
-                <a href="https://socks.w3.uvm.edu/socks/#about" target="_blank" class="slide-link">SOCKS Project →</a>
-                <div class="slide-tags">
-                  <span class="slide-tag">data</span>
-                  <span class="slide-tag">place-based</span>
-                  <span class="slide-tag">ongoing</span>
-                  <span class="slide-tag">new</span>
-                </div>
-              </div>
-            </div>
-          </div>
+    <div class="carousel-track no-transition" id="carousel-track">
 
-          <!-- 2. Algorithmic Sidewalk -->
-          <div class="slide" data-index="1">
-            <div class="slide-inner">
-              <div class="slide-image">
-                <img src="images/sidewalk-surveillance-sign.webp" alt="Algorithmic Sidewalk" />
-              </div>
-              <div class="slide-content">
-                <span class="slide-label">locative · place-based · data · ongoing · new</span>
-                <p class="slide-title">The Algorithmic Sidewalk</p>
-                <p class="slide-desc">A locative game for civic AI literacy, currently in development. The Algorithmic Sidewalk invites participants to walk a stretch of Market Street in South Burlington and document what the city's algorithmic infrastructure (sensors, cameras, routing systems, counting devices) cannot capture about the people moving through it. At six marked locations, hanging tags will explain what each algorithm does, prompt a physical action that makes the participant temporarily legible as data, and ask a question about what the data misses. There will be an analog version of the walk with printed maps, notecards, and sticker dots for documenting observations; and a digital version accessed by scanning QR codes at each site. Both tracks will feed a community soundscape portrait built from participant testimony rather than sensor data.</p>
-                <div class="slide-tags">
-                  <span class="slide-tag">locative</span>
-                  <span class="slide-tag">place-based</span>
-                  <span class="slide-tag">data</span>
-                  <span class="slide-tag">ongoing</span>
-                  <span class="slide-tag">new</span>
-                </div>
-              </div>
-            </div>
-          </div>
-
-          <!-- 3. Mobile Street Printing Kits -->
-          <div class="slide" data-index="2">
-            <div class="slide-inner">
-              <div class="slide-image">
-                <img src="images/mud-print-aiken.jpg" alt="Mobile Street Printing Kits" />
-              </div>
-              <div class="slide-content">
-                <span class="slide-label">analog-digital · instructional-artifact · community</span>
-                <p class="slide-title">Mobile Street Printing Kits</p>
-                <p class="slide-desc">A set of portable printmaking kits designed for making in public. Developed through hands-on research into low-cost, accessible techniques and eco-friendly materials and tested on site before assembly, the kits support three approaches: urban relief printing, which uses surfaces from the built and natural environment to pull images; gel plate monoprinting; and a no-emulsion screen printing process using Drawing Fluid and Screen Filler. In one variation, fine clay replaces ink entirely, pressed through the screen to print directly onto surfaces. Funded through Experiential Learning grants and professional development funds, the kits were used in street printing and monoprinting workshops for students and faculty and made available for checkout through the library.</p>
-                <div class="slide-tags">
-                  <span class="slide-tag">analog-digital</span>
-                  <span class="slide-tag">instructional-artifact</span>
-                  <span class="slide-tag">community</span>
-                </div>
-              </div>
-            </div>
-          </div>
-
-          <!-- 4. CH3F Mobile Kitchen -->
-          <div class="slide" data-index="3">
-            <div class="slide-inner">
-              <div class="slide-image">
-                <img src="images/meat-cart-2.jpg" alt="CH3F Mobile Kitchen" />
-              </div>
-              <div class="slide-content">
-                <span class="slide-label">instructional-artifact · food · embodied</span>
-                <p class="slide-title">CH3F: Champlain College's Mobile Kitchen</p>
-                <p class="slide-desc">A mobile kitchen cart built to bring making into rooms not designed for it. CH3F approximates a mobile makerspace, giving faculty across disciplines access to cooking equipment wherever they teach. The name was chosen collaboratively by faculty. Funded through Experiential Learning grants and faculty Professional Development contributions, the project involved one-on-one conversations with every faculty member using food in their courses, a needs survey, approval from the dean, coordination with risk management, and the development of a full checkout, storage, and cleaning workflow. The cart carries four single burners, a griddle, pots, pans, knives, spice grinders, and everything needed to cook in a classroom.</p>
-                <div class="slide-tags">
-                  <span class="slide-tag">instructional-artifact</span>
-                  <span class="slide-tag">food</span>
-                  <span class="slide-tag">embodied</span>
-                </div>
-              </div>
-            </div>
-          </div>
-
-          <!-- 5. Working with Ruins -->
-          <div class="slide" data-index="4">
-            <div class="slide-inner">
-              <div class="slide-image">
-                <img src="images/ruins-folder-open.jpg" alt="Working with the Ruins of Liberal Education" />
-              </div>
-              <div class="slide-content">
-                <span class="slide-label">game · place-based</span>
-                <p class="slide-title">Working with the Ruins of Liberal Education</p>
-                <p class="slide-desc">A file folder game for working with what remains. Eighty cards (with blank cards to add more) name the ruins of liberal education — the view from nowhere, peer review, the grade, the career path, belonging, tenure, artificial intelligence, and the loneliness epidemic — organized into the Ruins of Knowledge, Ruins of Progress, Ruins of the Human Condition. Players move through six movements: Reveal, Locate, Render, Speculate, Reconfigure, and Question. There are no winners. There is no correct configuration. Players write on the cards, cut into them so they interlock, and leave their traces for the next person to find. The file folder is the game's living archive. The game emerged through writing the first chapter of Speculative Education: Making Knowledge from the Ruins and from a memory of my mom. She was a kindergarten teacher and made a ton of file folder games by hand, coloring each piece, and gluing envelopes to store them. The form speaks to the debt I owe her for who I am as a teacher.</p>
-                <div class="slide-tags">
-                  <span class="slide-tag">game</span>
-                  <span class="slide-tag">place-based</span>
-                </div>
-              </div>
-            </div>
-          </div>
-
-          <!-- 6. Bodies: A Digital Companion -->
-          <div class="slide" data-index="5">
-            <div class="slide-inner">
-              <div class="slide-image">
-                <img src="images/bodies-companion-title.png" alt="Bodies: A Digital Companion" />
-              </div>
-              <div class="slide-content">
-                <span class="slide-label">analog-digital · instructional-artifact · embodied · community</span>
-                <p class="slide-title">Bodies: A Digital Companion</p>
-                <p class="slide-desc">A collaborative digital textbook built on the Scalar platform for the general education course Bodies, co-authored with colleague Kristin Novotny. The Companion replaces a traditional course reader with a free, interactive, multimedia resource organized around key concepts shared across all sections of the course. The development process was as much about building a faculty community of practice as it was about building a textbook. Over three months, ten to fifteen faculty volunteered their summers to learn Scalar, author chapters, and workshop each other's writing. Several sessions included Digital Humanities colleagues from Middlebury College. The project was approved and supported by the dean. Once in use, the Companion continued to evolve, revised each semester based on faculty feedback and how the course itself changed. Bodies is no longer taught, but the Companion remains live at scalar.usc.edu as a record of the collaboration.</p>
-                <a href="https://scalar.usc.edu/works/bodies/index" target="_blank" class="slide-link">View the Companion →</a>
-                <div class="slide-tags">
-                  <span class="slide-tag">analog-digital</span>
-                  <span class="slide-tag">instructional-artifact</span>
-                  <span class="slide-tag">embodied</span>
-                  <span class="slide-tag">community</span>
-                </div>
-              </div>
-            </div>
-          </div>
-
-          <!-- 7. Flight Routes -->
-          <div class="slide" data-index="6">
-            <div class="slide-inner">
-              <div class="slide-image-text">
-                <span>Flight Routes, Spring 2023</span>
-              </div>
-              <div class="slide-content">
-                <span class="slide-label">place-based · analog-digital · embodied · locative</span>
-                <p class="slide-title">Flight Routes, Spring 2023</p>
-                <p class="slide-desc">Image and description coming soon.</p>
-                <div class="slide-tags">
-                  <span class="slide-tag">place-based</span>
-                  <span class="slide-tag">analog-digital</span>
-                  <span class="slide-tag">embodied</span>
-                  <span class="slide-tag">locative</span>
-                </div>
-              </div>
-            </div>
-          </div>
-
+      <!-- CARD 1: Soundscape Classifier -->
+      <div class="project-card" data-real="0">
+        <div class="card-image-strip">
+          <div class="strip-img"><img src="images/mic-soundscape-KW.jpg" alt="Field recording" /></div>
+          <div class="strip-img"><img src="images/soundscape-classifier-github.png" alt="GitHub" /></div>
+          <div class="strip-img"><img src="images/sonic-data-campus.jpg" alt="Boom mic" /></div>
+        </div>
+        <div class="card-content">
+          <span class="card-label">data · place-based</span>
+          <p class="card-title">Soundscape Classifier</p>
+          <p class="card-desc">A machine learning tool that listens. Developed as part of the NSF EPSCoR SOCKS grant in collaboration with undergraduate students in Computer Science, Cybersecurity, Data Science, and Digital Humanities, the classifier analyzes field recordings from Vermont's acoustic ecology survey and identifies what sounds are present — birds, wind, traffic, human activity, silence. The work asks not just what a place sounds like but what the machine hears, what it misses, and what those gaps reveal. The repository is in active development.</p>
+          <a href="https://socks.w3.uvm.edu/socks/#about" target="_blank" class="card-link">SOCKS Project →</a>
+          <div class="card-tags"><span class="card-tag">data</span><span class="card-tag">place-based</span><span class="card-tag new">new</span></div>
         </div>
       </div>
 
-      <div class="carousel-controls">
-        <div class="projects-nav" id="projects-nav">
-          <span class="project-dot active" data-index="0" onclick="goToSlide(0)">Soundscape Classifier</span>
-          <span class="project-dot" data-index="1" onclick="goToSlide(1)">Algorithmic Sidewalk</span>
-          <span class="project-dot" data-index="2" onclick="goToSlide(2)">Street Printing Kits</span>
-          <span class="project-dot" data-index="3" onclick="goToSlide(3)">Mobile Kitchen</span>
-          <span class="project-dot" data-index="4" onclick="goToSlide(4)">Working with Ruins</span>
-          <span class="project-dot" data-index="5" onclick="goToSlide(5)">Bodies Companion</span>
-          <span class="project-dot" data-index="6" onclick="goToSlide(6)">Flight Routes</span>
+      <!-- CARD 2: Algorithmic Sidewalk -->
+      <div class="project-card" data-real="1">
+        <div class="card-image-strip">
+          <div class="strip-img"><img src="images/sidewalk-surveillance-sign.webp" alt="Surveillance sign" /></div>
+          <div class="strip-img"><img src="images/sidewalk-graffiti.webp" alt="Infrastructure" /></div>
+          <div class="strip-img"><img src="images/sidewalk-crosswalk.webp" alt="Crosswalk sensor" /></div>
+          <div class="strip-img"><img src="images/sidewalk-pedestrian.webp" alt="Pedestrian" /></div>
+          <div class="strip-img"><img src="images/sidewalk-transit.webp" alt="Transit" /></div>
+          <div class="strip-img"><img src="images/sidewalk-surveillance.webp" alt="Surveillance" /></div>
+          <div class="strip-img"><img src="images/sidewalk-analog-data-collection.webp" alt="Analog data" /></div>
+        </div>
+        <div class="card-content">
+          <span class="card-label">locative · place-based · data</span>
+          <p class="card-title">The Algorithmic Sidewalk</p>
+          <p class="card-desc">A locative game for civic AI literacy, currently in development. The Algorithmic Sidewalk invites participants to walk a stretch of Market Street in South Burlington and document what the city's algorithmic infrastructure (sensors, cameras, routing systems, counting devices) cannot capture about the people moving through it. At six marked locations, hanging tags will explain what each algorithm does, prompt a physical action that makes the participant temporarily legible as data, and ask a question about what the data misses. There will be an analog version of the walk with printed maps, notecards, and sticker dots for documenting observations; and a digital version accessed by scanning QR codes at each site. Both tracks will feed a community soundscape portrait built from participant testimony rather than sensor data.</p>
+          <div class="card-tags"><span class="card-tag">locative</span><span class="card-tag">place-based</span><span class="card-tag">data</span><span class="card-tag new">new</span></div>
         </div>
       </div>
 
-      <div style="max-width:960px; margin: 1rem auto; padding: 0 2rem; display:flex; align-items:center; justify-content:space-between;">
-        <span class="carousel-counter" id="carousel-counter">1 / 7</span>
-        <div class="carousel-arrows">
-          <button class="carousel-arrow" id="prev-btn" onclick="prevSlide()" disabled>←</button>
-          <button class="carousel-arrow" id="next-btn" onclick="nextSlide()">→</button>
+      <!-- CARD 3: Street Printing Kits -->
+      <div class="project-card" data-real="2">
+        <div class="card-image-strip">
+          <div class="strip-img"><img src="images/mud-print-aiken.jpg" alt="Mud print" /></div>
+          <div class="strip-img"><img src="images/street-print-demo.jpg" alt="Street print demo" /></div>
+          <div class="strip-img"><img src="images/mud-print.jpg" alt="Clay print" /></div>
+          <div class="strip-img"><img src="images/printmaking-final-project.jpg" alt="Final project" /></div>
+          <div class="strip-img"><img src="images/semiotic-survey-print-project.jpg" alt="Semiotic survey" /></div>
+          <div class="strip-img"><img src="images/street-printing-project.jpg" alt="Student prints" /></div>
+          <div class="strip-img"><img src="images/street-printing-on-campus.jpg" alt="On campus" /></div>
+        </div>
+        <div class="card-content">
+          <span class="card-label">analog-digital · instructional-artifact · community</span>
+          <p class="card-title">Mobile Street Printing Kits</p>
+          <p class="card-desc">A set of portable printmaking kits designed for making in public. Developed through hands-on research into low-cost, accessible techniques and eco-friendly materials and tested on site before assembly, the kits support three approaches: urban relief printing, which uses surfaces from the built and natural environment to pull images; gel plate monoprinting; and a no-emulsion screen printing process using Drawing Fluid and Screen Filler. In one variation, fine clay replaces ink entirely, pressed through the screen to print directly onto surfaces. Funded through Experiential Learning grants and professional development funds, the kits were used in street printing and monoprinting workshops for students and faculty and made available for checkout through the library.</p>
+          <div class="card-tags"><span class="card-tag">analog-digital</span><span class="card-tag">instructional-artifact</span><span class="card-tag">community</span></div>
+        </div>
+      </div>
+
+      <!-- CARD 4: CH3F -->
+      <div class="project-card" data-real="3">
+        <div class="card-image-strip">
+          <div class="strip-img"><img src="images/meat-cart-2.jpg" alt="Cart in use" /></div>
+          <div class="strip-img"><img src="images/fake-meat-lab.jpg" alt="Cooking" /></div>
+          <div class="strip-img"><img src="images/meat-comparison-lab.jpg" alt="Setup" /></div>
+        </div>
+        <div class="card-content">
+          <span class="card-label">instructional-artifact · food · embodied</span>
+          <p class="card-title">CH3F: Champlain College's Mobile Kitchen</p>
+          <p class="card-desc">A mobile kitchen cart built to bring making into rooms not designed for it. CH3F approximates a mobile makerspace, giving faculty across disciplines access to cooking equipment wherever they teach. The name was chosen collaboratively by faculty. Funded through Experiential Learning grants and faculty Professional Development contributions, the project involved one-on-one conversations with every faculty member using food in their courses, a needs survey, approval from the dean, coordination with risk management, and the development of a full checkout, storage, and cleaning workflow. The cart carries four single burners, a griddle, pots, pans, knives, spice grinders, and everything needed to cook in a classroom.</p>
+          <div class="card-tags"><span class="card-tag">instructional-artifact</span><span class="card-tag">food</span><span class="card-tag">embodied</span></div>
+        </div>
+      </div>
+
+      <!-- CARD 5: Working with Ruins -->
+      <div class="project-card" data-real="4">
+        <div class="card-image-strip">
+          <div class="strip-img"><img src="images/ruins-folder-cover.jpg" alt="Folder cover" /></div>
+          <div class="strip-img"><img src="images/ruins-folder-open.jpg" alt="Folder open" /></div>
+          <div class="strip-img"><img src="images/ruins-questions-card.jpg" alt="Questions card" /></div>
+        </div>
+        <div class="card-content">
+          <span class="card-label">game · place-based</span>
+          <p class="card-title">Working with the Ruins of Liberal Education</p>
+          <p class="card-desc">A file folder game for working with what remains. Eighty cards (with blank cards to add more) name the ruins of liberal education — the view from nowhere, peer review, the grade, the career path, belonging, tenure, artificial intelligence, and the loneliness epidemic — organized into the Ruins of Knowledge, Ruins of Progress, Ruins of the Human Condition. Players move through six movements: Reveal, Locate, Render, Speculate, Reconfigure, and Question. There are no winners. There is no correct configuration. Players write on the cards, cut into them so they interlock, and leave their traces for the next person to find. The file folder is the game's living archive. The game emerged through writing the first chapter of Speculative Education: Making Knowledge from the Ruins and from a memory of my mom. She was a kindergarten teacher and made a ton of file folder games by hand, coloring each piece, and gluing envelopes to store them. The form speaks to the debt I owe her for who I am as a teacher.</p>
+          <div class="card-tags"><span class="card-tag">game</span><span class="card-tag">place-based</span></div>
+        </div>
+      </div>
+
+      <!-- CARD 6: Bodies -->
+      <div class="project-card" data-real="5">
+        <div class="card-image-strip">
+          <div class="strip-img"><img src="images/bodies-companion-title.png" alt="Title" /></div>
+          <div class="strip-img"><img src="images/bodies-companion-toc.png" alt="Contents" /></div>
+          <div class="strip-img"><img src="images/bodies-companion-acknowledgements.png" alt="Acknowledgements" /></div>
+        </div>
+        <div class="card-content">
+          <span class="card-label">analog-digital · instructional-artifact · community</span>
+          <p class="card-title">Bodies: A Digital Companion</p>
+          <p class="card-desc">A collaborative digital textbook built on the Scalar platform for the general education course Bodies, co-authored with colleague Kristin Novotny. The Companion replaces a traditional course reader with a free, interactive, multimedia resource organized around key concepts shared across all sections of the course. The development process was as much about building a faculty community of practice as it was about building a textbook. Over three months, ten to fifteen faculty volunteered their summers to learn Scalar, author chapters, and workshop each other's writing. Several sessions included Digital Humanities colleagues from Middlebury College. Once in use, the Companion continued to evolve, revised each semester based on faculty feedback. Bodies is no longer taught, but the Companion remains live as a record of the collaboration.</p>
+          <a href="https://scalar.usc.edu/works/bodies/index" target="_blank" class="card-link">View the Companion →</a>
+          <div class="card-tags"><span class="card-tag">analog-digital</span><span class="card-tag">instructional-artifact</span><span class="card-tag">community</span></div>
+        </div>
+      </div>
+
+      <!-- CARD 7: Flight Routes -->
+      <div class="project-card" data-real="6">
+        <div class="card-image-strip">
+          <div class="strip-img"><img src="images/flight-routes-still.jpg" alt="Flight Routes map" /></div>
+          <div class="strip-img"><img src="images/flight-routes-feather.jpg" alt="Feather on stick" /></div>
+          <div class="strip-img"><img src="images/flight-routes-rocks.jpg" alt="Balanced stones" /></div>
+        </div>
+        <div class="card-content">
+          <span class="card-label">place-based · analog-digital · embodied · locative</span>
+          <p class="card-title">Flight Routes, Spring 2023</p>
+          <p class="card-desc">A personal analog map documenting the flight routes taken between Vermont, Baltimore, and Florida from late April through June 2023, during the final weeks of my mother's life, and also my dog's life. The map was made from materials gathered during an evening walk through my backyard (sticks, feathers, and rocks) laid out under the tree where my dog Ella used to rest. Sticks trace flight paths I took. Feathers indicate direction. Rocks represent places. The map itself is probably unrecognizable as a map to anyone but me. What I hold onto is the process of making it. I walked through my yard considering how to reconfigure a time where I couldn't even stop to think as I searched for feathers, finding rocks, following the paths where Ella used to run. Walking and thinking are fused, and this map is a material outcome of that walk.</p>
+          <iframe src="https://drive.google.com/file/d/1c34W7ivC-RW8l9plmmJ-kCfAu_Np8YmH/preview" style="width:100%; height:360px; margin-top:1rem; border:1px solid var(--rule);" allow="autoplay" allowfullscreen></iframe>
+          <div class="card-tags"><span class="card-tag">place-based</span><span class="card-tag">analog-digital</span><span class="card-tag">embodied</span><span class="card-tag">locative</span></div>
         </div>
       </div>
 
     </div>
+  </div>
 
-  </main>
+  <p class="carousel-counter" id="carousel-counter">1 / 7</p>
 
-  <footer>
-    <p>Katheryn Wright &nbsp;·&nbsp; Digital Humanities and Pedagogy &nbsp;·&nbsp; Posthumanist Philosophy &nbsp;·&nbsp; Community-based and Global Learning</p>
-  </footer>
+  <div class="project-dots">
+    <span class="project-dot" onclick="goTo(0)">Soundscape Classifier</span>
+    <span class="project-dot" onclick="goTo(1)">Algorithmic Sidewalk</span>
+    <span class="project-dot" onclick="goTo(2)">Street Printing Kits</span>
+    <span class="project-dot" onclick="goTo(3)">Mobile Kitchen</span>
+    <span class="project-dot" onclick="goTo(4)">Working with Ruins</span>
+    <span class="project-dot" onclick="goTo(5)">Bodies Companion</span>
+    <span class="project-dot" onclick="goTo(6)">Flight Routes</span>
+  </div>
 
-  <script>
-    let current = 0;
-    const total = 7;
-    const track = document.getElementById('carousel-track');
-    const slides = document.querySelectorAll('.slide');
-    const dots = document.querySelectorAll('.project-dot');
-    const counter = document.getElementById('carousel-counter');
-    const prevBtn = document.getElementById('prev-btn');
-    const nextBtn = document.getElementById('next-btn');
+</main>
 
-    function getOffset() {
-      const vw = window.innerWidth;
-      const slideWidth = vw <= 640 ? 0.88 : 0.70;
-      // Center the active slide
-      const trackWidth = track.parentElement.offsetWidth;
-      const slidePixels = trackWidth * slideWidth + 32; // include padding
-      const centerOffset = (trackWidth - slidePixels) / 2;
-      return centerOffset - current * slidePixels;
+<footer>
+  <p>Katheryn Wright &nbsp;·&nbsp; Digital Humanities and Pedagogy &nbsp;·&nbsp; Posthumanist Philosophy &nbsp;·&nbsp; Community-based and Global Learning</p>
+</footer>
+
+<script>
+  const TOTAL = 7;
+  let current = 0;
+  let isTransitioning = false;
+
+  const track = document.getElementById('carousel-track');
+  const counter = document.getElementById('carousel-counter');
+  const dots = document.querySelectorAll('.project-dot');
+
+  // Clone first and last cards for seamless infinite loop
+  function cloneCards() {
+    const originals = Array.from(track.querySelectorAll('.project-card[data-real]'));
+    // Prepend clone of last card
+    const lastClone = originals[originals.length - 1].cloneNode(true);
+    lastClone.removeAttribute('data-real');
+    lastClone.classList.add('clone');
+    track.insertBefore(lastClone, originals[0]);
+    // Append clone of first card
+    const firstClone = originals[0].cloneNode(true);
+    firstClone.removeAttribute('data-real');
+    firstClone.classList.add('clone');
+    track.appendChild(firstClone);
+  }
+
+  function getCardWidth() {
+    const stage = track.parentElement;
+    const stageW = stage.offsetWidth;
+    const cardPercent = parseFloat(getComputedStyle(document.documentElement).getPropertyValue('--card-w')) / 100 || 0.72;
+    const gapPercent = parseFloat(getComputedStyle(document.documentElement).getPropertyValue('--card-gap')) / 100 || 0.03;
+    const cardPx = stageW * cardPercent;
+    const gapPx = stageW * (gapPercent / 2) * 2; // margin on each side
+    return cardPx + gapPx;
+  }
+
+  function getOffset(index) {
+    // index is 0-based among all cards including clones
+    // We want the card centered in the stage
+    const stageW = track.parentElement.offsetWidth;
+    const cw = getCardWidth();
+    return (stageW / 2) - (cw / 2) - (index * cw);
+  }
+
+  function setPosition(index, animate) {
+    if (animate) {
+      track.classList.remove('no-transition');
+      track.classList.add('animating');
+    } else {
+      track.classList.add('no-transition');
+      track.classList.remove('animating');
     }
+    track.style.transform = `translateX(${getOffset(index)}px)`;
+  }
 
-    function updateCarousel() {
-      const vw = window.innerWidth;
-      const slideWidth = vw <= 640 ? 0.88 : 0.70;
-      const trackWidth = track.parentElement.offsetWidth;
-      const slidePixels = trackWidth * slideWidth + 32;
-      const centerOffset = (trackWidth - slidePixels) / 2;
-      const offset = centerOffset - current * slidePixels;
+  function updateActive() {
+    const allCards = track.querySelectorAll('.project-card');
+    // current is real index 0-6; in track it's at position current+1 (due to clone prepended)
+    allCards.forEach((c, i) => c.classList.toggle('active', i === current + 1));
+    dots.forEach((d, i) => d.classList.toggle('active', i === current));
+    counter.textContent = `${current + 1} / ${TOTAL}`;
+  }
 
-      track.style.transform = `translateX(${offset}px)`;
+  function move(dir) {
+    if (isTransitioning) return;
+    isTransitioning = true;
 
-      slides.forEach((s, i) => {
-        s.classList.toggle('active', i === current);
-      });
-      dots.forEach((d, i) => {
-        d.classList.toggle('active', i === current);
-      });
+    const trackIndex = current + 1; // +1 because of prepended clone
+    const nextTrackIndex = trackIndex + dir;
 
-      counter.textContent = `${current + 1} / ${total}`;
-      prevBtn.disabled = current === 0;
-      nextBtn.disabled = current === total - 1;
-    }
+    setPosition(nextTrackIndex, true);
 
-    function nextSlide() {
-      if (current < total - 1) { current++; updateCarousel(); }
-    }
-    function prevSlide() {
-      if (current > 0) { current--; updateCarousel(); }
-    }
-    function goToSlide(i) {
-      current = i; updateCarousel();
-    }
+    track.addEventListener('transitionend', function onEnd() {
+      track.removeEventListener('transitionend', onEnd);
 
-    window.addEventListener('resize', updateCarousel);
-    updateCarousel();
+      // If we landed on a clone, jump silently to real card
+      if (nextTrackIndex === 0) {
+        // Landed on clone of last — jump to real last
+        current = TOTAL - 1;
+        setPosition(current + 1, false);
+      } else if (nextTrackIndex === TOTAL + 1) {
+        // Landed on clone of first — jump to real first
+        current = 0;
+        setPosition(current + 1, false);
+      } else {
+        current = nextTrackIndex - 1;
+      }
 
-    // Keyboard navigation
-    document.addEventListener('keydown', e => {
-      if (e.key === 'ArrowRight') nextSlide();
-      if (e.key === 'ArrowLeft') prevSlide();
-    });
-  </script>
+      updateActive();
+      isTransitioning = false;
+    }, { once: true });
+  }
+
+  function goTo(i) {
+    current = i;
+    setPosition(current + 1, true);
+    updateActive();
+  }
+
+  document.getElementById('arrow-left').addEventListener('click', () => move(-1));
+  document.getElementById('arrow-right').addEventListener('click', () => move(1));
+
+  document.addEventListener('keydown', e => {
+    if (e.key === 'ArrowRight') move(1);
+    if (e.key === 'ArrowLeft') move(-1);
+  });
+
+  // Init
+  cloneCards();
+  setTimeout(() => {
+    setPosition(current + 1, false);
+    updateActive();
+    // re-enable transitions after initial position
+    setTimeout(() => {
+      track.classList.remove('no-transition');
+    }, 100);
+  }, 50);
+
+  window.addEventListener('resize', () => {
+    setPosition(current + 1, false);
+  });
+</script>
 
 </body>
 </html>
