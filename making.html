@@ -119,7 +119,7 @@
       height: var(--strip-h);
       cursor: grab;
       user-select: none;
-      padding: 0.6rem 0;   /* room for tilted edges to breathe */
+      padding: 1rem 0;   /* room for tilted edges to breathe */
     }
     .card-image-strip.dragging { cursor: grabbing; }
 
@@ -136,8 +136,9 @@
 
     .strip-img {
       flex-shrink: 0;
-      height: calc(var(--strip-h) - 1.2rem);  /* slightly shorter than strip so tilt shows */
-      overflow: visible;   /* let the rotated corners escape the box */
+      height: calc(var(--strip-h) - 1.8rem);
+      overflow: visible;
+      position: relative;
     }
     .strip-img img {
       height: 100%;
@@ -147,21 +148,22 @@
       filter: grayscale(15%);
       pointer-events: none;
     }
-    /* rotation on the container — visible lean like hand-laid photos */
-    .strip-img:nth-child(1)  { transform: rotate(-1.1deg); }
-    .strip-img:nth-child(2)  { transform: rotate(0.8deg);  }
-    .strip-img:nth-child(3)  { transform: rotate(-1.4deg); }
-    .strip-img:nth-child(4)  { transform: rotate(0.6deg);  }
-    .strip-img:nth-child(5)  { transform: rotate(-0.9deg); }
-    .strip-img:nth-child(6)  { transform: rotate(1.3deg);  }
-    .strip-img:nth-child(7)  { transform: rotate(-0.7deg); }
-    .strip-img:nth-child(8)  { transform: rotate(1.0deg);  }
-    .strip-img:nth-child(9)  { transform: rotate(-0.8deg); }
-    .strip-img:nth-child(10) { transform: rotate(0.5deg);  }
-    .strip-img:nth-child(11) { transform: rotate(-1.2deg); }
-    .strip-img:nth-child(12) { transform: rotate(0.9deg);  }
-    .strip-img:nth-child(13) { transform: rotate(-0.6deg); }
-    .strip-img:nth-child(14) { transform: rotate(1.1deg);  }
+    /* Each photo rotates from a different anchor point and sits at a different height —
+       like prints laid out on a table, not hung on a wall */
+    .strip-img:nth-child(1)  { transform: rotate(-1.8deg) translateY(4px);  transform-origin: bottom left;  }
+    .strip-img:nth-child(2)  { transform: rotate(1.2deg)  translateY(-6px); transform-origin: top right;    }
+    .strip-img:nth-child(3)  { transform: rotate(-2.1deg) translateY(8px);  transform-origin: bottom right; }
+    .strip-img:nth-child(4)  { transform: rotate(0.9deg)  translateY(-3px); transform-origin: top left;     }
+    .strip-img:nth-child(5)  { transform: rotate(-1.4deg) translateY(5px);  transform-origin: bottom left;  }
+    .strip-img:nth-child(6)  { transform: rotate(1.7deg)  translateY(-7px); transform-origin: top right;    }
+    .strip-img:nth-child(7)  { transform: rotate(-0.8deg) translateY(3px);  transform-origin: bottom right; }
+    .strip-img:nth-child(8)  { transform: rotate(1.5deg)  translateY(-5px); transform-origin: top left;     }
+    .strip-img:nth-child(9)  { transform: rotate(-1.9deg) translateY(7px);  transform-origin: bottom left;  }
+    .strip-img:nth-child(10) { transform: rotate(0.7deg)  translateY(-4px); transform-origin: top right;    }
+    .strip-img:nth-child(11) { transform: rotate(-1.3deg) translateY(6px);  transform-origin: bottom right; }
+    .strip-img:nth-child(12) { transform: rotate(1.1deg)  translateY(-8px); transform-origin: top left;     }
+    .strip-img:nth-child(13) { transform: rotate(-1.6deg) translateY(4px);  transform-origin: bottom left;  }
+    .strip-img:nth-child(14) { transform: rotate(0.9deg)  translateY(-5px); transform-origin: top right;    }
 
     /* ── CONTENT ── */
     .card-content { padding: 1.75rem; }
