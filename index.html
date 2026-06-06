@@ -46,7 +46,6 @@
       background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='300' height='300'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.75' numOctaves='4' stitchTiles='stitch'/%3E%3CfeColorMatrix type='saturate' values='0'/%3E%3C/filter%3E%3Crect width='300' height='300' filter='url(%23n)' opacity='0.03'/%3E%3C/svg%3E");
     }
 
-    /* ── NAV ── */
     nav {
       position: sticky;
       top: 0;
@@ -55,7 +54,6 @@
       border-bottom: 1.5px solid var(--ink);
       padding: 0 2rem;
     }
-
     .nav-inner {
       max-width: 960px;
       margin: 0 auto;
@@ -64,7 +62,6 @@
       justify-content: space-between;
       height: 52px;
     }
-
     .nav-wordmark {
       font-family: var(--font-hand);
       font-size: 1.5rem;
@@ -74,13 +71,11 @@
       transform: rotate(-1deg);
       display: inline-block;
     }
-
     .nav-links {
       display: flex;
       gap: 1.75rem;
       list-style: none;
     }
-
     .nav-links a {
       font-family: var(--font-mono);
       font-size: 0.7rem;
@@ -90,25 +85,20 @@
       text-decoration: none;
       transition: color 0.15s ease;
     }
-
     .nav-links a:hover { color: var(--accent); }
 
-    /* ── HERO ── */
     .hero {
       max-width: 960px;
       margin: 0 auto;
       padding: 5rem 2rem 0;
     }
-
     .hero-grid {
       display: grid;
       grid-template-columns: 1.1fr 1fr;
       gap: 4rem;
       align-items: start;
     }
-
     .hero-left { position: relative; }
-
     .hero-tag {
       font-family: var(--font-mono);
       font-size: 1.1rem;
@@ -119,7 +109,6 @@
       margin-top: 0;
       margin-bottom: 0.75rem;
     }
-
     h1 {
       font-family: var(--font-hand);
       font-size: clamp(4.5rem, 10vw, 7.5rem);
@@ -129,7 +118,6 @@
       transform: rotate(-0.8deg);
       display: inline-block;
     }
-
     .h1-problems {
       font-family: var(--font-hand);
       font-size: clamp(2.5rem, 5vw, 3.8rem);
@@ -140,7 +128,6 @@
       margin-left: 0.75rem;
       transform: rotate(0.4deg);
     }
-
     .hero-byline {
       font-family: var(--font-mono);
       font-size: 0.7rem;
@@ -151,76 +138,20 @@
       border-top: 1px solid var(--rule);
       line-height: 1.9;
     }
-
     .hero-right { padding-top: 2rem; }
-
     .hero-statement {
       font-size: 1rem;
       line-height: 1.9;
       color: var(--ink);
     }
-
     .hero-statement p + p { margin-top: 1rem; }
     .hero-statement strong { font-weight: 700; }
 
-    .bracket-note {
-      font-family: var(--font-hand);
-      font-size: 1.05rem;
-      color: var(--accent);
-      margin-top: 1.5rem;
-      padding-left: 1rem;
-      border-left: 2.5px solid var(--accent);
-      font-style: italic;
-      transform: rotate(-0.3deg);
-      display: block;
-      line-height: 1.5;
-    }
-
-    .hero-cta {
-      margin-top: 2rem;
-      display: flex;
-      gap: 0.75rem;
-      flex-wrap: wrap;
-    }
-
-    .btn {
-      font-family: var(--font-mono);
-      font-size: 0.68rem;
-      letter-spacing: 0.1em;
-      text-transform: uppercase;
-      text-decoration: none;
-      padding: 0.55rem 1.1rem;
-      border: 1.5px solid var(--ink);
-      color: var(--ink);
-      background: transparent;
-      transition: background 0.2s ease, color 0.2s ease;
-      display: inline-block;
-    }
-
-    .btn:hover { background: var(--ink); color: var(--paper); }
-
-    .btn-accent {
-      border-color: var(--accent);
-      color: var(--accent);
-    }
-    .btn-accent:hover { background: var(--accent); color: var(--paper); }
-
-    /* ── DIVIDER ── */
-    .divider {
-      max-width: 960px;
-      margin: 0 auto;
-      padding: 0 2rem;
-      border: none;
-      border-top: 1px solid var(--rule);
-    }
-
-    /* ── SECTION ── */
     section {
       max-width: 960px;
       margin: 0 auto;
       padding: 3rem 2rem;
     }
-
     .section-label {
       font-family: var(--font-hand);
       font-size: 1.4rem;
@@ -231,35 +162,28 @@
       transform: rotate(-0.4deg);
     }
 
-    /* ── LIVE PROBLEMS GRID ── */
     .lp-grid {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-
       gap: 1rem;
     }
-
     .lp-card {
       background: var(--paper-card);
       border: 1.5px solid var(--ink);
       padding: 1.1rem;
       transition: transform 0.15s ease;
     }
-
-    /* book card spans full left column */
     .lp-card--book {
       display: flex;
       flex-direction: column;
       justify-content: space-between;
     }
-
     .lp-card:nth-child(2) { transform: rotate(-0.4deg); }
     .lp-card:nth-child(3) { transform: rotate(0.3deg); }
     .lp-card:nth-child(4) { transform: rotate(-0.3deg); }
     .lp-card:nth-child(5) { transform: rotate(0.4deg); }
     .lp-card:hover { transform: rotate(0deg) translateY(-2px); }
     .lp-card--book:hover { transform: translateY(-2px); }
-
     .lp-card-category {
       font-family: var(--font-mono);
       font-size: 0.6rem;
@@ -269,11 +193,6 @@
       margin-bottom: 0.4rem;
       display: block;
     }
-
-    .lp-card--book .lp-card-category {
-      color: var(--accent-light);
-    }
-
     .lp-card h3 {
       font-family: var(--font-hand);
       font-size: 1.15rem;
@@ -281,9 +200,6 @@
       line-height: 1.25;
       color: var(--ink);
     }
-
-
-
     .lp-card--book p {
       font-size: 0.85rem;
       color: var(--ink-light);
@@ -291,12 +207,10 @@
       margin-top: auto;
     }
 
-    /* ── IN THE WORK ── */
     .in-the-work {
       margin-top: 1.25rem;
       padding-top: 1.25rem;
     }
-
     .itw-label {
       font-family: var(--font-hand);
       font-size: 1.4rem;
@@ -306,32 +220,6 @@
       margin-bottom: 1.5rem;
       transform: rotate(-0.4deg);
     }
-
-    .itw-placeholder {
-      border: 1.5px dashed var(--rule);
-      padding: 3rem 2rem;
-      text-align: center;
-      background: var(--paper-card);
-    }
-
-    .itw-placeholder p {
-      font-family: var(--font-hand);
-      font-size: 1.1rem;
-      color: var(--ink-faint);
-      font-style: italic;
-    }
-
-    .itw-placeholder span {
-      font-family: var(--font-mono);
-      font-size: 0.6rem;
-      letter-spacing: 0.12em;
-      text-transform: uppercase;
-      color: var(--rule);
-      display: block;
-      margin-top: 0.5rem;
-    }
-
-    /* ── ITW QUOTE ── */
     .itw-quote {
       display: flex;
       align-items: stretch;
@@ -339,7 +227,6 @@
       border: 1.5px solid var(--ink);
       overflow: hidden;
     }
-
     .itw-spine {
       flex-shrink: 0;
       width: 48px;
@@ -348,7 +235,6 @@
       align-items: center;
       justify-content: center;
     }
-
     .itw-spine span {
       font-family: var(--font-hand);
       font-size: 0.8rem;
@@ -359,7 +245,6 @@
       letter-spacing: 0.06em;
       text-align: center;
     }
-
     .itw-quote-text {
       flex: 1;
       padding: 2rem 1.75rem;
@@ -367,7 +252,6 @@
       flex-direction: column;
       justify-content: center;
     }
-
     .itw-quote blockquote {
       font-family: var(--font-hand);
       font-size: 1.75rem;
@@ -376,7 +260,6 @@
       color: var(--ink);
       margin-bottom: 1rem;
     }
-
     .itw-quote cite {
       font-family: var(--font-mono);
       font-size: 0.65rem;
@@ -386,14 +269,12 @@
       display: block;
     }
 
-    /* ── FOOTER ── */
     footer {
       border-top: 1.5px solid var(--ink);
       padding: 1.5rem 2rem;
       text-align: center;
       margin-top: 2rem;
     }
-
     footer p {
       font-family: var(--font-mono);
       font-size: 0.63rem;
@@ -401,19 +282,16 @@
       color: var(--ink-faint);
     }
 
-    /* ── ANIMATION ── */
     .fade-in {
       opacity: 0;
       transform: translateY(12px);
       animation: fadeUp 0.6s ease forwards;
     }
     .fade-in:nth-child(2) { animation-delay: 0.12s; }
-
     @keyframes fadeUp {
       to { opacity: 1; transform: translateY(0); }
     }
 
-    /* ── RESPONSIVE ── */
     @media (max-width: 700px) {
       .hero-grid { grid-template-columns: 1fr; gap: 2rem; }
       .lp-grid { grid-template-columns: 1fr 1fr; }
@@ -421,7 +299,6 @@
       .nav-links a { font-size: 0.62rem; }
       .nav-wordmark { font-size: 1.1rem; }
     }
-
     @media (max-width: 480px) {
       .lp-grid { grid-template-columns: 1fr; }
       .lp-card--book { grid-column: 1; }
@@ -470,15 +347,10 @@
               This portfolio gathers practices of making, teaching, designing, and writing. They do not belong to a single discipline. They are ongoing.
             </p>
           </div>
-          <div class="hero-cta">
-            <a href="making.html" class="btn">See the work</a>
-            <a href="cv.html" class="btn btn-accent">Download CV</a>
-          </div>
         </div>
 
       </div>
     </div>
-
 
     <section>
       <span class="section-label">live problems</span>
@@ -498,7 +370,6 @@
         <div class="lp-card">
           <span class="lp-card-category">making · ongoing</span>
           <h3>Soundscape Classifier</h3>
-          <!-- add GitHub link here: <a href="YOUR_GITHUB_URL">GitHub</a> -->
         </div>
 
       </div>
@@ -521,7 +392,7 @@
   </main>
 
   <footer>
-    <p>Katheryn Wright &nbsp;·&nbsp; Digital Humanities and Pedagogy &nbsp;·&nbsp; Posthumanist Philosophy &nbsp;·&nbsp; Experiential Learning</p>
+    <p>Katheryn Wright &nbsp;·&nbsp; Digital Humanities and Pedagogy &nbsp;·&nbsp; Posthumanist Philosophy &nbsp;·&nbsp; Community-based and Global Learning</p>
   </footer>
 
 </body>
