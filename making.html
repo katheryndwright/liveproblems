@@ -121,12 +121,13 @@
     /* ── IMAGE STRIP ── */
     .card-image-strip {
       overflow: hidden;
-      background: var(--paper);
+      background: var(--paper-card);
       border-bottom: 1px solid var(--rule);
-      display: inline-flex;
+      display: flex;
       align-items: center;
       padding: 0.75rem 0;
       width: 100%;
+      min-height: 230px;
     }
 
     .strip-img {
@@ -286,11 +287,13 @@
     <div class="carousel-track no-transition" id="carousel-track">
 
       <!-- CARD 1: Soundscape Classifier -->
-      <div class="project-card" data-real="0">
+      <div class="project-card" data-imgs="3" data-real="0">
         <div class="card-image-strip">
           <div class="strip-img"><img src="images/mic-soundscape-KW.jpg" alt="Field recording" /></div>
-          <div class="strip-img"><img src="images/sound-classifier-crop.png" alt="GitHub" /></div>
-          <div class="strip-img"><img src="images/sonic-data-campus.jpg" alt="Boom mic" /></div>
+          <div class="strip-img"><img src="images/soundscape-recorder.jpg" alt="Wildlife Acoustics recorder on tree" /></div>
+          <div class="strip-img"><img src="images/soundscape-classifier-github.png" alt="GitHub" /></div>
+          <div class="strip-img"><img src="images/sound-classifier-crop.png" alt="Classifier data" /></div>
+          <div class="strip-img"><img src="images/sonic-data-campus.jpg" alt="Boom mic on campus" /></div>
         </div>
         <div class="card-content">
           <span class="card-label">data · place-based</span>
@@ -301,7 +304,7 @@
       </div>
 
       <!-- CARD 2: Algorithmic Sidewalk -->
-      <div class="project-card" data-real="1">
+      <div class="project-card" data-imgs="7" data-real="1">
         <div class="card-image-strip">
           <div class="strip-img"><img src="images/sidewalk-surveillance-sign.webp" alt="Surveillance sign" /></div>
           <div class="strip-img"><img src="images/sidewalk-graffiti.webp" alt="Infrastructure" /></div>
@@ -319,7 +322,7 @@
       </div>
 
       <!-- CARD 3: Street Printing Kits -->
-      <div class="project-card" data-real="2">
+      <div class="project-card" data-imgs="7" data-real="2">
         <div class="card-image-strip">
           <div class="strip-img"><img src="images/mud-print-aiken.jpg" alt="Mud print" /></div>
           <div class="strip-img"><img src="images/street-print-demo.jpg" alt="Street print demo" /></div>
@@ -337,11 +340,13 @@
       </div>
 
       <!-- CARD 4: CH3F -->
-      <div class="project-card" data-real="3">
+      <div class="project-card" data-imgs="3" data-real="3">
         <div class="card-image-strip">
           <div class="strip-img"><img src="images/meat-cart-2.jpg" alt="Cart in use" /></div>
           <div class="strip-img"><img src="images/fake-meat-lab.jpg" alt="Cooking" /></div>
           <div class="strip-img"><img src="images/meat-comparison-lab.jpg" alt="Setup" /></div>
+          <div class="strip-img"><img src="images/cart-food-lab.jpg" alt="Students at cart" /></div>
+          <div class="strip-img"><img src="images/cart-ingredients.jpg" alt="Ingredients" /></div>
         </div>
         <div class="card-content">
           <span class="card-label">instructional-artifact · food · embodied</span>
@@ -351,11 +356,15 @@
       </div>
 
       <!-- CARD 5: Working with Ruins -->
-      <div class="project-card" data-real="4">
+      <div class="project-card" data-imgs="3" data-real="4">
         <div class="card-image-strip">
           <div class="strip-img"><img src="images/ruins-folder-cover.jpg" alt="Folder cover" /></div>
           <div class="strip-img"><img src="images/ruins-folder-open.jpg" alt="Folder open" /></div>
           <div class="strip-img"><img src="images/ruins-questions-card.jpg" alt="Questions card" /></div>
+          <div class="strip-img"><img src="images/ruins-loneliness-card.jpg" alt="The loneliness epidemic card" /></div>
+          <div class="strip-img"><img src="images/ruins-cards-interlocked.jpg" alt="Cards interlocked" /></div>
+          <div class="strip-img"><img src="images/ruins-cards-cutting.jpg" alt="Cutting cards" /></div>
+          <div class="strip-img"><img src="images/ruins-cards-structure.jpg" alt="Provisional structure" /></div>
         </div>
         <div class="card-content">
           <span class="card-label">game · place-based</span>
@@ -365,7 +374,7 @@
       </div>
 
       <!-- CARD 6: Bodies -->
-      <div class="project-card" data-real="5">
+      <div class="project-card" data-imgs="3" data-real="5">
         <div class="card-image-strip">
           <div class="strip-img"><img src="images/bodies-companion-title.png" alt="Title" /></div>
           <div class="strip-img"><img src="images/bodies-companion-toc.png" alt="Contents" /></div>
@@ -383,6 +392,9 @@
       <div class="project-card" data-real="6">
         <div class="card-image-strip">
           <div class="strip-img"><img src="images/flight-routes-still.jpg" alt="Flight Routes map" /></div>
+          <div class="strip-img"><img src="images/flight-pansies.jpg" alt="Pansies and stones" /></div>
+          <div class="strip-img"><img src="images/flight-map.jpg" alt="Full map view" /></div>
+          <div class="strip-img"><img src="images/flight-porch.jpg" alt="View from porch" /></div>
           <div class="strip-img"><img src="images/flight-routes-feather.jpg" alt="Feather on stick" /></div>
           <div class="strip-img"><img src="images/flight-routes-rocks.jpg" alt="Balanced stones" /></div>
         </div>
