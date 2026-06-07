@@ -7,144 +7,50 @@
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Caveat:wght@400;600;700&family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet" />
-
   <style>
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-
     :root {
-      --ink: #141414;
-      --ink-light: #444444;
-      --ink-faint: #888888;
-      --paper: #f2f0eb;
-      --paper-card: #fafaf7;
-      --accent: #5c3d8f;
-      --accent-light: #8b6ab5;
-      --rule: #cccccc;
+      --ink: #141414; --ink-light: #444444; --ink-faint: #888888;
+      --paper: #f2f0eb; --paper-card: #fafaf7;
+      --accent: #5c3d8f; --accent-light: #8b6ab5; --rule: #cccccc;
       --font-hand: 'Caveat', cursive;
       --font-body: 'Libre Baskerville', Georgia, serif;
       --font-mono: 'DM Mono', monospace;
     }
-
     html { scroll-behavior: smooth; }
-
     body {
-      background-color: var(--paper);
-      color: var(--ink);
-      font-family: var(--font-body);
-      font-size: 16px;
-      line-height: 1.75;
-      min-height: 100vh;
+      background-color: var(--paper); color: var(--ink);
+      font-family: var(--font-body); font-size: 16px; line-height: 1.75; min-height: 100vh;
       background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='300' height='300'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.75' numOctaves='4' stitchTiles='stitch'/%3E%3CfeColorMatrix type='saturate' values='0'/%3E%3C/filter%3E%3Crect width='300' height='300' filter='url(%23n)' opacity='0.03'/%3E%3C/svg%3E");
     }
-
-    nav {
-      position: sticky; top: 0; z-index: 100;
-      background: var(--paper);
-      border-bottom: 1.5px solid var(--ink);
-      padding: 0 2rem;
-    }
-    .nav-inner {
-      max-width: 960px; margin: 0 auto;
-      display: flex; align-items: center; justify-content: space-between;
-      height: 52px;
-    }
-    .nav-wordmark {
-      font-family: var(--font-hand); font-size: 1.5rem; font-weight: 600;
-      color: var(--ink); text-decoration: none;
-      transform: rotate(-1deg); display: inline-block;
-    }
+    nav { position: sticky; top: 0; z-index: 100; background: var(--paper); border-bottom: 1.5px solid var(--ink); padding: 0 2rem; }
+    .nav-inner { max-width: 960px; margin: 0 auto; display: flex; align-items: center; justify-content: space-between; height: 52px; }
+    .nav-wordmark { font-family: var(--font-hand); font-size: 1.5rem; font-weight: 600; color: var(--ink); text-decoration: none; transform: rotate(-1deg); display: inline-block; }
     .nav-links { display: flex; gap: 1.75rem; list-style: none; }
-    .nav-links a {
-      font-family: var(--font-mono); font-size: 0.7rem;
-      letter-spacing: 0.1em; text-transform: uppercase;
-      color: var(--ink-light); text-decoration: none;
-      transition: color 0.15s ease;
-    }
+    .nav-links a { font-family: var(--font-mono); font-size: 0.7rem; letter-spacing: 0.1em; text-transform: uppercase; color: var(--ink-light); text-decoration: none; transition: color 0.15s ease; }
     .nav-links a:hover { color: var(--accent); }
-
-    .page-header {
-      max-width: 960px; margin: 0 auto;
-      padding: 4rem 2rem 2rem;
-    }
-    .page-header h1 {
-      font-family: var(--font-hand);
-      font-size: clamp(3rem, 7vw, 5rem);
-      font-weight: 700; line-height: 0.95;
-      color: var(--ink); transform: rotate(-0.5deg); display: inline-block;
-    }
-    .page-header p {
-      font-family: var(--font-mono); font-size: 0.75rem;
-      letter-spacing: 0.06em; color: var(--ink-faint);
-      margin-top: 1rem; line-height: 1.8;
-    }
-
-    .archive-main {
-      max-width: 960px; margin: 0 auto; padding: 3rem 2rem 4rem;
-    }
-
+    .page-header { max-width: 960px; margin: 0 auto; padding: 4rem 2rem 2rem; }
+    .page-header h1 { font-family: var(--font-hand); font-size: clamp(3rem, 7vw, 5rem); font-weight: 700; line-height: 0.95; color: var(--ink); transform: rotate(-0.5deg); display: inline-block; }
+    .page-header p { font-family: var(--font-mono); font-size: 0.75rem; letter-spacing: 0.06em; color: var(--ink-faint); margin-top: 1rem; line-height: 1.8; }
+    .archive-main { max-width: 960px; margin: 0 auto; padding: 3rem 2rem 4rem; }
     .cluster { margin-bottom: 3rem; }
-
-    .cluster-label {
-      font-family: var(--font-hand); font-size: 1.2rem; font-weight: 600;
-      color: var(--ink); display: block; transform: rotate(-0.3deg);
-      margin-bottom: 1.25rem; padding-bottom: 0.5rem;
-      border-bottom: 1px solid var(--rule);
-    }
-
-    .entry-plain {
-      display: flex;
-      gap: 1.25rem;
-      align-items: start;
-      padding: 0.85rem 0;
-      border-bottom: 1px solid var(--rule);
-    }
+    .cluster-label { font-family: var(--font-hand); font-size: 1.2rem; font-weight: 600; color: var(--ink); display: block; transform: rotate(-0.3deg); margin-bottom: 1.25rem; padding-bottom: 0.5rem; border-bottom: 1px solid var(--rule); }
+    .entry-plain { display: flex; gap: 1.25rem; align-items: start; padding: 0.85rem 0; border-bottom: 1px solid var(--rule); }
     .entry-plain:last-child { border-bottom: none; }
-
     .entry-plain-content { flex: 1; }
-
-    .entry-plain-title {
-      font-family: var(--font-body);
-      font-size: 0.95rem;
-      font-weight: 700;
-      color: var(--ink);
-      line-height: 1.4;
-    }
-    .entry-plain-title a {
-      color: inherit; text-decoration: none;
-    }
+    .entry-plain-title { font-family: var(--font-body); font-size: 0.95rem; font-weight: 700; color: var(--ink); line-height: 1.4; }
+    .entry-plain-title a { color: inherit; text-decoration: none; }
     .entry-plain-title a:hover { color: var(--accent); }
-
-    .entry-plain-meta {
-      font-family: var(--font-mono); font-size: 0.6rem;
-      letter-spacing: 0.06em; color: var(--ink-faint);
-      display: block; margin-top: 0.2rem;
-    }
-
-    .entry-plain-desc {
-      font-size: 0.85rem; color: var(--ink-light);
-      line-height: 1.75; margin-top: 0.4rem;
-    }
-
-    footer {
-      border-top: 1.5px solid var(--ink);
-      padding: 1.5rem 2rem; text-align: center;
-    }
-    footer p {
-      font-family: var(--font-mono); font-size: 0.63rem;
-      letter-spacing: 0.1em; color: var(--ink-faint);
-    }
+    .entry-plain-meta { font-family: var(--font-mono); font-size: 0.6rem; letter-spacing: 0.06em; color: var(--ink-faint); display: block; margin-top: 0.2rem; }
+    .entry-plain-desc { font-size: 0.85rem; color: var(--ink-light); line-height: 1.75; margin-top: 0.4rem; }
+    footer { border-top: 1.5px solid var(--ink); padding: 1.5rem 2rem; text-align: center; }
+    footer p { font-family: var(--font-mono); font-size: 0.63rem; letter-spacing: 0.1em; color: var(--ink-faint); }
     footer a { color: var(--ink-faint); text-decoration: none; transition: color 0.15s; }
     footer a:hover { color: var(--accent); }
-
-    @media (max-width: 640px) {
-      .nav-links { gap: 1rem; }
-      .nav-links a { font-size: 0.62rem; }
-      .nav-wordmark { font-size: 1.1rem; }
-    }
+    @media (max-width: 640px) { .nav-links { gap: 1rem; } .nav-links a { font-size: 0.62rem; } .nav-wordmark { font-size: 1.1rem; } }
   </style>
 </head>
 <body>
-
 <nav>
   <div class="nav-inner">
     <a href="index.html" class="nav-wordmark">Live Problems</a>
@@ -157,15 +63,12 @@
     </ul>
   </div>
 </nav>
-
 <main>
   <div class="page-header">
     <h1>Digital Humanities and Pedagogy</h1>
-    <p>Workshops, talks, syllabi, and archives. A record of work.</p>
+    <p>A repository of work.</p>
   </div>
-
   <div class="archive-main">
-
     <div class="cluster">
       <span class="cluster-label">talks</span>
 
@@ -203,22 +106,6 @@
 
       <div class="entry-plain">
         <div class="entry-plain-content">
-          <p class="entry-plain-title">Notes Toward a Speculative Education</p>
-          <span class="entry-plain-meta">Mellon Cultural Studies Lecture Series, Johnson C. Smith University · 2022</span>
-          <p class="entry-plain-desc">An early public articulation of the ideas that became <em>Speculative Education</em>. Explored what it looks like to design education for conditions of uncertainty, drawing on posthumanist theory and making practice.</p>
-        </div>
-      </div>
-
-      <div class="entry-plain">
-        <div class="entry-plain-content">
-          <p class="entry-plain-title">Walk Like a Posthuman</p>
-          <span class="entry-plain-meta">Generator Makerspace / UVM Complex Systems Center · 2019</span>
-          <p class="entry-plain-desc">A talk on posthumanism as a walking practice and a making practice. Used fieldwork and place-based pedagogy to argue that posthuman theory is most useful when it gets you outside and into friction with the world.</p>
-        </div>
-      </div>
-
-      <div class="entry-plain">
-        <div class="entry-plain-content">
           <p class="entry-plain-title">Where Are We Now?</p>
           <span class="entry-plain-meta">Johnson C. Smith University Faculty Summer Institute · 2016</span>
           <p class="entry-plain-desc">Panelist on a conversation about technology, pedagogy, and the state of digital humanities in higher education.</p>
@@ -236,10 +123,8 @@
     </div>
   </div>
 </main>
-
 <footer>
   <p><a href="about.html">Katheryn Wright, PhD</a> &nbsp;·&nbsp; <a href="dh-pedagogy.html">Digital Humanities and Pedagogy</a> &nbsp;·&nbsp; <a href="posthumanist-philosophy.html">Posthumanist Philosophy</a> &nbsp;·&nbsp; <a href="community-global.html">Community-based and Global Learning</a></p>
 </footer>
-
 </body>
 </html>
