@@ -73,6 +73,20 @@
       align-items: start;
     }
 
+    .bio-photo {
+      width: 260px;
+      overflow: hidden;
+      margin-bottom: 2rem;
+      transform: rotate(-1.2deg);
+      transform-origin: bottom left;
+      border: 1.5px solid var(--ink);
+    }
+    .bio-photo img {
+      width: 100%;
+      display: block;
+      filter: grayscale(10%);
+    }
+
     /* ── BIO ── */
     .bio h1 {
       font-family: var(--font-hand);
@@ -203,6 +217,9 @@
   <div class="about-wrap">
 
     <div class="bio">
+      <div class="bio-photo">
+        <img src="images/KW-headshot.JPG" alt="Katheryn Wright" />
+      </div>
       <h1>Katheryn Wright</h1>
       <div class="bio-text">
         <p>I make things. I work with students to make things. I love building infrastructure, from mobile making kits to theoretical frameworks that other people can actually use. The thread running through all of it is the place where theory becomes something you can hold, walk through, play with, or render.</p>
