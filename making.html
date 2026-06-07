@@ -729,6 +729,23 @@ function stopReel(card) {
 // ─────────────────────────────────────────────
 cloneOuterCards();
 
+// Check for deep-link URL parameter e.g. making.html?project=algorithmic-sidewalk
+const projectSlugs = [
+  'soundscape-classifier',
+  'algorithmic-sidewalk',
+  'street-printing-kits',
+  'mobile-kitchen',
+  'working-with-ruins',
+  'bodies-companion',
+  'flight-routes'
+];
+const urlParams = new URLSearchParams(window.location.search);
+const projectParam = urlParams.get('project');
+if (projectParam) {
+  const idx = projectSlugs.indexOf(projectParam);
+  if (idx !== -1) current = idx;
+}
+
 // Pre-init reels on all real cards so images start loading
 document.querySelectorAll('.project-card[data-real]').forEach(initReel);
 

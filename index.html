@@ -220,7 +220,7 @@
       margin-bottom: 1.5rem;
       transform: rotate(-0.4deg);
     }
-    .itw-quote {
+    .itw-quote:hover { border-color: var(--accent); transition: border-color 0.15s; }
       display: flex;
       align-items: stretch;
       background: var(--paper-card);
@@ -359,17 +359,17 @@
 
       <div class="lp-grid">
 
-        <div class="lp-card lp-card--book">
+        <div class="lp-card lp-card--book" onclick="window.location='writing.html'" style="cursor:pointer;">
           <span class="lp-card-category">writing · ongoing</span>
           <h3>Speculative Education: Making Knowledge from the Ruins</h3>
         </div>
 
-        <div class="lp-card">
+        <div class="lp-card" onclick="window.location='making.html?project=algorithmic-sidewalk'" style="cursor:pointer;">
           <span class="lp-card-category">making · ongoing</span>
           <h3>Algorithmic Sidewalk</h3>
         </div>
 
-        <div class="lp-card">
+        <div class="lp-card" onclick="window.location='making.html?project=soundscape-classifier'" style="cursor:pointer;">
           <span class="lp-card-category">making · ongoing</span>
           <h3>Soundscape Classifier</h3>
         </div>
@@ -378,7 +378,7 @@
 
       <div class="in-the-work">
         <span class="itw-label">in the work</span>
-        <div class="itw-quote">
+        <div class="itw-quote" onclick="window.location='writing.html'" style="cursor:pointer;">
           <div class="itw-spine">
             <span>Speculative Education</span>
           </div>
