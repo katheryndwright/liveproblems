@@ -62,15 +62,10 @@
     }
     .nav-links a:hover, .nav-links a.active { color: var(--accent); }
 
-    /* ── MAIN LAYOUT ── */
     .about-wrap {
-      max-width: 960px;
+      max-width: 620px;
       margin: 0 auto;
       padding: 5rem 2rem 4rem;
-      display: grid;
-      grid-template-columns: 2fr 1fr;
-      gap: 5rem;
-      align-items: start;
     }
 
     .bio-photo {
@@ -87,7 +82,6 @@
       filter: grayscale(10%);
     }
 
-    /* ── BIO ── */
     .bio h1 {
       font-family: var(--font-hand);
       font-size: clamp(3rem, 7vw, 5rem);
@@ -104,69 +98,8 @@
       color: var(--ink);
       margin-bottom: 1.25rem;
     }
-
     .bio-text p:last-child { margin-bottom: 0; }
-
-    .bio-text em {
-      font-style: italic;
-    }
-
-    /* ── SIDEBAR ── */
-    .sidebar {
-      padding-top: 0.5rem;
-    }
-
-    .sidebar-section {
-      margin-bottom: 2.5rem;
-    }
-
-    .sidebar-label {
-      font-family: var(--font-mono);
-      font-size: 0.6rem;
-      letter-spacing: 0.12em;
-      text-transform: uppercase;
-      color: var(--accent-light);
-      display: block;
-      margin-bottom: 1rem;
-    }
-
-    .sidebar-section ul {
-      list-style: none;
-    }
-
-    .sidebar-section li {
-      font-size: 0.82rem;
-      line-height: 1.7;
-      color: var(--ink-light);
-      padding: 0.5rem 0;
-      border-bottom: 1px solid var(--rule);
-    }
-
-    .sidebar-section li:last-child {
-      border-bottom: none;
-    }
-
-    .sidebar-section li span {
-      font-family: var(--font-mono);
-      font-size: 0.6rem;
-      letter-spacing: 0.06em;
-      color: var(--ink-faint);
-      display: block;
-      margin-top: 0.15rem;
-    }
-
-    .cv-link {
-      display: inline-block;
-      margin-top: 0.5rem;
-      font-family: var(--font-mono);
-      font-size: 0.62rem;
-      letter-spacing: 0.08em;
-      text-transform: uppercase;
-      color: var(--accent);
-      text-decoration: none;
-      transition: color 0.15s;
-    }
-    .cv-link:hover { color: var(--accent-light); }
+    .bio-text em { font-style: italic; }
 
     footer {
       border-top: 1.5px solid var(--ink);
@@ -186,12 +119,7 @@
     }
     footer a:hover { color: var(--accent); }
 
-    @media (max-width: 700px) {
-      .about-wrap {
-        grid-template-columns: 1fr;
-        gap: 3rem;
-        padding: 3rem 2rem 3rem;
-      }
+    @media (max-width: 640px) {
       .nav-links { gap: 1rem; }
       .nav-links a { font-size: 0.62rem; }
       .nav-wordmark { font-size: 1.1rem; }
@@ -215,7 +143,6 @@
 
 <main>
   <div class="about-wrap">
-
     <div class="bio">
       <div class="bio-photo">
         <img src="images/KW-headshot.JPG" alt="Katheryn Wright" />
@@ -229,46 +156,6 @@
         <p>I am a Full Professor of Digital Humanities and Roger H. Perry Endowed Chair for Innovation at Champlain College. I live in Colchester, Vermont with my husband and son.</p>
       </div>
     </div>
-
-    <div class="sidebar">
-
-      <div class="sidebar-section">
-        <span class="sidebar-label">Selected Talks</span>
-        <ul>
-          <li>
-            Cyborgs, Culture and AI Literacy
-            <span>ExplAInED, Amazon Music · 2025</span>
-          </li>
-          <li>
-            Me, You, and AI
-            <span>Lamoille Valley OLLI · 2025</span>
-          </li>
-          <li>
-            Building Interdisciplinarity
-            <span>Purdue University Northwest · 2024</span>
-          </li>
-          <li>
-            AI: Our Newest Digital Companion
-            <span>Vermont Humanities Council · 2024</span>
-          </li>
-          <li>
-            Notes Toward a Speculative Education
-            <span>Johnson C. Smith University · 2022</span>
-          </li>
-          <li>
-            Walk Like a Posthuman
-            <span>Generator Makerspace / UVM · 2019</span>
-          </li>
-        </ul>
-      </div>
-
-      <div class="sidebar-section">
-        <span class="sidebar-label">CV</span>
-        <a href="cv.pdf" download class="cv-link">Download full CV →</a>
-      </div>
-
-    </div>
-
   </div>
 </main>
 
