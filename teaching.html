@@ -85,67 +85,62 @@
 
     /* ── IMAGE STRIP ── */
     .image-strip {
-      overflow: hidden;
       position: relative;
-      height: 240px;
+      overflow: hidden;
       background: var(--paper);
+      height: 240px;
+      cursor: grab;
+      user-select: none;
+      padding: 1rem 0;
     }
+    .image-strip.dragging { cursor: grabbing; }
 
     .strip-track {
       display: flex;
-      gap: 0;
-      animation: scroll-strip 40s linear infinite;
-      width: max-content;
       align-items: center;
+      height: 100%;
+      will-change: transform;
     }
-
-    .strip-track:hover { animation-play-state: paused; }
-
-    @keyframes scroll-strip {
-      0%   { transform: translateX(0); }
-      100% { transform: translateX(-50%); }
-    }
+    .strip-track.no-transition { transition: none !important; }
 
     .strip-image {
-      height: 220px;
-      width: auto;
       flex-shrink: 0;
-      overflow: hidden;
-      margin: 0;
+      height: calc(240px - 1.8rem);
+      overflow: visible;
       position: relative;
     }
-
     .strip-image img {
-      height: 260px;
+      height: 100%;
       width: auto;
       display: block;
       object-fit: cover;
-      filter: grayscale(20%);
-      transition: filter 0.3s ease;
+      filter: grayscale(15%);
+      pointer-events: none;
     }
-
-    .strip-track:hover .strip-image img { filter: grayscale(0%); }
-
-    .strip-image:nth-child( 1) { transform: rotate(-1.4deg); }
-    .strip-image:nth-child( 2) { transform: rotate(-0.9deg); }
-    .strip-image:nth-child( 3) { transform: rotate(1.5deg); }
-    .strip-image:nth-child( 4) { transform: rotate(-1.7deg); }
-    .strip-image:nth-child( 5) { transform: rotate(-1.1deg); }
-    .strip-image:nth-child( 6) { transform: rotate(0.9deg); }
-    .strip-image:nth-child( 7) { transform: rotate(-0.6deg); }
-    .strip-image:nth-child( 8) { transform: rotate(1.4deg); }
-    .strip-image:nth-child( 9) { transform: rotate(0.9deg); }
-    .strip-image:nth-child(10) { transform: rotate(-1.6deg); }
-    .strip-image:nth-child(11) { transform: rotate(1.6deg); }
-    .strip-image:nth-child(12) { transform: rotate(-1.0deg); }
-    .strip-image:nth-child(13) { transform: rotate(-1.7deg); }
-    .strip-image:nth-child(14) { transform: rotate(-0.7deg); }
-    .strip-image:nth-child(15) { transform: rotate(1.6deg); }
-    .strip-image:nth-child(16) { transform: rotate(1.6deg); }
-    .strip-image:nth-child(17) { transform: rotate(1.2deg); }
-    .strip-image:nth-child(18) { transform: rotate(1.1deg); }
-    .strip-image:nth-child(19) { transform: rotate(1.6deg); }
-    .strip-image:nth-child(20) { transform: rotate(1.6deg); }
+    .strip-image:nth-child(1)  { transform: rotate(-1.8deg) translateY(4px);  transform-origin: bottom left;  }
+    .strip-image:nth-child(2)  { transform: rotate(1.2deg)  translateY(-6px); transform-origin: top right;    }
+    .strip-image:nth-child(3)  { transform: rotate(-2.1deg) translateY(8px);  transform-origin: bottom right; }
+    .strip-image:nth-child(4)  { transform: rotate(0.9deg)  translateY(-3px); transform-origin: top left;     }
+    .strip-image:nth-child(5)  { transform: rotate(-1.4deg) translateY(5px);  transform-origin: bottom left;  }
+    .strip-image:nth-child(6)  { transform: rotate(1.7deg)  translateY(-7px); transform-origin: top right;    }
+    .strip-image:nth-child(7)  { transform: rotate(-0.8deg) translateY(3px);  transform-origin: bottom right; }
+    .strip-image:nth-child(8)  { transform: rotate(1.5deg)  translateY(-5px); transform-origin: top left;     }
+    .strip-image:nth-child(9)  { transform: rotate(-1.9deg) translateY(7px);  transform-origin: bottom left;  }
+    .strip-image:nth-child(10) { transform: rotate(0.7deg)  translateY(-4px); transform-origin: top right;    }
+    .strip-image:nth-child(11) { transform: rotate(-1.3deg) translateY(6px);  transform-origin: bottom right; }
+    .strip-image:nth-child(12) { transform: rotate(1.1deg)  translateY(-8px); transform-origin: top left;     }
+    .strip-image:nth-child(13) { transform: rotate(-1.6deg) translateY(4px);  transform-origin: bottom left;  }
+    .strip-image:nth-child(14) { transform: rotate(0.9deg)  translateY(-5px); transform-origin: top right;    }
+    .strip-image:nth-child(15) { transform: rotate(-1.8deg) translateY(4px);  transform-origin: bottom left;  }
+    .strip-image:nth-child(16) { transform: rotate(1.2deg)  translateY(-6px); transform-origin: top right;    }
+    .strip-image:nth-child(17) { transform: rotate(-2.1deg) translateY(8px);  transform-origin: bottom right; }
+    .strip-image:nth-child(18) { transform: rotate(0.9deg)  translateY(-3px); transform-origin: top left;     }
+    .strip-image:nth-child(19) { transform: rotate(-1.4deg) translateY(5px);  transform-origin: bottom left;  }
+    .strip-image:nth-child(20) { transform: rotate(1.7deg)  translateY(-7px); transform-origin: top right;    }
+    .strip-image:nth-child(21) { transform: rotate(-0.8deg) translateY(3px);  transform-origin: bottom right; }
+    .strip-image:nth-child(22) { transform: rotate(1.5deg)  translateY(-5px); transform-origin: top left;     }
+    .strip-image:nth-child(23) { transform: rotate(-1.9deg) translateY(7px);  transform-origin: bottom left;  }
+    .strip-image:nth-child(24) { transform: rotate(0.7deg)  translateY(-4px); transform-origin: top right;    }
 
     /* ── MAIN CONTENT ── */
     .teaching-main {
@@ -322,7 +317,7 @@
 
     <!-- IMAGE STRIP -->
     <div class="image-strip">
-      <div class="strip-track">
+      <div class="strip-track no-transition" id="teaching-strip">
         <!-- First set -->
         <div class="strip-image"><img src="images/campus-print-technique.jpg" alt="Printmaking in Public" /></div>
         <div class="strip-image"><img src="images/garden-forking-paths.jpg" alt="Making ARGs" /></div>
@@ -338,12 +333,16 @@
         <div class="strip-image"><img src="images/drift-map-place-identity.jpg" alt="Drift map" /></div>
         <div class="strip-image"><img src="images/red-rocks-collaborative-map.JPG" alt="Red Rocks collaborative map" /></div>
         <div class="strip-image"><img src="images/posthuman-board.jpg" alt="Posthuman board" /></div>
-        <div class="strip-image"><img src="images/enterprise.JPG" alt="Enterprise" /></div>
         <div class="strip-image"><img src="images/rock-creatures.jpg" alt="Rock creatures ARG" /></div>
         <div class="strip-image"><img src="images/emma-dannenberg-senior-capstone.png" alt="Emma Dannenberg senior capstone" /></div>
         <div class="strip-image"><img src="images/button-making.jpg" alt="Button making" /></div>
-        <div class="strip-image"><img src="images/haraway-cats-cradle.jpg" alt="Haraway cats cradle" /></div>
+        <div class="strip-image"><img src="images/haraway-cats-cradle.jpg" style="object-position: center bottom;" alt="Haraway cats cradle" /></div>
         <div class="strip-image"><img src="images/media-data.jpg" alt="Media data" /></div>
+        <div class="strip-image"><img src="images/t-shirt.jpg" alt="T-shirt print" /></div>
+        <div class="strip-image"><img src="images/rock-print.jpg" alt="Rock print" /></div>
+        <div class="strip-image"><img src="images/pigs-arg.jpg" alt="Pigs ARG" /></div>
+        <div class="strip-image"><img src="images/meat-comparison-lab.jpg" alt="Meat comparison lab" /></div>
+        <div class="strip-image"><img src="images/gumbo-plant-arg.jpg" alt="Gumbo plant ARG" /></div>
         <!-- Duplicate for seamless loop -->
         <div class="strip-image"><img src="images/campus-print-technique.jpg" alt="Printmaking in Public" /></div>
         <div class="strip-image"><img src="images/garden-forking-paths.jpg" alt="Making ARGs" /></div>
@@ -359,12 +358,16 @@
         <div class="strip-image"><img src="images/drift-map-place-identity.jpg" alt="Drift map" /></div>
         <div class="strip-image"><img src="images/red-rocks-collaborative-map.JPG" alt="Red Rocks collaborative map" /></div>
         <div class="strip-image"><img src="images/posthuman-board.jpg" alt="Posthuman board" /></div>
-        <div class="strip-image"><img src="images/enterprise.JPG" alt="Enterprise" /></div>
         <div class="strip-image"><img src="images/rock-creatures.jpg" alt="Rock creatures ARG" /></div>
         <div class="strip-image"><img src="images/emma-dannenberg-senior-capstone.png" alt="Emma Dannenberg senior capstone" /></div>
         <div class="strip-image"><img src="images/button-making.jpg" alt="Button making" /></div>
-        <div class="strip-image"><img src="images/haraway-cats-cradle.jpg" alt="Haraway cats cradle" /></div>
+        <div class="strip-image"><img src="images/haraway-cats-cradle.jpg" style="object-position: center bottom;" alt="Haraway cats cradle" /></div>
         <div class="strip-image"><img src="images/media-data.jpg" alt="Media data" /></div>
+        <div class="strip-image"><img src="images/t-shirt.jpg" alt="T-shirt print" /></div>
+        <div class="strip-image"><img src="images/rock-print.jpg" alt="Rock print" /></div>
+        <div class="strip-image"><img src="images/pigs-arg.jpg" alt="Pigs ARG" /></div>
+        <div class="strip-image"><img src="images/meat-comparison-lab.jpg" alt="Meat comparison lab" /></div>
+        <div class="strip-image"><img src="images/gumbo-plant-arg.jpg" alt="Gumbo plant ARG" /></div>
       </div>
     </div>
 
@@ -424,10 +427,6 @@
           <li class="course-item" onclick="showCourse('globalcondition')">
             <span class="course-item-label"></span>
             <span class="course-item-title">The Global Condition <span class="course-tag">formerly Global Studies I: Technology and Development</span></span>
-          </li>
-          <li class="course-item" onclick="showCourse('travel')">
-            <span class="course-item-label">faculty-led travel courses</span>
-            <span class="course-item-title">England/Scotland · The Gambia</span>
           </li>
         </ul>
       </div>
@@ -493,6 +492,100 @@
 </footer>
 
   <script>
+  // ── TEACHING IMAGE REEL ──
+  (function() {
+    const strip = document.querySelector('.image-strip');
+    const reel  = document.getElementById('teaching-strip');
+    if (!strip || !reel) return;
+
+    const imgs = Array.from(reel.querySelectorAll('img'));
+    let state = null;
+
+    function setup() {
+      const origItems = Array.from(reel.querySelectorAll('.strip-image:not(.reel-clone)'));
+      if (!origItems.length) return;
+      let setWidth = 0;
+      origItems.forEach(el => { setWidth += el.offsetWidth; });
+      if (setWidth === 0) return;
+
+      reel.querySelectorAll('.reel-clone').forEach(el => el.remove());
+      const copies = Math.ceil((strip.offsetWidth * 3) / setWidth) + 1;
+      for (let c = 0; c < copies; c++) {
+        origItems.forEach(el => {
+          const clone = el.cloneNode(true);
+          clone.classList.add('reel-clone');
+          reel.appendChild(clone);
+        });
+      }
+
+      state = {
+        setWidth, offset: 0, autoSpeed: 0.4,
+        dragging: false, dragStartX: 0, dragStartOffset: 0,
+        raf: null, paused: false
+      };
+
+      function wrapOffset(x) {
+        const w = state.setWidth;
+        return ((x % w) - w) % w;
+      }
+
+      function onPointerDown(e) {
+        if (e.button !== 0 && e.type !== 'touchstart') return;
+        state.dragging = true; state.paused = true;
+        state.dragStartX = e.clientX ?? e.touches[0].clientX;
+        state.dragStartOffset = state.offset;
+        strip.classList.add('dragging');
+        cancelAnimationFrame(state.raf);
+        e.preventDefault();
+      }
+      function onPointerMove(e) {
+        if (!state.dragging) return;
+        const clientX = e.clientX ?? e.touches[0].clientX;
+        state.offset = wrapOffset(state.dragStartOffset + (clientX - state.dragStartX));
+        reel.classList.add('no-transition');
+        reel.style.transform = `translateX(${state.offset}px)`;
+      }
+      function onPointerUp() {
+        if (!state.dragging) return;
+        state.dragging = false;
+        strip.classList.remove('dragging');
+        setTimeout(() => { state.paused = false; tick(); }, 800);
+      }
+
+      strip.addEventListener('mousedown',  onPointerDown, { passive: false });
+      strip.addEventListener('touchstart', onPointerDown, { passive: false });
+      window.addEventListener('mousemove', onPointerMove);
+      window.addEventListener('touchmove', onPointerMove, { passive: false });
+      window.addEventListener('mouseup',   onPointerUp);
+      window.addEventListener('touchend',  onPointerUp);
+
+      function tick() {
+        if (!state.paused && !state.dragging) {
+          state.offset = ((state.offset - state.autoSpeed) % state.setWidth);
+          if (state.offset > 0) state.offset -= state.setWidth;
+          reel.classList.add('no-transition');
+          reel.style.transform = `translateX(${state.offset}px)`;
+        }
+        state.raf = requestAnimationFrame(tick);
+      }
+      tick();
+    }
+
+    let loaded = 0;
+    if (imgs.every(img => img.complete)) { setTimeout(setup, 50); }
+    else {
+      imgs.forEach(img => {
+        if (img.complete) { loaded++; if (loaded === imgs.length) setTimeout(setup, 50); return; }
+        img.addEventListener('load',  () => { loaded++; if (loaded === imgs.length) setTimeout(setup, 50); }, { once: true });
+        img.addEventListener('error', () => { loaded++; if (loaded === imgs.length) setTimeout(setup, 50); }, { once: true });
+      });
+    }
+
+    window.addEventListener('resize', () => {
+      if (state) { state = null; reel.querySelectorAll('.reel-clone').forEach(el => el.remove()); setTimeout(setup, 50); }
+    });
+  })();
+
     const courses = {
       printmaking: {
         label: 'field methods',
@@ -570,13 +663,6 @@
         image: 'images/globalization-chalkboard.JPG',
         desc: 'Is the world getting better? This course examines the idea of progress from theoretical, cultural, and marginalized perspectives, asking how progress has been defined, by whom, and by which standards. Students apply frameworks including hybridity, neoliberalism, and power geometry to contemporary global phenomena, including economic globalization, environmental change, violent conflict, and emerging technologies.',
         focus: ''
-      },
-      travel: {
-        label: 'faculty-led travel · co-chaperone',
-        title: 'Travel Courses',
-        image: 'images/harry-potter-letters.JPG',
-        desc: 'Two faculty-led travel courses, co-chaperoned alongside colleagues. The England and Scotland course followed students studying Heroines and Heroes through pop culture tourism, visiting Warner Bros. Studios. The Gambia course connected students with local community leaders, including a visit to Kunta Kinteh Island. Both courses asked students to layer media representation against lived encounter.',
-        focus: 'England/Scotland · The Gambia'
       },
       bodies: {
         label: 'general education · course coordinator',
