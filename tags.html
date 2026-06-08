@@ -1,0 +1,263 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Tagged Work — Katheryn Wright</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Caveat:wght@400;600;700&family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet" />
+
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    :root {
+      --ink: #141414; --ink-light: #444444; --ink-faint: #888888;
+      --paper: #f2f0eb; --paper-card: #fafaf7;
+      --accent: #5c3d8f; --accent-light: #8b6ab5; --rule: #cccccc;
+      --font-hand: 'Caveat', cursive;
+      --font-body: 'Libre Baskerville', Georgia, serif;
+      --font-mono: 'DM Mono', monospace;
+    }
+    html { scroll-behavior: smooth; }
+    body {
+      background-color: var(--paper); color: var(--ink);
+      font-family: var(--font-body); font-size: 16px; line-height: 1.75; min-height: 100vh;
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='300' height='300'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.75' numOctaves='4' stitchTiles='stitch'/%3E%3CfeColorMatrix type='saturate' values='0'/%3E%3C/filter%3E%3Crect width='300' height='300' filter='url(%23n)' opacity='0.03'/%3E%3C/svg%3E");
+    }
+
+    nav {
+      position: sticky; top: 0; z-index: 100;
+      background: var(--paper); border-bottom: 1.5px solid var(--ink); padding: 0 2rem;
+    }
+    .nav-inner {
+      max-width: 960px; margin: 0 auto;
+      display: flex; align-items: center; justify-content: space-between; height: 52px;
+    }
+    .nav-wordmark {
+      font-family: var(--font-hand); font-size: 1.5rem; font-weight: 600;
+      color: var(--ink); text-decoration: none; transform: rotate(-1deg); display: inline-block;
+    }
+    .nav-links { display: flex; gap: 1.75rem; list-style: none; }
+    .nav-links a {
+      font-family: var(--font-mono); font-size: 0.7rem; letter-spacing: 0.1em;
+      text-transform: uppercase; color: var(--ink-light); text-decoration: none; transition: color 0.15s;
+    }
+    .nav-links a:hover { color: var(--accent); }
+
+    .page-header {
+      max-width: 960px; margin: 0 auto; padding: 4rem 2rem 2rem;
+    }
+    .page-header h1 {
+      font-family: var(--font-hand); font-size: clamp(3rem, 7vw, 5rem);
+      font-weight: 700; line-height: 0.95; color: var(--ink);
+      transform: rotate(-0.5deg); display: inline-block;
+    }
+    .active-tag {
+      font-family: var(--font-hand); font-size: clamp(1.5rem, 4vw, 2.5rem);
+      color: var(--accent); display: block; margin-top: 0.5rem;
+      transform: rotate(0.3deg);
+    }
+
+    /* ── TAG CLOUD ── */
+    .tag-cloud {
+      max-width: 960px; margin: 0 auto; padding: 1.5rem 2rem;
+      display: flex; flex-wrap: wrap; gap: 0.5rem;
+    }
+    .tag-pill {
+      font-family: var(--font-mono); font-size: 0.62rem;
+      letter-spacing: 0.08em; text-transform: uppercase;
+      color: var(--ink-faint); border: 1px solid var(--rule);
+      padding: 0.25rem 0.6rem; text-decoration: none;
+      transition: color 0.15s, border-color 0.15s;
+    }
+    .tag-pill:hover { color: var(--accent-light); border-color: var(--accent-light); }
+    .tag-pill.active { color: var(--accent); border-color: var(--accent); }
+
+    /* ── RESULTS ── */
+    .results-main {
+      max-width: 960px; margin: 0 auto; padding: 2rem 2rem 4rem;
+    }
+    .results-count {
+      font-family: var(--font-mono); font-size: 0.65rem;
+      letter-spacing: 0.1em; color: var(--ink-faint);
+      margin-bottom: 2rem; display: block;
+    }
+
+    .result-entry {
+      display: flex; gap: 1.25rem; align-items: start;
+      padding: 1rem 0; border-bottom: 1px solid var(--rule);
+    }
+    .result-entry:last-child { border-bottom: none; }
+
+    .result-thumb {
+      flex-shrink: 0; width: 80px; height: 60px;
+      overflow: hidden; border: 1px solid var(--rule);
+    }
+    .result-thumb img {
+      width: 100%; height: 100%; object-fit: cover; display: block; filter: grayscale(15%);
+    }
+    .result-thumb-placeholder {
+      width: 80px; height: 60px;
+      background: var(--ink);
+      display: flex; align-items: center; justify-content: center;
+      flex-shrink: 0;
+    }
+    .result-thumb-placeholder span {
+      font-family: var(--font-hand); font-size: 0.6rem;
+      color: var(--paper); text-align: center; padding: 0.25rem;
+    }
+
+    .result-content { flex: 1; }
+
+    .result-page {
+      font-family: var(--font-mono); font-size: 0.58rem;
+      letter-spacing: 0.1em; text-transform: uppercase;
+      color: var(--accent-light); display: block; margin-bottom: 0.2rem;
+    }
+    .result-title {
+      font-family: var(--font-body); font-size: 0.95rem;
+      font-weight: 700; color: var(--ink); line-height: 1.4;
+      text-decoration: none; display: block; margin-bottom: 0.3rem;
+    }
+    .result-title:hover { color: var(--accent); }
+    .result-label {
+      font-family: var(--font-mono); font-size: 0.6rem;
+      letter-spacing: 0.06em; color: var(--ink-faint);
+      display: block; margin-bottom: 0.4rem;
+    }
+    .result-desc {
+      font-size: 0.85rem; color: var(--ink-light); line-height: 1.75;
+    }
+    .result-tags {
+      display: flex; flex-wrap: wrap; gap: 0.35rem; margin-top: 0.6rem;
+    }
+    .result-tag {
+      font-family: var(--font-mono); font-size: 0.55rem;
+      letter-spacing: 0.08em; text-transform: uppercase;
+      color: var(--ink-faint); border: 1px solid var(--rule);
+      padding: 0.1rem 0.35rem; text-decoration: none;
+      transition: color 0.15s, border-color 0.15s;
+    }
+    .result-tag:hover { color: var(--accent-light); border-color: var(--accent-light); }
+    .result-tag.active { color: var(--accent); border-color: var(--accent); }
+
+    .no-results {
+      font-family: var(--font-hand); font-size: 1.2rem;
+      color: var(--ink-faint); padding: 3rem 0; text-align: center;
+      font-style: italic;
+    }
+
+    footer {
+      border-top: 1.5px solid var(--ink); padding: 1.5rem 2rem; text-align: center;
+    }
+    footer p { font-family: var(--font-mono); font-size: 0.63rem; letter-spacing: 0.1em; color: var(--ink-faint); }
+    footer a { color: var(--ink-faint); text-decoration: none; transition: color 0.15s; }
+    footer a:hover { color: var(--accent); }
+
+    @media (max-width: 640px) {
+      .nav-links { gap: 1rem; }
+      .nav-links a { font-size: 0.62rem; }
+      .nav-wordmark { font-size: 1.1rem; }
+      .result-entry { flex-direction: column; }
+      .result-thumb, .result-thumb-placeholder { width: 100%; height: 120px; }
+    }
+  </style>
+</head>
+<body>
+
+<nav>
+  <div class="nav-inner">
+    <a href="index.html" class="nav-wordmark">Live Problems</a>
+    <ul class="nav-links">
+      <li><a href="making.html">Making</a></li>
+      <li><a href="writing.html">Writing</a></li>
+      <li><a href="teaching.html">Teaching</a></li>
+      <li><a href="designing.html">Designing</a></li>
+      <li><a href="cv.pdf" download>CV</a></li>
+    </ul>
+  </div>
+</nav>
+
+<main>
+  <div class="page-header">
+    <h1>Tagged Work</h1>
+    <span class="active-tag" id="active-tag-display"></span>
+  </div>
+
+  <div class="tag-cloud" id="tag-cloud"></div>
+
+  <div class="results-main">
+    <span class="results-count" id="results-count"></span>
+    <div id="results-list"></div>
+  </div>
+</main>
+
+<footer>
+  <p><a href="about.html">Katheryn Wright, PhD</a> &nbsp;·&nbsp; <a href="dh-pedagogy.html">Digital Humanities and Pedagogy</a> &nbsp;·&nbsp; <a href="posthumanist-philosophy.html">Posthumanist Philosophy</a> &nbsp;·&nbsp; <a href="community-global.html">Community-based and Global Learning</a></p>
+</footer>
+
+<script src="site-data.js"></script>
+<script>
+  const params  = new URLSearchParams(window.location.search);
+  const activeTag = params.get('tag') || '';
+
+  // ── TAG CLOUD ──
+  const cloud = document.getElementById('tag-cloud');
+  TAGS.forEach(tag => {
+    const a = document.createElement('a');
+    a.href = `tags.html?tag=${tag}`;
+    a.className = 'tag-pill' + (tag === activeTag ? ' active' : '');
+    a.textContent = tag;
+    cloud.appendChild(a);
+  });
+
+  // ── ACTIVE TAG DISPLAY ──
+  if (activeTag) {
+    document.getElementById('active-tag-display').textContent = activeTag;
+    document.title = `${activeTag} — Katheryn Wright`;
+  }
+
+  // ── RESULTS ──
+  const list  = document.getElementById('results-list');
+  const countEl = document.getElementById('results-count');
+
+  const matches = activeTag
+    ? SITE_DATA.filter(e => e.tags.includes(activeTag))
+    : SITE_DATA;
+
+  countEl.textContent = activeTag
+    ? `${matches.length} ${matches.length === 1 ? 'entry' : 'entries'} tagged ${activeTag}`
+    : `${matches.length} entries across all tags`;
+
+  if (matches.length === 0) {
+    list.innerHTML = '<p class="no-results">Nothing tagged with that term yet.</p>';
+  } else {
+    matches.forEach(entry => {
+      const div = document.createElement('div');
+      div.className = 'result-entry';
+
+      const thumb = entry.image
+        ? `<div class="result-thumb"><img src="${entry.image}" alt="${entry.title}" /></div>`
+        : `<div class="result-thumb-placeholder"><span>${entry.page}</span></div>`;
+
+      const tagPills = entry.tags.map(t =>
+        `<a href="tags.html?tag=${t}" class="result-tag${t === activeTag ? ' active' : ''}">${t}</a>`
+      ).join('');
+
+      div.innerHTML = `
+        ${thumb}
+        <div class="result-content">
+          <span class="result-page">${entry.page}</span>
+          <a href="${entry.pageUrl}" class="result-title">${entry.title}</a>
+          <span class="result-label">${entry.label}</span>
+          <p class="result-desc">${entry.desc}</p>
+          <div class="result-tags">${tagPills}</div>
+        </div>`;
+
+      list.appendChild(div);
+    });
+  }
+</script>
+
+</body>
+</html>
