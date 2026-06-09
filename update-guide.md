@@ -1,110 +1,8 @@
 # Live Problems — Site Update Guide
 
-## The one file you need to know: `site-data.js`
+## Overview
 
-Almost everything on this site flows from `site-data.js`. When you add a new project, publication, or course — or update an existing one — this is the file to edit. You do not need to touch the individual page HTML files for most updates.
-
----
-
-## How to add a new entry
-
-Open `site-data.js` and add a new object to the `SITE_DATA` array. Copy an existing entry as a template and fill in the fields:
-
-```js
-{
-  id: 'my-new-project',           // unique slug, no spaces, use hyphens
-  page: 'making',                 // which page: making, teaching, writing, or designing
-  pageUrl: 'making.html?project=my-new-project',  // link from the tag results page
-  title: 'My New Project',        // title as it appears on the card
-  label: 'place-based · data',    // small label above the title
-  desc: 'A description of the project.',
-  tags: ['place-based', 'data'],  // must use tags from the TAGS list (see below)
-  image: 'images/my-image.jpg',   // path to image, or null if none
-  link: 'https://example.com',    // external link, or null
-  linkText: 'View project →'      // link label, or null
-}
-```
-
-Place it in the right section (Making, Teaching, Writing, or Designing) and save.
-
----
-
-## How to update an existing entry
-
-Find the entry by its `id` in `site-data.js` and edit the relevant fields. Save the file.
-
----
-
-## How to add a new tag
-
-The tag vocabulary lives at the top of `site-data.js`:
-
-```js
-const TAGS = [
-  'place-based',
-  'data',
-  'embodied',
-  'analog-digital',
-  'game',
-  'posthumanist',
-  'collaborative',
-  'interdisciplinary',
-  'public',
-  'global'
-];
-```
-
-To add a new tag, add it to this array. Then add it to any entries that should carry it.
-
----
-
-## How to add a new Making project
-
-1. Add the entry to `site-data.js` (see above).
-2. Add the card HTML to `making.html` inside the `#carousel-track` div. Copy an existing card as a template. Make sure the `data-real` attribute increments correctly and the slug in the card matches the `id` in `site-data.js`.
-3. Add the project name to the `projectSlugs` array in the making page JS.
-4. Add the project to the dots list at the bottom of the carousel.
-5. Update `TOTAL` in the making page JS if needed.
-6. Add any new images to `liveproblems/images/`.
-
----
-
-## How to add a new Teaching course
-
-1. Add the entry to `site-data.js`.
-2. Add the course list item HTML to the right cluster in `teaching.html`.
-3. Add the course data object to the `courses` JS object in `teaching.html`, including a `tags` array.
-4. Add any new images to `liveproblems/images/`.
-
----
-
-## How to add a new Writing entry
-
-1. Add the entry to `site-data.js`.
-2. Add the entry HTML to the right cluster in `writing.html`. Copy an `entry-plain` block as a template.
-3. Add tag links using: `<a href="tags.html?tag=place-based" class="entry-tag">place-based</a>`
-
----
-
-## How to add a new Designing card
-
-1. Add the entry to `site-data.js`.
-2. Add the expand card HTML to `designing.html`. Copy an existing card as a template.
-3. Add tag links inside a `<div class="card-tags">` block at the bottom of the card.
-
----
-
-## How the tag system works
-
-Every tag on the site is a link to `tags.html?tag=tagname`. The tags page reads that URL parameter, filters `SITE_DATA` for matching entries, and displays results from across all four pages. No server needed — it all runs in the browser.
-
-When you add a new entry to `site-data.js` with tags, it automatically appears in tag results. You don't need to edit `tags.html`.
-
----
-
-## Adding images
-
-All images live in `liveproblems/images/`. Drop new images there and reference them in `site-data.js` as `images/filename.jpg`.
+The site has five main pages (Making, Writing, Teaching, Designing, About), three back-matter repository pages, and an index. Content lives directly in the HTML files. This guide covers how to update each page.
 
 ---
 
@@ -112,22 +10,143 @@ All images live in `liveproblems/images/`. Drop new images there and reference t
 
 | File | Purpose |
 |------|---------|
-| `site-data.js` | Central data file — edit this to add/update content |
 | `index.html` | Home page |
 | `making.html` | Making page with carousel |
-| `teaching.html` | Teaching page with course list and detail panel |
+| `teaching.html` | Teaching page with image reel, course list, and detail panel |
 | `writing.html` | Writing page with publication entries |
 | `designing.html` | Designing page with expand cards |
-| `about.html` | Bio page |
-| `tags.html` | Tag filter page — no need to edit |
-| `dh-pedagogy.html` | Back-matter repository |
+| `about.html` | Bio page with photo |
+| `dh-pedagogy.html` | Back-matter repository — talks and materials |
 | `posthumanist-philosophy.html` | Back-matter repository |
 | `community-global.html` | Back-matter repository |
 | `cv.pdf` | CV download — replace this file to update |
+| `images/` | All images used across the site |
 
 ---
 
-## What still needs manual updates
+## Adding a new Making project
 
-The **Making page** carousel is the most complex part of the site. Adding a new project requires edits to both `site-data.js` and `making.html`. The teaching page course detail panel similarly requires edits to both `site-data.js` and `teaching.html`. Everything else can be updated by editing `site-data.js` and the relevant HTML file.
+1. Open `making.html`
+2. Copy an existing project card (everything between `<!-- CARD N -->` comments) and paste it after the last card before `</div><!-- /carousel-track -->`
+3. Update `data-real` to the next number in sequence (0-indexed)
+4. Update all image `src` paths, alt text, card label, title, description, and any external links
+5. Update the label using the site vocabulary: `place-based · data · embodied · analog-digital · game · posthumanist · collaborative · interdisciplinary · public · global`
+6. Add the project name to the `projectSlugs` array in the JS at the bottom of the file
+7. Add a dot to the `.project-dots` section at the bottom: `<span class="project-dot" onclick="goTo(N)">Project Name</span>`
+8. Update `const TOTAL = N` in the JS to match the new total
+9. Add any new images to `images/`
+
+---
+
+## Updating an existing Making project
+
+Open `making.html`, find the card by its title or `data-real` number, and edit the relevant HTML directly.
+
+---
+
+## Adding a new Teaching course
+
+1. Open `teaching.html`
+2. Add a list item to the right cluster in the course list:
+```html
+<li class="course-item" onclick="showCourse('mycourse')">
+  <span class="course-item-label">label text</span>
+  <span class="course-item-title">Course Title</span>
+</li>
+```
+3. Add a course data object to the `courses` JS object:
+```js
+mycourse: {
+  label: 'cluster label',
+  title: 'Course Title',
+  image: 'images/my-image.jpg',  // or null
+  desc: 'Course description.',
+  focus: ''  // optional secondary line, or empty string
+},
+```
+4. Add any new images to `images/`
+
+---
+
+## Adding a new Writing entry
+
+1. Open `writing.html`
+2. Find the right cluster (digital humanities and pedagogy, or media and popular culture)
+3. Copy an existing `entry-plain` block and update the title, meta line, description, and link
+
+```html
+<div class="entry-plain">
+  <div class="entry-plain-content">
+    <p class="entry-plain-title"><a href="URL" target="_blank">"Title"</a></p>
+    <span class="entry-plain-meta">Venue, Year</span>
+    <p class="entry-plain-desc">Description.</p>
+  </div>
+</div>
+```
+
+Remove the `<a>` wrapper if there's no link yet.
+
+---
+
+## Adding a new Designing card
+
+1. Open `designing.html`
+2. Copy an existing `expand-card` block and update the label, quote, body text, and sublabel
+3. The sublabel uses the site vocabulary: `place-based · data · embodied · analog-digital · game · posthumanist · collaborative · interdisciplinary · public · global`
+
+---
+
+## Updating the About page bio
+
+Open `about.html` and edit the text inside `.bio-text`. The photo is referenced as `images/KW-headshot.JPG` — replace that file in `images/` to update the photo.
+
+---
+
+## Updating a back-matter repository page
+
+Open the relevant file (`dh-pedagogy.html`, `posthumanist-philosophy.html`, or `community-global.html`) and add entries using the `entry-plain` pattern:
+
+```html
+<div class="entry-plain">
+  <div class="entry-plain-content">
+    <p class="entry-plain-title"><a href="URL" target="_blank">Title</a></p>
+    <span class="entry-plain-meta">Venue · Year</span>
+    <p class="entry-plain-desc">Description.</p>
+  </div>
+</div>
+```
+
+Remove the `<a>` wrapper if there's no link.
+
+---
+
+## Adding images
+
+Drop new image files into the `images/` folder. Reference them in HTML as `images/filename.jpg`. Filenames are case-sensitive on GitHub Pages — `image.JPG` and `image.jpg` are different files.
+
+---
+
+## Updating the CV
+
+Replace `cv.pdf` in the repo root with the new version. Keep the filename the same.
+
+---
+
+## Label vocabulary
+
+Use these terms consistently across making cards and designing sublabels:
+
+`place-based` · `data` · `embodied` · `analog-digital` · `game` · `posthumanist` · `collaborative` · `interdisciplinary` · `public` · `global`
+
+---
+
+## After making changes
+
+```
+git add .
+git commit -m "brief description of what changed"
+git push
+```
+
+GitHub Pages usually updates within a minute or two. If the old version persists, hard refresh with `Cmd+Shift+R` (Mac) or `Ctrl+Shift+R` (Windows), or open in a private window.
 

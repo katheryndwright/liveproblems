@@ -87,7 +87,7 @@
     .image-strip {
       position: relative;
       overflow: hidden;
-      background: var(--paper);
+      background: transparent;
       height: 240px;
       cursor: grab;
       user-select: none;
@@ -268,19 +268,6 @@
       transition: color 0.15s ease;
     }
     .detail-close:hover { color: var(--accent); }
-
-
-    .detail-tags {
-      display: flex; flex-wrap: wrap; gap: 0.35rem; margin-top: 0.75rem;
-    }
-    .detail-tag {
-      font-family: var(--font-mono); font-size: 0.55rem;
-      letter-spacing: 0.08em; text-transform: uppercase;
-      color: var(--ink-faint); border: 1px solid var(--rule);
-      padding: 0.1rem 0.35rem; text-decoration: none;
-      transition: color 0.15s, border-color 0.15s; display: inline-block;
-    }
-    .detail-tag:hover { color: var(--accent-light); border-color: var(--accent-light); }
 
     /* spacer so content isn't hidden behind panel */
     .panel-spacer { height: 0; transition: height 0.3s ease; }
@@ -496,14 +483,13 @@
         <p class="detail-title" id="detail-title"></p>
         <p class="detail-desc" id="detail-desc"></p>
         <span class="detail-focus" id="detail-focus"></span>
-        <div class="detail-tags" id="detail-tags"></div>
       </div>
     </div>
   </div>
 
  <footer>
-  <p><a href="about.html">Katheryn Wright, PhD</a> &nbsp;·&nbsp; <a href="dh-pedagogy.html">Digital Humanities and Pedagogy</a> &nbsp;·&nbsp; <a href="posthumanist-philosophy.html">Posthumanist Philosophy</a> &nbsp;·&nbsp; <a href="community-global.html">Community-based and Global Learning</a></p>
-</footer>
+    <p><a href="about.html">Katheryn Wright, PhD</a> &nbsp;·&nbsp; <a href="dh-pedagogy.html">Digital Humanities and Pedagogy</a> &nbsp;·&nbsp; <a href="posthumanist-philosophy.html">Posthumanist Philosophy</a> &nbsp;·&nbsp; <a href="community-global.html">Community-based and Global Learning</a></p>
+  </footer>
 
   <script>
   // ── TEACHING IMAGE REEL ──
@@ -606,152 +592,133 @@
         title: 'Field Methods: Printmaking in Public',
         image: 'images/campus-print-technique.jpg',
         desc: 'Burlington becomes the canvas. Students learn monoprinting, urban screen printing, and eco-art as field methods for analyzing local places, power, and access. Working in situ across the city, they carry mobile print kits to different sites, collect images from surfaces, and bring what they encounter back into the classroom for collaborative digital mapping and analysis. Printmaking is positioned not just as art practice but as a posthuman research methodology. Students have printed on t-shirts, rocks, streets, and coffee sleeves.',
-        focus: '',
-        tags: ['place-based', 'embodied', 'analog-digital', 'public', 'collaborative']
+        focus: ''
       },
       args: {
         label: 'first year inquiry',
         title: 'First Year Inquiry: Making Alternate Reality Games',
         image: 'images/rock-creatures.jpg',
         desc: 'ARGs are interactive narratives that mix digital platforms, physical objects, and real locations into worlds players inhabit together. Students analyze existing ARGs, develop proposals, and build and launch one on campus. The game is not the assignment. It is the course. Students have produced plant simulators with handmade clay characters, campus-wide mystery narratives, and games that hundreds of people played without knowing they were part of a class.',
-        focus: '',
-        tags: ['game', 'analog-digital', 'collaborative', 'place-based', 'interdisciplinary']
+        focus: ''
       },
       fakemeat: {
         label: 'interdisciplinary perspectives',
         title: 'Interdisciplinary Perspectives: Fake Meat and the Future of Food',
         image: 'images/speculative-charcuterie.jpg',
         desc: 'How will climate change and global food insecurity shape what humans eat? This course takes fake meat seriously as a site of cultural, scientific, economic, and ethical inquiry. Students cook in class, visit City Market, watch Okja, try an Impossible Whopper, and build infographics synthesizing research across disciplines. The semester culminates in a Speculative Charcuterie Board, a collectively designed installation that makes arguments about the future of food through objects rather than essays.',
-        focus: '',
-        tags: ['embodied', 'interdisciplinary', 'collaborative', 'public']
+        focus: ''
       },
       sonic: {
         label: 'field methods · ongoing',
         title: 'Field Methods: Sonic Data Worlds',
         image: 'images/sonic-data-campus.jpg',
         desc: 'We live in a world of sonic datafication. AI models are trained on millions of audio samples, smart cities are monitored acoustically, and biodiversity is tracked through sound recognition. What gets heard depends on what gets recorded, and what gets recorded depends on the tools we use, and the tools we use shape what sonic data worlds are possible. Using Vermont\'s soundscapes as our laboratory, we will go into the field to record, sense, and collect sonic evidence then bring it back to ask important questions about whose worlds get heard, and what remains silent.',
-        focus: '',
-        tags: ['place-based', 'data', 'collaborative', 'public']
+        focus: ''
       },
       escaperooms: {
         label: 'interdisciplinary perspectives · new',
         title: 'Interdisciplinary Perspectives: Escape Rooms and Collaborative Design',
         image: 'images/pigs-arg.jpg',
         desc: 'From alternate reality games to escape rooms, some of today\'s most compelling experiences unfold in real spaces, real communities, and real time. This course explores the design, theory, and cultural significance of these experiences, drawing on perspectives from game studies, narrative theory, spatial design, and psychology. We will examine how place-based games like escape rooms create meaning and community, culminating in collaboratively designing and implementing an original escape room in partnership with a local community organization.',
-        focus: '',
-        tags: ['game', 'collaborative', 'place-based', 'interdisciplinary', 'public']
+        focus: ''
       },
       sandbox: {
         label: 'general education',
         title: 'Interdisciplinary Sandbox',
         image: 'images/sand-painting-global-seminar.JPG',
         desc: 'A small seminar capped at eight students, co-taught with colleagues, where students carry out independent research or creative projects of their own design. Students from across the college bring their work into the same room and move through a shared interdisciplinary research process together. Projects are displayed at the undergraduate research colloquium.',
-        focus: '',
-        tags: ['interdisciplinary', 'collaborative']
+        focus: ''
       },
       concepts: {
         label: 'first year',
         title: 'Concepts of the Self',
         image: 'images/njogu-touray-painting-gambia.JPG',
         desc: 'A first-year general education course that introduces students to interdisciplinary inquiry through the question of what it means to be human. Drawing on neuroscience, psychology, literary criticism, and the visual arts, students create a self-portrait in any medium as their cumulative research-creation project.',
-        focus: '',
-        tags: ['interdisciplinary']
+        focus: ''
       },
       capstones: {
         label: 'senior capstone',
         title: 'Senior Capstones',
         image: 'images/emma-dannenberg-senior-capstone.png',
         desc: 'Co-developed the Psychology Senior Capstone and co-taught senior capstone courses in Psychology, Game Development, Creative Media, and Information Technology and Sciences. The Senior Capstone course asks students to integrate their entire education into a professional-quality project, culminating in a community showcasing. The included image is a series of nature drawings by Creative Media senior Emma Dannenberg whose final project is publicly installed in Champlain\'s pollinator garden and apiary.',
-        focus: 'Psychology · Game Development · Creative Media · ITS',
-        tags: ['collaborative', 'interdisciplinary']
+        focus: 'Psychology · Game Development · Creative Media · ITS'
       },
       globalsenior: {
         label: 'global studies · senior capstone',
         title: 'Global Studies Senior Seminar',
         image: 'images/global-table.JPG',
         desc: 'This capstone course for the Global Studies minor interrogates the concept of global citizenship from multiple perspectives. Students examine thinking by scholars and practitioners including Paulo Freire, bell hooks, and Suzy Hansen alongside their own accumulated intercultural experiences. Weekly roundtable discussions are student-led, and the semester centers on a collaboratively designed project. One semester, the course concluded with an all-campus family-style dinner where students cooked dishes representing their travels and shared the stories behind them.',
-        focus: '',
-        tags: ['global', 'interdisciplinary', 'collaborative']
+        focus: ''
       },
       placeidentity: {
         label: 'general education',
         title: 'Connecting Place and Identity',
         image: 'images/drift-map-place-identity.jpg',
         desc: 'Where we are shapes how we understand ourselves. This course teaches students to think spatially, examining how identity is constructed through movement across natural and built environments, urban and rural spaces, and actual and virtual worlds. The signature project asks students to research a dark tourism site using interdisciplinary methods and build an ArcGIS StoryMap that tells its story. Students have researched St. Joseph\'s Orphanage in Burlington, Kunta Kinteh Island in The Gambia, and sites connected to their own family histories and pop culture interests.',
-        focus: '',
-        tags: ['place-based', 'global', 'embodied', 'interdisciplinary']
+        focus: ''
       },
       globalcondition: {
         label: 'general education · global',
         title: 'The Global Condition',
         image: 'images/globalization-chalkboard.JPG',
         desc: 'Is the world getting better? This course examines the idea of progress from theoretical, cultural, and marginalized perspectives, asking how progress has been defined, by whom, and by which standards. Students apply frameworks including hybridity, neoliberalism, and power geometry to contemporary global phenomena, including economic globalization, environmental change, violent conflict, and emerging technologies.',
-        focus: '',
-        tags: ['global', 'interdisciplinary']
+        focus: ''
       },
       bodies: {
         label: 'general education · course coordinator',
         title: 'Bodies: The Posthuman',
         image: 'images/bodies-project.JPG',
         desc: 'Are you into cyborgs, animal-human hybrids, and biotechnology? All of these figures fall under the umbrella of posthumanism. This section of Bodies explores the significance of posthuman bodies in popular culture, moving through philosophy and film from Ex Machina and Ghost in the Shell to Black Panther and Okja. Students research an embodied experience related to posthumanism and build toward a phenomenological project presented at the undergraduate research colloquium.',
-        focus: '',
-        tags: ['posthumanist', 'embodied', 'interdisciplinary']
+        focus: ''
       },
       bodieswalking: {
         label: '',
         title: 'Bodies: Walking',
         image: 'images/red-rocks-collaborative-map.JPG',
         desc: 'A baby\'s first steps, a protest march, and Neil Armstrong\'s giant leap all have in common the act of walking. This section of Bodies takes embodiment outdoors, examining the cultural significance of walking through Solnit, Thoreau, Debord, and Cheryl Strayed\'s Wild. Field trips to Red Rocks Park, Church Street, and the U-Mall become sites of inquiry. Students research an embodied experience and build toward a phenomenological project presented at the undergraduate research colloquium.',
-        focus: '',
-        tags: ['embodied', 'place-based', 'posthumanist']
+        focus: ''
       },
       heroines: {
         label: 'general education',
         title: 'Heroines and Heroes',
         image: 'images/heroines-whiteboard-notes.jpg',
         desc: 'I co-developed this general education course with colleagues, and taught several versions, including a focus on feminist theory. The course moves through structuralist frameworks, Jungian archetypes, and feminist theory alongside examples of the heroic in popular culture. At the conclusion, students created a map where they collaboratively developed alternative versions of Joseph Campbell\'s monomyth. This project became the provisional structure for my first book, The New Heroines.',
-        focus: '',
-        tags: ['interdisciplinary', 'collaborative']
+        focus: ''
       },
       posthumanism: {
         label: 'theoretical perspectives',
         title: 'Theoretical Perspectives: Posthumanism Goes to the Movies',
         image: 'images/posthuman-board.jpg',
         desc: 'Moving from Metropolis to Gattaca to Okja to Raw, the course asks what happens when you learn posthuman theory by watching films. For their main project, students create their own posthuman characters using a design process similar to D&D. They present these for critique, and during the course collaborate on a film treatment that incorporates all their characters within the narrative pitch.',
-        focus: '',
-        tags: ['posthumanist', 'interdisciplinary', 'collaborative']
+        focus: ''
       },
       scifi: {
         label: 'general education',
         title: 'Scientific Revolutions: SyFy',
         image: 'images/enterprise.JPG',
         desc: 'This section of Scientific Revolutions uses television as its primary lens, examining how popular culture represents the philosophical, cultural, and ethical implications of modern science. Students move from Aristotle to Darwin while analyzing Sherlock, Cosmos, Stranger Things, Star Trek, and The Twilight Zone, then pitch an original television pilot at the undergraduate research colloquium.',
-        focus: '',
-        tags: ['interdisciplinary']
+        focus: ''
       },
       mediapsych: {
         label: 'psychology program',
         title: 'Media Psychology',
         image: 'images/media-data.jpg',
         desc: 'I developed this course for the Psychology program as an upper-division elective. It focuses on the question: How does media influence human behavior, cognition, and identity? Students read Marshall McLuhan and other cultural theorists alongside psychological research on social media, AI, haptic technology, and screen culture, and design a semester-long self study researching an aspect of their own media psychology. The course eventually migrated to Champlain\'s Dublin campus.',
-        focus: '',
-        tags: ['interdisciplinary', 'data']
+        focus: ''
       },
       introdh: {
         label: 'digital humanities',
         title: 'Introduction to Digital Humanities',
         image: 'images/haraway-cats-cradle.jpg',
         desc: 'This course introduces students to interdisciplinary inquiry through the lens of digital humanities, asking what it means to think like a digital humanist. Students examine the ethics of algorithms, digitization as a social and cultural process, and speculative futures through hands-on workshops in augmented reality, story mapping, text analysis, and sonic data. Co-listed as a First Year Inquiry course and as the foundational course for the Digital Humanities major.',
-        focus: '',
-        tags: ['interdisciplinary', 'data', 'analog-digital', 'collaborative']
+        focus: ''
       },
       aesthetic: {
         label: 'general education',
         title: 'Aesthetic Expressions',
         image: 'images/button-making.jpg',
         desc: 'A general education course in the arts and humanities exploring how Western literature, art, and music express both traditional cultural ideals and forces of challenge and transformation. Students move from Michelangelo and Beethoven to The Hunger Games, examining aesthetic expression as both a product of its historical moment and a site of critique. The course is structured around collaborative projects and close analysis across disciplines.',
-        focus: '',
-        tags: ['interdisciplinary']
+        focus: ''
       }
     };
 
@@ -763,14 +730,6 @@
       document.getElementById('detail-title').textContent = course.title;
       document.getElementById('detail-desc').textContent = course.desc;
       document.getElementById('detail-focus').textContent = course.focus;
-      const tagsContainer = document.getElementById('detail-tags');
-      if (course.tags && course.tags.length) {
-        tagsContainer.innerHTML = course.tags.map(t =>
-          `<a href="tags.html?tag=${t}" class="detail-tag">${t}</a>`
-        ).join('');
-      } else {
-        tagsContainer.innerHTML = '';
-      }
 
       const imageSlot = document.getElementById('detail-image-slot');
       if (course.image) {
